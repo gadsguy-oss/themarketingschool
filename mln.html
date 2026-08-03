@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delivery Is Shrinking. Gift Is Not. — Maine Lobster Now</title>
+<meta name="description" content="A read on where demand is moving in direct-to-consumer lobster, built from public sources and two US Google Trends exports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F0; --paper-2:#E3E8E7; --ink:#0E2230; --deep:#123845;
+  --shell:#C4402A; --butter:#D9A441; --rope:#7C8E8C;
+  --line:rgba(14,34,48,.14); --maxw:720px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:18px;line-height:1.62;
+  font-variant-numeric:oldstyle-nums;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+h1,h2,h3,.disp{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;letter-spacing:-.02em;line-height:1.02;text-wrap:balance}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rope);display:flex;align-items:center;gap:10px;margin:0 0 14px}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+.on-dark .eyebrow{color:rgba(255,255,255,.5)}
+.on-dark .eyebrow::after{background:rgba(255,255,255,.18)}
+
+header.mast{padding:64px 0 34px;border-bottom:3px solid var(--ink)}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--shell);margin:0 0 26px}
+h1{font-size:clamp(32px,7.2vw,57px);margin:0 0 22px}
+h1 em{font-style:normal;color:var(--shell)}
+.dek{font-size:clamp(18px,2.4vw,21px);max-width:36em;margin:0;color:#2C4453}
+.mast-meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:30px;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em;color:var(--rope)}
+
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(24px,4.4vw,34px);margin:0 0 20px;max-width:20em}
+h3{font-size:17px;letter-spacing:-.01em;margin:34px 0 8px}
+p{margin:0 0 18px;max-width:36em}
+a{color:var(--shell);text-underline-offset:3px}
+strong{font-weight:600}
+
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;padding:3px 7px;border-radius:2px;vertical-align:2px;margin-right:8px;white-space:nowrap}
+.t-conf{background:var(--deep);color:#DCE9E6}
+.t-inf{background:transparent;color:var(--rope);box-shadow:inset 0 0 0 1px var(--line)}
+.t-blind{background:var(--shell);color:#fff}
+.t-watch{background:var(--butter);color:#10303B}
+
+.claim{border-left:3px solid var(--line);padding:2px 0 2px 20px;margin:0 0 26px}
+.claim.c-key{border-left-color:var(--shell)}
+.claim p:last-child{margin-bottom:0}
+.claim h3{margin-top:0}
+
+ul.src{list-style:none;padding:0;margin:0}
+ul.src li{padding:11px 0;border-top:1px solid var(--line);display:grid;
+  grid-template-columns:96px 1fr;gap:16px;font-size:16px;align-items:baseline}
+ul.src li:last-child{border-bottom:1px solid var(--line)}
+ul.src span:first-child{font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rope)}
+.blindspot{margin-top:26px;background:rgba(196,64,42,.07);border:1px solid rgba(196,64,42,.25);
+  padding:18px 20px;border-radius:3px}
+.blindspot p{margin:0;font-size:16px}
+
+.win{border-top:1px solid var(--line);padding:22px 0 4px}
+.win:last-of-type{border-bottom:1px solid var(--line);padding-bottom:22px}
+.win h3{margin:0 0 6px;font-size:18px}
+.win p{font-size:16.5px;margin-bottom:0}
+.win .why{color:var(--rope);font-size:14.5px;margin-top:8px;font-style:italic}
+
+.on-dark{background:var(--deep);color:#DDE7E5;border-bottom:none}
+.on-dark h2,.on-dark h3{color:#fff}
+.on-dark p{color:#C3D3D1}
+.on-dark strong{color:#fff}
+.on-dark .claim{border-left-color:rgba(255,255,255,.18)}
+.on-dark .claim.c-key{border-left-color:var(--butter)}
+.on-dark a{color:var(--butter)}
+
+.chartbox{margin:26px 0 8px}
+figure{margin:0}
+figcaption{font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.55;
+  color:rgba(255,255,255,.55);margin-top:12px;letter-spacing:.02em;max-width:44em}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.toggle{display:flex;gap:0;margin:0 0 14px;flex-wrap:wrap}
+.toggle button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;background:transparent;color:rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.22);padding:8px 13px;cursor:pointer;margin:0 -1px -1px 0;transition:.15s}
+.toggle button[aria-pressed="true"]{background:var(--butter);border-color:var(--butter);color:#10303B}
+.toggle button:hover{color:#fff}
+.toggle button[aria-pressed="true"]:hover{color:#10303B}
+.legend{display:flex;flex-wrap:wrap;gap:5px 18px;margin:14px 0 0;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em}
+.legend span{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.7)}
+.swatch{width:14px;height:3px;border-radius:2px;flex:none}
+
+.strip{display:grid;grid-template-columns:repeat(53,1fr);gap:2px;margin:8px 0 0}
+.strip i{display:block;aspect-ratio:1/2.6;border-radius:1px;background:rgba(255,255,255,.09)}
+.striplabels{display:flex;justify-content:space-between;margin-top:8px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.45)}
+
+.decbars{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:20px 0 0;align-items:end}
+.decbars>div{text-align:center;display:flex;flex-direction:column;justify-content:flex-end;min-height:136px}
+.decbars .bar{background:rgba(217,164,65,.22);border-top:3px solid var(--butter);
+  margin-bottom:9px;border-radius:1px 1px 0 0;flex:none}
+.decbars>div>b{display:block;font-family:"Archivo Black",sans-serif;font-weight:400;
+  font-size:19px;color:var(--butter);letter-spacing:-.02em}
+.decbars>div>span{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  color:rgba(255,255,255,.5);letter-spacing:.06em;margin-top:3px}
+
+.phase{border-top:1px solid var(--line);padding:26px 0 6px;display:grid;grid-template-columns:110px 1fr;gap:22px}
+.phase:last-of-type{border-bottom:1px solid var(--line);padding-bottom:26px}
+.phase .when{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--shell);padding-top:5px;line-height:1.5}
+.phase h3{margin:0 0 8px;font-size:18px}
+.phase p{font-size:16.5px;margin-bottom:12px}
+.phase ul{margin:0 0 4px;padding-left:19px;font-size:16.5px}
+.phase li{margin-bottom:7px}
+.kill{background:rgba(196,64,42,.07);border-left:3px solid var(--shell);
+  padding:14px 16px;margin:14px 0 4px;font-size:15.5px}
+.kill p{margin:0;font-size:15.5px}
+
+.calc{background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:24px;margin:26px 0 0}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.field label{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rope);margin-bottom:6px}
+.field input{width:100%;font-family:"IBM Plex Mono",monospace;font-size:19px;padding:10px 12px;
+  border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink);font-variant-numeric:tabular-nums}
+.field input:focus{outline:2px solid var(--shell);outline-offset:1px}
+.out{margin-top:22px;border-top:1px solid var(--line);padding-top:20px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
+.out div span{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rope);margin-bottom:5px}
+.out div b{font-family:"Archivo Black",sans-serif;font-size:27px;font-weight:400;letter-spacing:-.02em;color:var(--deep)}
+.out div b.warn{color:var(--shell)}
+.out div em{display:block;font-style:normal;font-size:13px;color:var(--rope);margin-top:3px;line-height:1.4}
+.calcnote{font-size:14.5px;color:var(--rope);margin:18px 0 0;max-width:44em}
+
+details{border-top:1px solid var(--line);padding:13px 0}
+details summary{cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--rope);list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+ ";color:var(--shell)}
+details[open] summary::before{content:"– "}
+details summary:focus-visible{outline:2px solid var(--shell);outline-offset:3px}
+details p{font-size:15.5px;margin:12px 0 2px;color:#33505F}
+.on-dark details{border-top-color:rgba(255,255,255,.15)}
+.on-dark details summary{color:rgba(255,255,255,.55)}
+.on-dark details summary::before{color:var(--butter)}
+.on-dark details p{color:#B7C9C7}
+
+.ask{background:var(--ink);color:#E6EDEC;border-radius:3px;padding:34px 30px;margin:8px 0 0}
+.ask h2{color:#fff;font-size:clamp(22px,3.6vw,29px);margin-bottom:16px}
+.ask p{color:#B9CBCF}
+.ask .q{font-family:"Archivo Black",sans-serif;font-size:clamp(19px,3vw,24px);color:var(--butter);
+  line-height:1.25;margin:0 0 18px;max-width:22em;letter-spacing:-.02em}
+.sig{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.75;color:rgba(255,255,255,.62);letter-spacing:.02em}
+.sig b{color:#fff;font-weight:500}
+.ask a{color:var(--butter)}
+
+footer{padding:34px 0 60px;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  line-height:1.7;color:var(--rope);letter-spacing:.02em}
+
+:focus-visible{outline:2px solid var(--shell);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+@media (max-width:600px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  header.mast{padding:42px 0 28px}
+  section{padding:40px 0}
+  .phase{grid-template-columns:1fr;gap:8px}
+  .phase .when{padding-top:0}
+  ul.src li{grid-template-columns:1fr;gap:3px}
+  .strip i{aspect-ratio:1/3.4}
+  .ask{padding:26px 20px}
+  .decbars{gap:7px}
+  .decbars>div>b{font-size:15px}
+  .decbars>div>span{font-size:9px}
+}
+@media (max-width:360px){ .strip{gap:1px} }
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .on-dark{background:#fff!important;color:#000!important;border-bottom:1px solid #ccc}
+  .on-dark h2,.on-dark h3,.on-dark strong{color:#000!important}
+  .on-dark p,.on-dark figcaption,.on-dark details p{color:#333!important}
+  .on-dark .legend span,.striplabels,.decbars>div>span{color:#333!important}
+  .ask{background:#fff;color:#000;border:2px solid #000}
+  .ask h2,.ask .q{color:#000}
+  .sig{color:#000;border-top-color:#000}
+  .toggle{display:none}
+  section{break-inside:avoid;page-break-inside:avoid}
+  details p{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="kicker">Prepared for Julian Klenda &nbsp;/&nbsp; Maine Lobster Now &nbsp;/&nbsp; Saco, Maine</p>
+    <h1>“Lobster delivery” has lost a third of its search interest since 2021. <em>“Seafood gift” just doubled.</em></h1>
+    <p class="dek">Your site, your feed, and almost certainly your campaigns are built for the term that's shrinking. This is a read on where the demand went, what December proves, and why the move has to be made before November.</p>
+    <div class="mast-meta">
+      <span>Aug 3, 2026</span>
+      <span>Public sources only</span>
+      <span>No account access</span>
+      <span>Evan Baker · DigiSearch</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What this is built on</p>
+    <h2>Six sources. Here they are, so you can check any of it.</h2>
+    <ul class="src">
+      <li><span>Trends A</span><span>Google Trends, US, <strong>monthly, Aug 2021 – Jul 2026</strong> (60 months). Four category terms: seafood gift, lobster delivery, order lobster online, lobster gift basket. This is the export most of the argument rests on.</span></li>
+      <li><span>Trends B</span><span>Google Trends, US, weekly, Aug 2025 – Aug 2026. Five brand terms: Maine Lobster Now, Get Maine Lobster, Cousins Maine Lobster, Lobster Boys, The Lobster Guy.</span></li>
+      <li><span>Your site</span><span>mainelobsternow.com — homepage, navigation, Lobster Gifts collection, Corporate Gifts page, eGift and physical gift cards, shipping thresholds, live promo bar. Reviewed Aug 3, 2026.</span></li>
+      <li><span>Reviews</span><span>Your on-site review corpus — 16,981 reviews as displayed, most recent ~15 read in full for language patterns.</span></li>
+      <li><span>Press</span><span>Your USA TODAY feature (Nov 2024), which is framed around holiday seafood gifting.</span></li>
+      <li><span>Social</span><span>Public Instagram and LinkedIn profiles. Follower counts and positioning copy only.</span></li>
+    </ul>
+    <div class="blindspot">
+      <p><span class="tag t-blind">Not seen</span> No Google Ads account. No Meta account. No analytics, no revenue data, no customer file. <strong>There is not a single spend, ROAS, CAC, or conversion-rate figure anywhere in this report</strong>, because I don't have one and won't invent one. Where I'm reasoning from the outside, it's labeled.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What's already working</p>
+    <h2>You've built the hard parts of a gifting business and shelved them.</h2>
+    <p>This isn't warm-up. Each of these is genuinely difficult, and each one is a prerequisite for the thing I think you're leaving on the table.</p>
+
+    <div class="win">
+      <h3>Delivery-date selection at checkout, on live product</h3>
+      <p>Your checkout lets the buyer pick the arrival date. For flash-frozen goods that's routine. For banded live lobster shipped UPS Next Day Air out of Saco, it's an inventory and logistics problem most shippers simply refuse to solve.</p>
+      <p class="why">Date control is the single feature gifting depends on. A gift that shows up on the wrong day isn't a gift, it's a problem for the recipient.</p>
+    </div>
+
+    <div class="win">
+      <h3>Your reviewers describe occasions. Your site describes groceries.</h3>
+      <p>From the recent reviews: a husband's birthday, a wedding anniversary, a congratulations gift for a couple with a new baby, a grandmother introducing an 8-year-old to lobster, a Fourth of July treat, a New Englander stranded in Arizona. One reviewer writes that instead of a standard gift, they wanted to send a memory.</p>
+      <p class="why">Your customers are already telling you what business you're in. The site copy answers “buy live lobster online.”</p>
+    </div>
+
+    <div class="win">
+      <h3>The cooking library is a gifting asset filed under content</h3>
+      <p>How to cook live lobster. How to crack one. How to butterfly a tail. How to shuck an oyster. That library is a real investment and it reads well.</p>
+      <p class="why">It also answers the number-one objection to sending live seafood as a gift — the fear that the recipient won't know what to do with a box of live animals. Right now it lives under Cooking, not next to the gift.</p>
+    </div>
+
+    <div class="win">
+      <h3>A working AOV ladder</h3>
+      <p>$40 flat shipping under $150, free overnight at $150, two free 4–5 oz tails at $275. Three rungs, clearly posted, no promo code friction.</p>
+      <p class="why">Most DTC food brands are still arguing about whether to have a threshold. You have a ladder, and it's already doing basket-size work before any ad runs.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The gap</p>
+    <h2>Demand is migrating out of “delivery” and into “gift.” You're positioned on the wrong side of it.</h2>
+
+    <div class="claim c-key">
+      <h3><span class="tag t-conf">Confirmed</span>Over five years, the two curves crossed and never went back.</h3>
+      <p>In August 2021, <span class="mono">lobster delivery</span> registered 43 and <span class="mono">seafood gift</span> registered 13 — delivery was more than three times the gift term. Averaged by year (Aug–Jul), delivery ran <strong>35.6 → 24.6 → 21.4 → 17.7 → 21.8</strong>. Gift ran <strong>20.2 → 19.9 → 20.2 → 21.2 → 44.2</strong>.</p>
+      <p>Delivery is down roughly a third from its 2021–22 level, and was down by half at its 2024–25 trough. Gift sat flat for four straight years and then doubled. The lines crossed for good around <strong>November 2024</strong> and gift has led in all but a handful of months since.</p>
+      <p>Both halves matter. This isn't only a story about gifting rising — it's also a story about the transactional head term you're built around slowly draining.</p>
+    </div>
+
+    <div class="claim c-key">
+      <h3><span class="tag t-conf">Confirmed</span>December is the most reliable pattern in the whole dataset. Five years, five for five.</h3>
+      <p>Ratio of December <span class="mono">seafood gift</span> interest to that year's September–October floor:</p>
+      <p><span class="mono"><strong>2021: 3.9× &nbsp;·&nbsp; 2022: 4.0× &nbsp;·&nbsp; 2023: 4.6× &nbsp;·&nbsp; 2024: 4.4× &nbsp;·&nbsp; 2025: 5.9×</strong></span></p>
+      <p>The number that actually sets your calendar, though, is November: it already runs 1.5× to 2.2× the autumn floor before December arrives. <strong>The climb starts in November, which means the audiences and quality score have to be built in September and October</strong> — at September and October CPMs, not Black Friday ones.</p>
+    </div>
+
+    <div class="claim">
+      <h3><span class="tag t-watch">Watch</span>The last twelve months broke the historical pattern. I'd treat this as a signal, not a certainty.</h3>
+      <p>November 2025 came in at 38 — the highest November in the series. December 2025 hit <strong>100, the all-time maximum of the entire five-year export</strong>. Then it didn't come back down: February 54, April 66, May 64, June 57. Each of those months individually exceeds every previous December in the dataset.</p>
+      <p>Then July 2026 dropped to 27, back near the historical norm. <strong>One month is not a reversal and eight months is not a law.</strong> Two readings are available: the category genuinely became year-round rather than a December event, or something shifted in how these queries get sampled and classified. I can't distinguish between them from a Trends export, and I'm not going to pretend otherwise. Either way it's the largest movement in five years and it's pointing at the term you aren't built for.</p>
+    </div>
+
+    <div class="claim">
+      <h3><span class="tag t-conf">Confirmed</span>Your branded search confirms the same window from the other direction.</h3>
+      <p>In the weekly brand export, <span class="mono">Maine Lobster Now</span> sits at a median of 3 with zero in 20 of 53 weeks — a thin, noisy series, as you'd expect at your size, and I won't read meaning into the jitter down there. But three consecutive weeks break it: <strong>December 14, 21 and 28</strong>, at 8, 7 and 8. That's the only run above 5 all year and it holds both annual highs.</p>
+      <p>Two independent exports, two different scales, same window.</p>
+    </div>
+
+    <div class="claim">
+      <h3><span class="tag t-conf">Confirmed</span>Nobody in your actual competitive set owns branded search.</h3>
+      <p>Get Maine Lobster: median 4. Lobster Boys: 4. The Lobster Guy: 3. All pinned to the floor alongside you. Cousins Maine Lobster runs at a median of 68 and dominates every chart it appears in, but it's a franchised food truck and restaurant brand with a Food Network show — that's people looking for a truck near them, not people shipping a box across the country. Different intent, different auction, wrong benchmark.</p>
+      <p>The honest read: <strong>this category isn't decided on brand names.</strong> It's decided on non-brand intent and on occasion, which makes paid media the whole fight rather than a supporting channel.</p>
+    </div>
+
+    <div class="claim">
+      <h3><span class="tag t-conf">Confirmed</span>On the site, gifting is a menu item, not a destination.</h3>
+      <p>Corporate Gifts is a footer link and a sub-item under Gifts. Gift cards are product pages. Lobster Gifts is a collection. Everything exists; nothing is a campaign endpoint. The promo bar on your homepage today is a self-purchase summer tails offer running to September 4.</p>
+    </div>
+
+    <div class="claim">
+      <h3><span class="tag t-inf">Inference</span>What I think is happening in the account — worth confirming.</h3>
+      <p>From the outside this looks like a single Shopping feed and a Performance Max campaign serving both intents at once. If so, someone searching “seafood gift delivery” gets a product tile for a 1.5 lb live lobster at $97.98, lands on a PDP, and has to work out the gifting part themselves.</p>
+      <p>Those two intents have different searchers, different price sensitivity, different creative, different landing pages. Blended into one campaign, gifting will always look worse than it is — it converts at a lower rate on a self-purchase page, so the algorithm learns to stop bidding on it. <strong>The search terms report and the campaign structure would settle this in ten minutes;</strong> I can't see either from here.</p>
+    </div>
+
+    <p style="margin-top:34px"><strong>So the gap is this:</strong> the term that's growing is the one your site treats as a footer link, the term that's shrinking is the one your whole catalog is written for, and the annual moment when both collide is decided by work done in September — not by budget dumped in on Black Friday when everyone else is bidding too.</p>
+  </div>
+</section>
+
+<section class="on-dark">
+  <div class="wrap">
+    <p class="eyebrow">The category, five years</p>
+    <h2>The chart you can rebuild yourself in about a minute.</h2>
+    <p>Google Trends, United States, monthly, August 2021 through July 2026. The scale is relative interest from 0 to 100, indexed to the highest point in this set — <strong>it is not search volume and can't be converted into one.</strong> Because all four terms came from a single export, they share one index, so comparing them against each other is valid.</p>
+
+    <div class="chartbox">
+      <div class="toggle" role="group" aria-label="Category chart view">
+        <button type="button" id="cbtn-two" aria-pressed="true">Gift vs delivery</button>
+        <button type="button" id="cbtn-all" aria-pressed="false">Add “order lobster online”</button>
+      </div>
+      <figure>
+        <svg id="catchart" viewBox="0 0 700 330" role="img" aria-labelledby="cat-title">
+          <title id="cat-title">Monthly Google Trends interest for seafood gift and lobster delivery in the United States, August 2021 to July 2026</title>
+        </svg>
+        <div class="legend" id="catlegend"></div>
+        <figcaption id="catcap"></figcaption>
+      </figure>
+    </div>
+
+    <div style="margin-top:34px">
+      <h3 style="margin:0 0 4px">December lift over the autumn floor</h3>
+      <p style="margin-bottom:0;font-size:16.5px">December <span class="mono">seafood gift</span> divided by that year's September–October average.</p>
+      <div class="decbars" id="decbars"></div>
+    </div>
+
+    <details style="margin-top:34px">
+      <summary>Two terms I'd stop worrying about</summary>
+      <p><span class="mono" style="color:#fff">lobster gift basket</span> returns zero in 54 of 60 months, with six stray readings of 2–3. It's below Trends' reporting threshold. It sounds like an obvious keyword and it is not one — don't let anyone build a campaign around it on instinct.</p>
+      <p><span class="mono" style="color:#fff">order lobster online</span> runs between 4 and 16 across the entire five years with no December pattern at all and a slow decline. It's a low-volume transactional term. Worth owning cheaply, not worth a strategy.</p>
+    </details>
+    <details>
+      <summary>Why the two exports can't be compared to each other</summary>
+      <p>Each Trends export is indexed to its own maximum. The brand export's 100 is Cousins Maine Lobster in August 2025; this one's 100 is “seafood gift” in December 2025. A 38 in one file and a 38 in the other are unrelated quantities. That's why the two are charted separately here and never stacked — they corroborate each other on timing, not on magnitude.</p>
+    </details>
+  </div>
+</section>
+
+<section class="on-dark" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Share of search, brands</p>
+    <h2>Four DTC shippers, all pinned to the floor.</h2>
+    <p>The weekly brand export, plotted. Same 0–100 relative scale, different index.</p>
+
+    <div class="chartbox">
+      <div class="toggle" role="group" aria-label="Brand chart view">
+        <button type="button" id="btn-all" aria-pressed="true">All five brands</button>
+        <button type="button" id="btn-dtc" aria-pressed="false">DTC shippers only</button>
+      </div>
+      <figure>
+        <svg id="chart" viewBox="0 0 700 300" role="img" aria-labelledby="chart-title">
+          <title id="chart-title">Weekly Google Trends interest for five lobster brands, United States, August 2025 to August 2026</title>
+        </svg>
+        <div class="legend" id="legend"></div>
+        <figcaption id="cap"></figcaption>
+      </figure>
+    </div>
+
+    <h3 style="margin-top:40px">Fifty-three weeks of your name, one cell each</h3>
+    <p style="margin-bottom:10px">Just your line, so the shape is unmistakable. Brighter means more interest.</p>
+    <figure>
+      <div class="strip" id="strip" role="img" aria-label="Weekly search interest for Maine Lobster Now across 53 weeks, peaking in mid to late December"></div>
+      <div class="striplabels"><span>AUG 2025</span><span>DEC</span><span>APR 2026</span><span>AUG 2026</span></div>
+      <figcaption>Three cells carry the year. December 14, 21 and 28, 2025.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What I'd do about it</p>
+    <h2>Split gifting out as its own business inside the account. Start now.</h2>
+    <p>Concrete enough that you could hand this to whoever runs your ads tomorrow and they'd know what to build. That's the trade — I'd rather be useful than mysterious.</p>
+
+    <div class="phase">
+      <div class="when">Weeks 1–2<br>August</div>
+      <div>
+        <h3>Separate the two intents at the account level</h3>
+        <ul>
+          <li>Split the product feed into a gifting feed and a self-purchase feed using custom labels. Same catalog, two personalities.</li>
+          <li>Pull gift-intent queries out of PMax into their own Search campaign with their own budget and bids: seafood gift, seafood gift delivery, send lobster to someone, lobster gift card, corporate seafood gifts, gift for a seafood lover, last minute food gift.</li>
+          <li>Add negatives so the two don't cannibalize. Gifting shouldn't bid on “how to cook lobster”; cooking shouldn't bid on “gift.”</li>
+        </ul>
+        <div class="kill">
+          <p><strong>Correction to my own first draft.</strong> Before I had the five-year export I'd have told you to bid <span class="mono">lobster gift basket</span> — it's the term everyone reaches for. The data says it's at zero in 54 of 60 months. Skip it. <span class="mono">seafood gift</span> is the head term that's actually moving.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">Weeks 2–4<br>August</div>
+      <div>
+        <h3>Build the gifting page you don't currently have</h3>
+        <ul>
+          <li>One destination that leads with the arrival date picker, not the product grid. The promise is “it shows up on the day you choose,” not “we sell lobster.”</li>
+          <li>Pull the cooking guides onto that page as the objection-handler: <em>they'll know exactly what to do with it.</em></li>
+          <li>Gift card as the explicit fallback for anyone who can't confirm the recipient's schedule. That's a save, not a downsell.</li>
+          <li>Give Corporate Gifts a real lead path — form plus the 207 number. B2B gifting is a quoted, invoiced motion, not a Shopify checkout, and it should be measured as a lead, not a purchase.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">Sept–Oct<br>The whole ballgame</div>
+      <div>
+        <h3>Buy the audience while it's cheap</h3>
+        <ul>
+          <li>The five-year data says November is already 1.5–2.2× the autumn floor. That means the people you convert in December have to be reached in September and October, at a fraction of Q4 CPMs. Prospect now, remarket later — that's the entire trick, and it's why this is an August conversation and not a November one.</li>
+          <li>Build lists that matter for gifting specifically: past gift purchasers, cooking-guide readers, gift card viewers, corporate page visitors, and anyone who's ever shipped to an address that wasn't their own.</li>
+          <li>Get Search impression share and Quality Score accumulating on the gifting keywords now, so December bids aren't starting cold in the most expensive auction of the year.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">Creative<br>Ongoing</div>
+      <div>
+        <h3>Sell the arrival, not the animal</h3>
+        <ul>
+          <li>Your reviews describe a moment: the box at the door, the surprise, “we wanted to give them a memory.” That's the ad. A hero shot of a lobster sells a self-purchase; the doorstep sells a gift.</li>
+          <li>Two angles worth testing head to head — <em>the gift for the person who has everything</em> against <em>the gift that arrives on the exact day you choose</em>. My guess is the second wins on cold traffic because it's the objection, but that's a test, not a claim.</li>
+          <li>The Klenda family and 30 years on the Portland waterfront is a differentiator no aggregator can copy. It belongs in gifting creative, where trust is the entire purchase decision.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">Measurement<br>Week 1</div>
+      <div>
+        <h3>Count gift orders as their own thing</h3>
+        <ul>
+          <li>Flag orders where the shipping address doesn't match the billing address. That's your gifting proxy, it's already in Shopify, and it costs nothing to start tracking.</li>
+          <li>Report gifting and self-purchase as separate P&amp;Ls. Blended, gifting looks like a lower-converting version of your main business. Separated, it's likely a higher-AOV one with different seasonality — but that's yours to verify, not mine to assert.</li>
+          <li>Watch <span class="mono">seafood gift</span> month over month through the autumn. If it holds above the old baseline the way it did from November through June, the year-round read is right and the budget should follow. If it keeps drifting back toward July's 27, treat it as a December business and spend accordingly.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The math</p>
+    <h2>Your numbers, my framework. I've left it empty on purpose.</h2>
+    <p>This is the calculation I'd run before recommending a single dollar of gifting spend. I don't know your AOV, your margin, or your target payback, so nothing is pre-filled — put your own figures in and it'll tell you what the economics actually support.</p>
+
+    <div class="calc">
+      <div class="calc-grid">
+        <div class="field"><label for="aov">Gift order AOV ($)</label><input type="number" id="aov" inputmode="decimal" placeholder="—" min="0" step="1"></div>
+        <div class="field"><label for="margin">Gross margin (%)</label><input type="number" id="margin" inputmode="decimal" placeholder="—" min="0" max="100" step="1"></div>
+        <div class="field"><label for="ship">Shipping cost / order ($)</label><input type="number" id="ship" inputmode="decimal" placeholder="—" min="0" step="1"></div>
+        <div class="field"><label for="cpc">Expected CPC ($)</label><input type="number" id="cpc" inputmode="decimal" placeholder="—" min="0" step="0.1"></div>
+      </div>
+      <div class="out">
+        <div><span>Contribution / order</span><b id="o-contrib">—</b><em id="e-contrib">Margin minus shipping. What's actually left to spend.</em></div>
+        <div><span>Break-even CAC</span><b id="o-cac">—</b><em>Above this, the order loses money on first purchase.</em></div>
+        <div><span>Break-even CVR</span><b id="o-cvr">—</b><em id="e-cvr">Conversion rate needed at that CPC just to break even.</em></div>
+        <div><span>Target CAC at 50%</span><b id="o-target">—</b><em>Half of contribution to acquisition. A reasonable place to start.</em></div>
+      </div>
+      <p class="calcnote"><strong>Read this before you use the output.</strong> It's a first-purchase model — no repeat value, no gift-recipient-becomes-customer effect, which in food gifting is often the whole point. If your gift orders bring in new households at a meaningful rate, the real allowable CAC is higher than what this shows and you'd size spend off LTV instead. I'd want your repeat rate before taking any of these numbers to a budget conversation.</p>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="ask">
+      <h2>One ask, and you don't need to talk to me to act on it.</h2>
+      <p class="q">What percentage of your December orders ship to an address that isn't the billing address?</p>
+      <p>It's one query against Shopify. If the answer is north of thirty percent, gifting isn't a collection on your site — it's your fourth quarter, and it deserves its own campaigns, its own landing page, and its own line in the P&amp;L. If it's under ten, I'm wrong about the whole thing and you should ignore this report.</p>
+      <p>Either way you now have the number, which is worth more than anything I could pitch you.</p>
+      <p>If you'd like a second set of eyes on how to structure it, I'll spend thirty minutes on the phone going through the account with you. No deck, no proposal, no pricing conversation. If the structure's already right, I'll tell you that and you'll have lost half an hour.</p>
+      <div class="sig">
+        <b>Evan Baker</b> · CMO, DigiSearch · Griffin, GA<br>
+        Google Ads certified · 20 years · $200M+ in managed spend<br>
+        <a href="mailto:gadsguy@gmail.com">gadsguy@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Sources: Google Trends, US, monthly, Aug 2021 – Jul 2026 (category terms) · Google Trends, US, weekly, Aug 2025 – Aug 2026 (brand terms) · mainelobsternow.com, reviewed Aug 3, 2026 · USA TODAY, Nov 2024 · public social profiles.<br>
+    Google Trends values are relative interest indexed 0–100 within each export, not search volume, and are not comparable across exports. No advertising account, analytics, or revenue data was accessed in preparing this document.<br>
+    Prepared independently by Evan Baker. Not affiliated with or commissioned by Maine Lobster Now.
+  </div>
+</footer>
+
+<script>
+/* ---------- category data: US monthly, Aug 2021 – Jul 2026 ---------- */
+const C = {"m":["2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07"],"sg":[13,16,13,24,57,17,18,15,15,18,21,15,16,14,16,21,60,16,14,16,14,16,21,15,11,14,13,24,62,17,17,13,16,19,22,15,16,14,13,22,59,16,16,11,16,20,25,27,21,16,18,38,100,34,54,36,66,64,57,27],"ld":[43,38,30,31,55,42,40,31,28,30,29,30,27,23,23,23,41,22,27,20,21,24,24,20,19,23,18,23,39,19,21,19,16,19,22,19,19,13,14,14,25,15,19,13,16,16,22,26,18,14,14,17,31,20,26,22,23,29,29,19],"ol":[14,8,7,8,12,11,16,8,8,10,9,10,7,7,7,8,10,8,8,7,6,6,6,7,6,6,7,6,9,8,6,6,5,7,8,6,7,5,6,6,7,6,6,6,6,6,6,7,6,4,5,6,8,6,7,7,7,7,10,5],"gb":[0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,2,0]};
+
+/* ---------- brand data: US weekly, Aug 2025 – Aug 2026 ---------- */
+const D = {"weeks":["2025-08-03","2025-08-10","2025-08-17","2025-08-24","2025-08-31","2025-09-07","2025-09-14","2025-09-21","2025-09-28","2025-10-05","2025-10-12","2025-10-19","2025-10-26","2025-11-02","2025-11-09","2025-11-16","2025-11-23","2025-11-30","2025-12-07","2025-12-14","2025-12-21","2025-12-28","2026-01-04","2026-01-11","2026-01-18","2026-01-25","2026-02-01","2026-02-08","2026-02-15","2026-02-22","2026-03-01","2026-03-08","2026-03-15","2026-03-22","2026-03-29","2026-04-05","2026-04-12","2026-04-19","2026-04-26","2026-05-03","2026-05-10","2026-05-17","2026-05-24","2026-05-31","2026-06-07","2026-06-14","2026-06-21","2026-06-28","2026-07-05","2026-07-12","2026-07-19","2026-07-26","2026-08-02"],
+"mln":[3,3,0,3,3,3,3,0,0,0,0,0,4,0,0,3,3,5,4,8,7,8,4,0,0,0,3,3,0,4,0,0,0,0,4,3,0,0,3,4,3,3,3,0,4,3,6,4,0,6,3,3,3],
+"gml":[10,6,6,5,6,4,3,6,4,5,3,5,4,0,0,0,3,0,0,5,4,4,3,3,3,3,3,3,3,3,0,0,0,3,4,0,3,0,4,4,4,6,7,6,5,5,7,7,10,8,6,7,7],
+"cml":[100,94,81,80,76,73,65,74,68,65,66,67,57,65,58,48,44,44,55,49,49,57,56,82,67,58,64,61,69,72,65,71,64,72,61,61,68,76,70,69,80,65,75,73,72,63,73,72,79,73,75,75,59],
+"lb":[6,3,3,0,0,0,0,4,0,0,3,4,0,0,3,0,0,3,4,3,4,5,4,4,0,3,5,6,8,5,4,4,5,4,3,5,8,8,6,8,7,7,9,4,7,5,8,7,4,6,3,4,4],
+"tlg":[5,3,4,4,0,0,5,4,3,0,4,3,3,3,3,4,5,4,4,6,5,5,4,3,3,0,5,2,4,0,0,3,0,3,4,0,3,5,4,5,0,3,4,5,3,5,5,5,4,3,3,3,3]};
+
+const NS="http://www.w3.org/2000/svg";
+function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+/* ============ CATEGORY CHART ============ */
+const CSER=[
+  {k:"sg", label:"seafood gift",         color:"#D9A441", w:3},
+  {k:"ld", label:"lobster delivery",     color:"#C4402A", w:2.2},
+  {k:"ol", label:"order lobster online", color:"#8E9BC7", w:1.8, extra:true}
+];
+const cs=document.getElementById("catchart");
+let cmode="two";
+function drawCat(){
+  cs.innerHTML='<title id="cat-title">Monthly Google Trends interest, seafood gift versus lobster delivery, US, 2021 to 2026</title>';
+  const W=700,H=330,ML=34,MR=8,MT=16,MB=34;
+  const set=cmode==="two"?CSER.filter(s=>!s.extra):CSER;
+  const n=C.m.length;
+  const x=i=>ML+(i/(n-1))*(W-ML-MR);
+  const y=v=>MT+(1-v/100)*(H-MT-MB);
+
+  [0,25,50,75,100].forEach(t=>{
+    cs.appendChild(el("line",{x1:ML,x2:W-MR,y1:y(t),y2:y(t),stroke:"rgba(255,255,255,.13)","stroke-width":1}));
+    const l=el("text",{x:ML-9,y:y(t)+4,fill:"rgba(255,255,255,.42)","font-size":10,"text-anchor":"end","font-family":"IBM Plex Mono, monospace"});
+    l.textContent=t; cs.appendChild(l);
+  });
+
+  // December bands
+  C.m.forEach((m,i)=>{
+    if(m.endsWith("-12")){
+      const w=(W-ML-MR)/(n-1);
+      cs.appendChild(el("rect",{x:x(i)-w/2,y:MT,width:w,height:H-MT-MB,fill:"rgba(217,164,65,.13)"}));
+    }
+  });
+
+  // crossover marker at 2024-11 (index 39)
+  const xi=x(39);
+  cs.appendChild(el("line",{x1:xi,x2:xi,y1:MT,y2:H-MB,stroke:"rgba(255,255,255,.4)","stroke-width":1,"stroke-dasharray":"3 4"}));
+  const cl=el("text",{x:xi+5,y:MT+12,fill:"rgba(255,255,255,.6)","font-size":9.5,"letter-spacing":"1","font-family":"IBM Plex Mono, monospace"});
+  cl.textContent="CROSSOVER, NOV 2024"; cs.appendChild(cl);
+
+  C.m.forEach((m,i)=>{
+    if(m.endsWith("-01") || i===0){
+      const t=el("text",{x:x(i),y:H-MB+18,fill:"rgba(255,255,255,.42)","font-size":10,"text-anchor":"middle","font-family":"IBM Plex Mono, monospace"});
+      t.textContent=m.slice(0,4); cs.appendChild(t);
+    }
+  });
+  cs.appendChild(el("line",{x1:ML,x2:W-MR,y1:y(0),y2:y(0),stroke:"rgba(255,255,255,.3)","stroke-width":1}));
+
+  set.slice().reverse().forEach(s=>{
+    const pts=C[s.k].map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    cs.appendChild(el("polyline",{points:pts,fill:"none",stroke:s.color,"stroke-width":s.w,"stroke-linejoin":"round","stroke-linecap":"round"}));
+  });
+  // mark Dec 2025 peak
+  cs.appendChild(el("circle",{cx:x(52),cy:y(100),r:4,fill:"#D9A441",stroke:"#123845","stroke-width":1.5}));
+
+  document.getElementById("catlegend").innerHTML=set.map(s=>
+    `<span><i class="swatch" style="background:${s.color}"></i>${s.label}</span>`).join("")
+    + `<span style="color:rgba(255,255,255,.45)"><i class="swatch" style="background:rgba(217,164,65,.3)"></i>December</span>`;
+
+  document.getElementById("catcap").textContent = cmode==="two"
+    ? "Gift starts at a third of delivery in 2021 and ends at roughly half again above it. Shaded columns are Decembers — five consecutive spikes. The marked point is December 2025, the maximum of the export."
+    : "“Order lobster online” added for scale: 4 to 16 across all sixty months, no December pattern, slow decline. It's a low-volume transactional term, not a strategy.";
+}
+document.getElementById("cbtn-two").addEventListener("click",()=>{cmode="two";csync();});
+document.getElementById("cbtn-all").addEventListener("click",()=>{cmode="all";csync();});
+function csync(){
+  document.getElementById("cbtn-two").setAttribute("aria-pressed",cmode==="two");
+  document.getElementById("cbtn-all").setAttribute("aria-pressed",cmode==="all");
+  drawCat();
+}
+drawCat();
+
+/* ============ DECEMBER MULTIPLES ============ */
+(function(){
+  const out=[];
+  for(let yy=2021; yy<=2025; yy++){
+    const di=C.m.indexOf(yy+"-12");
+    const si=C.m.indexOf(yy+"-09"), oi=C.m.indexOf(yy+"-10");
+    if(di<0||si<0||oi<0) continue;
+    const base=(C.sg[si]+C.sg[oi])/2;
+    out.push({y:yy, r:C.sg[di]/base});
+  }
+  const max=Math.max(...out.map(o=>o.r));
+  document.getElementById("decbars").innerHTML=out.map(o=>
+    `<div><div class="bar" style="height:${(o.r/max*88).toFixed(0)}px"></div><b>${o.r.toFixed(1)}×</b><span>DEC ${o.y}</span></div>`
+  ).join("");
+})();
+
+/* ============ BRAND CHART ============ */
+const SERIES=[
+  {k:"mln", label:"Maine Lobster Now", color:"#D9A441", w:3,   dtc:true},
+  {k:"gml", label:"Get Maine Lobster",  color:"#C4402A", w:1.8, dtc:true},
+  {k:"lb",  label:"Lobster Boys",       color:"#6FA8A0", w:1.8, dtc:true},
+  {k:"tlg", label:"The Lobster Guy",    color:"#8E9BC7", w:1.8, dtc:true},
+  {k:"cml", label:"Cousins Maine Lobster", color:"#98A6A4", w:1.8, dtc:false}
+];
+const svg=document.getElementById("chart");
+let mode="all";
+function draw(){
+  svg.innerHTML='<title id="chart-title">Weekly Google Trends interest for lobster brands, US, Aug 2025 to Aug 2026</title>';
+  const W=700,H=300,ML=34,MR=8,MT=14,MB=32;
+  const set=mode==="all"?SERIES:SERIES.filter(s=>s.dtc);
+  const yMax=mode==="all"?100:12;
+  const n=D.weeks.length;
+  const x=i=>ML+(i/(n-1))*(W-ML-MR);
+  const y=v=>MT+(1-v/yMax)*(H-MT-MB);
+  const ticks=mode==="all"?[0,25,50,75,100]:[0,3,6,9,12];
+  ticks.forEach(t=>{
+    svg.appendChild(el("line",{x1:ML,x2:W-MR,y1:y(t),y2:y(t),stroke:"rgba(255,255,255,.13)","stroke-width":1}));
+    const l=el("text",{x:ML-9,y:y(t)+4,fill:"rgba(255,255,255,.42)","font-size":10,"text-anchor":"end","font-family":"IBM Plex Mono, monospace"});
+    l.textContent=t; svg.appendChild(l);
+  });
+  const bx1=x(18.5), bx2=x(21.5);
+  svg.appendChild(el("rect",{x:bx1,y:MT,width:bx2-bx1,height:H-MT-MB,fill:"rgba(217,164,65,.15)"}));
+  const bl=el("text",{x:(bx1+bx2)/2,y:MT-3,fill:"rgba(217,164,65,.85)","font-size":9.5,"text-anchor":"middle","letter-spacing":"1.2","font-family":"IBM Plex Mono, monospace"});
+  bl.textContent="DEC 14–28"; svg.appendChild(bl);
+  D.weeks.forEach((w,i)=>{
+    const d=new Date(w+"T00:00:00");
+    if(d.getUTCDate()<=7 && d.getUTCMonth()%3===0){
+      const t=el("text",{x:x(i),y:H-MB+18,fill:"rgba(255,255,255,.42)","font-size":10,"text-anchor":"middle","font-family":"IBM Plex Mono, monospace"});
+      t.textContent=["JAN","APR","JUL","OCT"][d.getUTCMonth()/3]+" "+String(d.getUTCFullYear()).slice(2);
+      svg.appendChild(t);
+    }
+  });
+  svg.appendChild(el("line",{x1:ML,x2:W-MR,y1:y(0),y2:y(0),stroke:"rgba(255,255,255,.3)","stroke-width":1}));
+  set.slice().reverse().forEach(s=>{
+    const pts=D[s.k].map((v,i)=>`${x(i).toFixed(1)},${y(Math.min(v,yMax)).toFixed(1)}`).join(" ");
+    svg.appendChild(el("polyline",{points:pts,fill:"none",stroke:s.color,"stroke-width":s.w,"stroke-linejoin":"round","stroke-linecap":"round",opacity:s.k==="mln"?1:.85}));
+  });
+  if(mode==="dtc"){
+    [19,20,21].forEach(i=>svg.appendChild(el("circle",{cx:x(i),cy:y(D.mln[i]),r:3.6,fill:"#D9A441",stroke:"#123845","stroke-width":1.5})));
+  }
+  document.getElementById("legend").innerHTML=set.map(s=>
+    `<span><i class="swatch" style="background:${s.color}"></i>${s.label}</span>`).join("");
+  document.getElementById("cap").textContent = mode==="all"
+    ? "All five terms on a 0–100 scale. Cousins Maine Lobster — a food truck and restaurant franchise, not a shipper — compresses the four DTC brands into a band at the bottom. Switch views to see them."
+    : "The four DTC lobster shippers, rescaled to 0–12. Nobody owns branded search here. Marked points are Dec 14, 21 and 28 — Maine Lobster Now's only run above 5 all year, holding both annual highs.";
+}
+document.getElementById("btn-all").addEventListener("click",()=>{mode="all";sync();});
+document.getElementById("btn-dtc").addEventListener("click",()=>{mode="dtc";sync();});
+function sync(){
+  document.getElementById("btn-all").setAttribute("aria-pressed",mode==="all");
+  document.getElementById("btn-dtc").setAttribute("aria-pressed",mode==="dtc");
+  draw();
+}
+draw();
+
+/* ============ STRIP ============ */
+document.getElementById("strip").innerHTML = D.mln.map((v,i)=>{
+  const a = v===0 ? .07 : .13 + (v/8)*.87;
+  const c = v>=6 ? `rgba(217,164,65,${a})` : `rgba(255,255,255,${a*0.55})`;
+  return `<i style="background:${c}" title="${D.weeks[i]}: ${v}"></i>`;
+}).join("");
+
+/* ============ CALCULATOR ============ */
+const num=id=>{const v=parseFloat(document.getElementById(id).value);return isNaN(v)?null:v;};
+const money=v=>"$"+v.toLocaleString(undefined,{maximumFractionDigits:0});
+function calc(){
+  const aov=num("aov"), m=num("margin"), sh=num("ship"), cpc=num("cpc");
+  const oC=document.getElementById("o-contrib"), oA=document.getElementById("o-cac"),
+        oV=document.getElementById("o-cvr"), oT=document.getElementById("o-target");
+  let contrib=null;
+  if(aov!==null && m!==null){
+    contrib=aov*(m/100)-(sh||0);
+    oC.textContent=money(contrib); oC.className=contrib<=0?"warn":"";
+    oA.textContent=contrib>0?money(contrib):"—";
+    oT.textContent=contrib>0?money(contrib*0.5):"—";
+    document.getElementById("e-contrib").textContent = sh===null
+      ? "Margin only — add shipping cost for a true figure." : "Margin minus shipping. What's actually left to spend.";
+  } else { oC.textContent="—"; oC.className=""; oA.textContent="—"; oT.textContent="—"; }
+  if(contrib!==null && contrib>0 && cpc!==null && cpc>0){
+    const cvr=(cpc/contrib)*100;
+    oV.textContent=cvr.toFixed(2)+"%"; oV.className=cvr>6?"warn":"";
+    document.getElementById("e-cvr").textContent = cvr>6
+      ? "That's a demanding rate for cold traffic. Worth pressure-testing."
+      : "Conversion rate needed at that CPC just to break even.";
+  } else { oV.textContent="—"; oV.className=""; }
+}
+["aov","margin","ship","cpc"].forEach(i=>document.getElementById(i).addEventListener("input",calc));
+</script>
+</body>
+</html>
