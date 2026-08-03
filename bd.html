@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rockaway — Account Review · Blooming Dental &amp; Implant Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101C18; --forest:#1E3529; --moss:#4E7C63; --moss-lt:#7BA88E;
+  --bone:#E9E7DF; --paper:#F6F5F1; --brass:#B4893C; --oxblood:#7E2B26;
+  --grey:#6B7873; --line:rgba(16,28,24,.14);
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.08;margin:0 0 .5em}
+h1{font-size:clamp(38px,7vw,72px)}
+h2{font-size:clamp(28px,4.6vw,46px)}
+h3{font-size:clamp(21px,3vw,27px);margin-bottom:.35em}
+p{margin:0 0 1.1em;max-width:66ch}
+a{color:var(--forest)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin:0 0 18px}
+.lede{font-size:clamp(19px,2.4vw,23px);line-height:1.5;color:var(--forest)}
+.small{font-size:14.5px;color:var(--grey);max-width:62ch}
+strong{font-weight:600}
+
+/* hero */
+.hero{background:var(--ink);color:var(--bone);border-bottom:none;padding:80px 0 76px}
+.hero .eyebrow{color:var(--moss-lt)}
+.hero h1{color:var(--bone)}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.hero p{color:#C9CFC9;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:38px;padding-top:26px;border-top:1px solid rgba(233,231,223,.2);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:#93A099;text-transform:uppercase}
+
+/* tags */
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;padding:3px 9px;border:1px solid currentColor;border-radius:2px;vertical-align:2px}
+.t-conf{color:var(--moss)} .t-inf{color:var(--brass)} .t-miss{color:var(--oxblood)}
+
+/* signature: routing diagram */
+.routing{background:var(--ink);color:var(--bone);border-radius:3px;padding:34px 28px 26px;margin:34px 0}
+.routing svg{width:100%;height:auto;display:block}
+.routing .cap{font-family:var(--mono);font-size:11.5px;color:#93A099;margin-top:18px;line-height:1.6;max-width:none}
+
+/* stat row */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:30px 0}
+.stat{background:var(--paper);padding:20px 18px}
+.stat .n{font-family:var(--serif);font-size:40px;line-height:1;display:block}
+.stat .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-top:9px;display:block;line-height:1.5}
+.stat.hi .n{color:var(--oxblood)}
+
+/* table */
+table{width:100%;border-collapse:collapse;margin:26px 0;font-size:15px}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);font-weight:500}
+td.num{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+tr.self td{background:rgba(78,124,99,.09);font-weight:600}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* chart */
+.chart{margin:30px 0}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--grey)}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend i{width:16px;height:3px;display:inline-block;border-radius:2px}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 4px}
+.ctrls button{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line);background:transparent;color:var(--grey);border-radius:2px;cursor:pointer}
+.ctrls button[aria-pressed=true]{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.ctrls button:focus-visible,details>summary:focus-visible,input:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+/* gap block */
+.gap{border-left:3px solid var(--oxblood);padding:2px 0 2px 22px;margin:30px 0}
+.win{border-left:3px solid var(--moss);padding:2px 0 2px 22px;margin:30px 0}
+
+/* stub */
+.stub{border:1px dashed var(--oxblood);border-radius:3px;padding:22px 22px 6px;margin:28px 0;background:rgba(126,43,38,.035)}
+.stub h3{color:var(--oxblood)}
+.stub p{font-size:15.5px}
+
+/* model */
+.model{background:var(--bone);border-radius:3px;padding:28px 24px;margin:30px 0}
+.lines{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.line-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--grey);margin:0 0 14px;font-weight:500}
+.f{margin-bottom:12px}
+.f label{display:block;font-size:12.5px;color:var(--forest);margin-bottom:4px}
+.f input{width:100%;font-family:var(--mono);font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink)}
+.f input::placeholder{color:#A9B2AD}
+.out{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.out .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:14px}
+.out .row span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500}
+.out .row.key{border-top:1px solid var(--line);margin-top:8px;padding-top:13px;font-weight:600}
+.out .row.key span:last-child{color:var(--oxblood);font-size:16px}
+
+details{border-bottom:1px solid var(--line);padding:14px 0}
+details summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";font-family:var(--mono);color:var(--brass);margin-right:11px}
+details[open] summary::before{content:"–"}
+details p{margin:12px 0 2px;font-size:15.5px}
+
+.decision{background:var(--ink);color:var(--bone);border-radius:3px;padding:40px 32px}
+.decision h2{color:var(--bone);margin-bottom:.35em}
+.decision p{color:#C9CFC9}
+.decision .q{font-family:var(--serif);font-size:clamp(21px,3vw,28px);color:var(--brass);line-height:1.35;margin:26px 0 0;max-width:58ch}
+
+footer{padding:44px 0 64px;font-family:var(--mono);font-size:11.5px;color:var(--grey);line-height:1.8}
+
+@media (max-width:640px){
+  section{padding:52px 0}
+  .lines{grid-template-columns:1fr;gap:14px}
+  body{font-size:16px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .chart path.series{stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 1.5s ease forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+}
+@media print{
+  .hero,.decision,.routing{background:#fff!important;color:#000!important}
+  .hero h1,.decision h2{color:#000!important}
+  .hero p,.decision p,.routing .cap{color:#333!important}
+  .ctrls{display:none}
+  section{page-break-inside:avoid;padding:28px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Account review · Rockaway · August 2026</p>
+    <h1>Rockaway is doing the work.<br>West Caldwell is <em>collecting the credit.</em></h1>
+    <p class="lede">Your own website routes Rockaway's review requests to the West Caldwell Google profile. In the market where full-arch demand has grown fivefold in five years, the location competing for it is running on a quarter of the group's reviews.</p>
+    <div class="meta">
+      <span>Blooming Dental &amp; Implant Center</span>
+      <span>321 Mt Hope Ave, Rockaway NJ</span>
+      <span>Prepared for Dr. Theodore Chang</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What this covers</p>
+    <h2>Sources, and what's still missing.</h2>
+    <p>This review is scoped to the <strong>Rockaway location only</strong>. West Caldwell appears where the two interact, not as a subject.</p>
+    <table>
+      <thead><tr><th>Source</th><th>Pulled</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>bloomingdentalrockaway.com — full crawl</td><td>3 Aug 2026</td><td><span class="tag t-conf">Verified</span></td></tr>
+        <tr><td>Google Business Profile, Rockaway &amp; West Caldwell</td><td>3 Aug 2026</td><td><span class="tag t-conf">Verified</span></td></tr>
+        <tr><td>Map-pack competitor set, Morris/Essex radius</td><td>3 Aug 2026</td><td><span class="tag t-conf">Verified</span></td></tr>
+        <tr><td>Google Trends, New York DMA, 60 months</td><td>Aug 2021 – Jul 2026</td><td><span class="tag t-conf">Verified</span></td></tr>
+        <tr><td>Third-party profiles (Yelp, Zocdoc, directories)</td><td>3 Aug 2026</td><td><span class="tag t-conf">Verified</span></td></tr>
+        <tr><td>Call log — which number was dialed, answered vs. missed</td><td>—</td><td><span class="tag t-miss">Not supplied</span></td></tr>
+        <tr><td>Google Ads &amp; Meta exports, conversion action definitions</td><td>—</td><td><span class="tag t-miss">Not supplied</span></td></tr>
+        <tr><td>PMS new-patient and production report, Rockaway</td><td>—</td><td><span class="tag t-miss">Not supplied</span></td></tr>
+      </tbody>
+    </table>
+    <p class="small">Everything asserted below is drawn from the verified rows and can be checked in a browser in under two minutes. Where a conclusion depends on data not yet supplied, it is marked <span class="tag t-inf">Inferred</span> and stated as a question rather than a finding.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What isn't working · 01</p>
+    <h2>The review button on the Rockaway site points at the wrong practice.</h2>
+    <p>On the Rockaway homepage, the <strong>Leave Us Reviews</strong> link carries West Caldwell's street address and West Caldwell's Google listing ID. Any Rockaway patient who follows it lands on the West Caldwell profile and leaves the review there. <span class="tag t-conf">Verified</span></p>
+
+    <div class="routing">
+      <svg viewBox="0 0 700 210" role="img" aria-label="Diagram: Rockaway patients are routed to the West Caldwell Google profile">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B4893C"/></marker>
+        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4E7C63"/></marker></defs>
+        <rect x="6" y="70" width="176" height="66" rx="3" fill="none" stroke="#4E7C63" stroke-width="1.5"/>
+        <text x="94" y="97" text-anchor="middle" fill="#E9E7DF" font-family="IBM Plex Sans" font-size="14" font-weight="600">Rockaway patient</text>
+        <text x="94" y="117" text-anchor="middle" fill="#93A099" font-family="IBM Plex Mono" font-size="11">treated at 321 Mt Hope</text>
+        <line x1="186" y1="103" x2="252" y2="103" stroke="#4E7C63" stroke-width="1.5" marker-end="url(#ar2)"/>
+        <rect x="256" y="70" width="176" height="66" rx="3" fill="none" stroke="#4E7C63" stroke-width="1.5"/>
+        <text x="344" y="97" text-anchor="middle" fill="#E9E7DF" font-family="IBM Plex Sans" font-size="14" font-weight="600">"Leave Us Reviews"</text>
+        <text x="344" y="117" text-anchor="middle" fill="#93A099" font-family="IBM Plex Mono" font-size="11">on the Rockaway site</text>
+        <line x1="436" y1="103" x2="512" y2="103" stroke="#B4893C" stroke-width="2" marker-end="url(#ar)"/>
+        <text x="474" y="92" text-anchor="middle" fill="#B4893C" font-family="IBM Plex Mono" font-size="10.5" letter-spacing="1">ludocid</text>
+        <rect x="516" y="56" width="178" height="94" rx="3" fill="rgba(180,137,60,.12)" stroke="#B4893C" stroke-width="1.5"/>
+        <text x="605" y="86" text-anchor="middle" fill="#B4893C" font-family="IBM Plex Sans" font-size="14" font-weight="600">West Caldwell</text>
+        <text x="605" y="105" text-anchor="middle" fill="#93A099" font-family="IBM Plex Mono" font-size="11">Google profile</text>
+        <text x="605" y="131" text-anchor="middle" fill="#E9E7DF" font-family="Instrument Serif" font-size="24">895 reviews</text>
+        <rect x="256" y="164" width="176" height="40" rx="3" fill="none" stroke="rgba(233,231,223,.25)" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="344" y="189" text-anchor="middle" fill="#6B7873" font-family="IBM Plex Mono" font-size="11">Rockaway profile · 266</text>
+        <line x1="344" y1="140" x2="344" y2="160" stroke="rgba(233,231,223,.25)" stroke-width="1" stroke-dasharray="3 3"/>
+      </svg>
+      <p class="cap">Confirmed 3 Aug 2026. The link on the Rockaway homepage resolves to the West Caldwell listing, 12 miles away in Essex County.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="n">266</span><span class="l">Rockaway reviews</span></div>
+      <div class="stat"><span class="n">895</span><span class="l">West Caldwell reviews</span></div>
+      <div class="stat hi"><span class="n">23%</span><span class="l">Group total held by Rockaway</span></div>
+      <div class="stat"><span class="n">5.0</span><span class="l">Rockaway rating</span></div>
+    </div>
+
+    <p>The rating is not the problem — Rockaway holds a clean 5.0 against West Caldwell's 4.9. The problem is volume, and volume is a primary input to local map ranking. Rockaway is the newer office, so a gap is expected. A gap the website actively widens is not.</p>
+    <p>The cause is templating, and it is provable elsewhere on the same page: the Rockaway site's own footer renders the second address as <strong>"749 Bloomfield Ave Ste D, West Caldwell &amp; Rockaway 07006."</strong> That is a find-and-replace that ran across an address field. The review link was missed by the same pass. <span class="tag t-conf">Verified</span></p>
+    <p class="small"><strong>Fix cost: one link.</strong> This is the cheapest item in this document and the only one that compounds — every month it stays live is a month of reviews deposited on the wrong profile and unrecoverable.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What isn't working · 02</p>
+    <h2>Two phone numbers, and I can't tell which one you're measuring.</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Surface</th><th>Number shown</th></tr></thead>
+      <tbody>
+        <tr><td>bloomingdentalrockaway.com — header, footer, all CTAs</td><td class="num">(862) 378-2957</td></tr>
+        <tr><td>Google Business Profile — Rockaway</td><td class="num">(973) 664-7764</td></tr>
+        <tr><td>Yelp, Zocdoc, directory listings</td><td class="num">(973) 664-7764</td></tr>
+      </tbody>
+    </table></div>
+    <p>If the 862 number is dynamic number insertion and the 973 number is the practice line, then every call originating in the map pack — for a local implant practice, a large share of total volume — completes outside attribution entirely. Those calls are real patients. They are simply invisible in any report built from the ad platform. <span class="tag t-inf">Inferred</span></p>
+    <p>I am not going to assert which number is tracked, because that isn't visible from outside the account. But the answer determines whether the performance you've been reviewing is the whole picture or a fraction of it, and it is a single question to whoever owns the phone system.</p>
+    <div class="stub">
+      <h3>Resolved by the call log</h3>
+      <p>A 90-day export with <strong>date, number dialed, answered vs. missed, and duration</strong> settles this in one pass — and separates map-pack volume from site volume from paid volume. It is the highest-value input still outstanding, and the only one that can turn the rest of this document from a structural argument into a dollar figure.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What isn't working · 03</p>
+    <h2>The competitive set Rockaway is actually in.</h2>
+    <p>Full-arch patients travel. The relevant radius for Rockaway is not Rockaway — it is the Morris/Essex corridor, and the field looks like this:</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Practice</th><th>Location</th><th>Reviews</th></tr></thead>
+      <tbody>
+        <tr><td>Nuvia Dental Implant Center</td><td>Parsippany</td><td class="num">1,279</td></tr>
+        <tr><td>Blooming Dental — West Caldwell</td><td>West Caldwell</td><td class="num">895</td></tr>
+        <tr><td>Denville Implant &amp; Cosmetic Dentistry</td><td>Denville</td><td class="num">587</td></tr>
+        <tr><td>Morristown Oral Surgery &amp; Implantology</td><td>Morristown</td><td class="num">326</td></tr>
+        <tr><td>NJ Center for Oral Surgery</td><td>Florham Park</td><td class="num">326</td></tr>
+        <tr><td>Summit Periodontics &amp; Dental Implants</td><td>Summit</td><td class="num">324</td></tr>
+        <tr class="self"><td>Blooming Dental — Rockaway</td><td>Rockaway</td><td class="num">266</td></tr>
+        <tr><td>Morris Oral Surgery &amp; Implant Center</td><td>Morris Plains</td><td class="num">122</td></tr>
+        <tr><td>NJDC for Implant &amp; Cosmetic Dentistry</td><td>Denville</td><td class="num">63</td></tr>
+      </tbody>
+    </table></div>
+    <p>Nuvia is the one that matters. It is a multi-state full-arch chain, it sits twelve miles away, and it has accumulated <strong>4.8× Rockaway's review count</strong> on the single procedure Rockaway leads with. That is not a creative problem or a bidding problem. It is an authority problem, and authority is built from the exact asset the website is currently routing to another county. <span class="tag t-conf">Verified</span></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What is working</p>
+    <h2>Three things worth protecting.</h2>
+    <div class="win">
+      <h3>The clinical moat is real, and Nuvia cannot match it</h3>
+      <p>Zygomatic, pterygoid and trans-sinus implants, plus full-arch block grafting and the Pure Smile protocol with root banking and socket shields. The site leads with <strong>"Have you been told you're not a candidate for All-On-4?"</strong> — which is precisely the patient a volume full-arch chain screens out. Rockaway's competitive position is the rejected patient, and that positioning is already written. <span class="tag t-conf">Verified</span></p>
+    </div>
+    <div class="win">
+      <h3>Rockaway's hours are internally consistent</h3>
+      <p>Site and Google Business Profile agree across all seven days. This sounds trivial; it is not. The West Caldwell profile advertises Saturday 8am–1pm while the shared website says Saturday closed — the same class of error, at the other location. Rockaway is clean. <span class="tag t-conf">Verified</span></p>
+    </div>
+    <div class="win">
+      <h3>The proof assets are built</h3>
+      <p>Nineteen before-and-after pairs, filmed patient stories for full-arch cases, a 5.0 rating, an in-house lab, and same-day protocols. Most practices arguing for full-arch spend do not have this and cannot manufacture it quickly. The gap is not asset creation — it is distribution. <span class="tag t-conf">Verified</span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Demand · Google Trends, New York DMA, 60 months</p>
+    <h2>Full-arch demand has grown fivefold. You are standing at the bottom of its year.</h2>
+    <p>Relative search interest, monthly, August 2021 through July 2026, scoped to the New York DMA. Trends reports interest on a 0–100 scale — this is share of attention, not search volume, and it should never be read as patients or dollars.</p>
+
+    <div class="ctrls" role="group" aria-label="Chart view">
+      <button data-view="growth" aria-pressed="true">Five-year growth</button>
+      <button data-view="season" aria-pressed="false">Seasonality by month</button>
+    </div>
+
+    <div class="chart"><svg id="cv" viewBox="0 0 700 300" role="img" aria-label="Search interest chart"></svg></div>
+    <div class="legend" id="lg"></div>
+
+    <div class="stats">
+      <div class="stat"><span class="n">5.1×</span><span class="l">"all on 4" growth, 2021 → 2026</span></div>
+      <div class="stat"><span class="n">1.9×</span><span class="l">"dental implants" growth</span></div>
+      <div class="stat"><span class="n">6.9×</span><span class="l">"Nuvia" growth in the DMA</span></div>
+      <div class="stat hi"><span class="n">Aug</span><span class="l">Weakest month for "all on 4"</span></div>
+    </div>
+
+    <h3>Three things this data says</h3>
+    <p><strong>The category you sell is the category that grew.</strong> "All on 4" ran at an annual mean of 13 in 2021 and 67 across 2026 to date. "Dental implants" grew too, but less than half as fast. The specific procedure Rockaway is built around is where the demand shift happened. <span class="tag t-conf">Verified</span></p>
+    <p><strong>Nuvia arrived, and it arrived here.</strong> Branded interest in Nuvia within this DMA was effectively nil through 2022, then climbed steadily from 2024 onward and has run consistently ahead of ClearChoice since. In a market where neither chain registered five years ago, one of them has built a branded search presence twelve miles from your chair. <span class="tag t-conf">Verified</span></p>
+    <p><strong>August is the floor, and the climb starts in about six weeks.</strong> Averaged across five years, "all on 4" interest bottoms in August at 15 and peaks April at 36 — a 2.4× swing. "Dental implants" barely moves by comparison, holding between 55 and 67 all year. The general term is aseasonal; the full-arch term is not. Any read of full-arch performance taken in July or August is taken at the annual low. <span class="tag t-inf">Inferred</span> — the seasonality is verified in the data, but whether your own case flow follows it is a question for the PMS report.</p>
+    <p class="small">Data: Google Trends, terms <span style="font-family:var(--mono)">dental implants · all on 4 · Nuvia · ClearChoice · same day teeth</span>, geography New York NY, 1 Aug 2021 – 1 Jul 2026. 2026 figures cover January through July only. "Same day teeth" sits near the noise floor throughout and is shown for completeness rather than as evidence.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The math</p>
+    <h2>What a full-arch case can afford to cost — and why one blended target can't work.</h2>
+    <p>These fields are empty on purpose. The figures are yours, and any number I filled in would be a guess dressed as a finding. Enter two procedure lines side by side and the point makes itself.</p>
+
+    <div class="model">
+      <div class="lines">
+        <div class="line-col">
+          <h4>Line A — e.g. full arch</h4>
+          <div class="f"><label for="a1">Average case value ($)</label><input id="a1" type="number" inputmode="decimal" placeholder="your figure"></div>
+          <div class="f"><label for="a2">Gross margin (%)</label><input id="a2" type="number" inputmode="decimal" placeholder="after lab + chair"></div>
+          <div class="f"><label for="a3">Consult show rate (%)</label><input id="a3" type="number" inputmode="decimal" placeholder="booked → showed"></div>
+          <div class="f"><label for="a4">Case acceptance (%)</label><input id="a4" type="number" inputmode="decimal" placeholder="showed → accepted"></div>
+          <div class="f"><label for="a5">Target acquisition cost (% of production)</label><input id="a5" type="number" inputmode="decimal" placeholder="e.g. 15"></div>
+          <div class="out" id="outA"></div>
+        </div>
+        <div class="line-col">
+          <h4>Line B — e.g. hygiene / general</h4>
+          <div class="f"><label for="b1">Average case value ($)</label><input id="b1" type="number" inputmode="decimal" placeholder="your figure"></div>
+          <div class="f"><label for="b2">Gross margin (%)</label><input id="b2" type="number" inputmode="decimal" placeholder="after lab + chair"></div>
+          <div class="f"><label for="b3">Consult show rate (%)</label><input id="b3" type="number" inputmode="decimal" placeholder="booked → showed"></div>
+          <div class="f"><label for="b4">Case acceptance (%)</label><input id="b4" type="number" inputmode="decimal" placeholder="showed → accepted"></div>
+          <div class="f"><label for="b5">Target acquisition cost (% of production)</label><input id="b5" type="number" inputmode="decimal" placeholder="e.g. 15"></div>
+          <div class="out" id="outB"></div>
+        </div>
+      </div>
+    </div>
+    <p class="small">The funnel runs backwards: contribution per accepted case, then what that permits per accepted case, then per consult, then per booked appointment. Where the two allowable-cost figures land far apart, a single blended cost-per-lead target is over-buying one line and starving the other. For hygiene and general, first-visit value understates the patient badly — size that line on retention, not on the first appointment.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Before anything ships</p>
+    <h2>Four things for the practice to verify.</h2>
+    <p>Dental advertising is regulated by the New Jersey State Board of Dentistry, and platform policy restricts health-related targeting. These are flags, not findings. I am not the practice's counsel and this is not a legal opinion — each should be confirmed with the board and with whoever handles compliance.</p>
+    <details open>
+      <summary>Specialty and "specializes in" language</summary>
+      <p>Cosmetic dentistry and implant dentistry are not among the recognized dental specialties in the United States. Third-party profiles for the practice carry language stating it specializes in implant and cosmetic dentistry. Board rules on how a general dentist may describe advanced training vary by state and are worth confirming — credentials held by the doctors can usually be stated accurately, but the phrasing matters, and directory profiles are frequently the copy nobody has reviewed in years.</p>
+    </details>
+    <details>
+      <summary>Comfort claims and superlatives</summary>
+      <p>"Painless cleanings" appears in homepage copy. Displayed patient reviews on the site include superlatives such as "best dentistry around." Comfort promises and superlatives in dental advertising commonly carry state-specific rules, including where a practice republishes patient language on its own pages.</p>
+    </details>
+    <details>
+      <summary>Before-and-after photography and the advertised offer</summary>
+      <p>Nineteen before/after pairs are published, along with filmed patient stories. Requirements typically cover whether images are of the practice's own patients, whether retouching is permitted, disclaimers about typical results, and patient authorization. The $350 savings offer attached to the implant pricing guide, and the free consultation referenced alongside the smile-preview tool, are advertised-offer territory with their own rules.</p>
+    </details>
+    <details>
+      <summary>Health-related remarketing</summary>
+      <p>Advertising platforms restrict personalized advertising based on health conditions. Remarketing lists built from visitors to specific procedure pages — the zygomatic and full-arch pages especially — can run into this. Verify current policy before building an audience strategy that depends on it. A disapproval here costs months.</p>
+    </details>
+    <details>
+      <summary>Directory categorization</summary>
+      <p>Not a compliance matter, but adjacent and worth the same pass: the Yelp listing for Rockaway carries the categories "Free Dental Clinic" and "Root Canal Affordable Cost." For a practice whose lead procedure is zygomatic full-arch reconstruction, those categories are recruiting exactly the wrong enquiry.</p>
+    </details>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="decision">
+      <h2>The decision.</h2>
+      <p>The question on the table is whether Rockaway's spend is earning its place. Three of the inputs needed to answer that properly — the call log, the conversion action definitions, and the production report — have not been supplied, and I would rather say so than model around them.</p>
+      <p>What the public record does establish is that Rockaway is being measured while carrying two self-inflicted handicaps: its reviews are routed to another location's profile, and its map-pack calls may be arriving on a number the website never shows. Both are the practice's own infrastructure, not the media. Judging the media before they are fixed measures the wrong thing.</p>
+      <p>And the timing runs against a July or August read. Full-arch interest bottoms in August and climbs to an April peak. A decision to pull back now is a decision to be absent for the ramp into the strongest six months of the year, taken at the point in the calendar where the numbers look their worst.</p>
+      <p class="q">Fix the review link this week, settle which phone number is tracked, and send the 90-day call log. Then judge the spend on what Rockaway actually produced — not on what West Caldwell was credited with.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Prepared 3 August 2026 · Rockaway location only · Public sources verified same day<br>
+    Google Trends figures are relative interest (0–100), not search volume · Sections marked "Not supplied" remain open
+  </div>
+</footer>
+
+<script>
+const D = [["2021-08",47,10,1,1,0],["2021-09",48,12,1,2,0],["2021-10",53,16,1,2,0],["2021-11",47,15,0,2,0],["2021-12",49,13,1,1,0],["2022-01",44,17,0,2,0],["2022-02",44,19,1,2,1],["2022-03",41,18,0,2,1],["2022-04",44,19,1,2,1],["2022-05",44,18,1,2,1],["2022-06",47,15,0,2,0],["2022-07",50,15,1,2,0],["2022-08",50,12,1,2,1],["2022-09",48,15,1,2,0],["2022-10",49,19,0,2,1],["2022-11",45,17,1,2,1],["2022-12",51,17,1,1,1],["2023-01",54,17,1,1,0],["2023-02",57,21,2,1,1],["2023-03",51,22,1,2,1],["2023-04",50,22,1,2,0],["2023-05",51,20,1,2,0],["2023-06",52,16,1,1,1],["2023-07",58,15,1,3,1],["2023-08",60,15,1,2,0],["2023-09",60,18,2,1,1],["2023-10",54,22,1,2,1],["2023-11",60,22,1,2,1],["2023-12",58,22,1,1,0],["2024-01",59,19,1,1,0],["2024-02",48,23,1,1,0],["2024-03",38,22,2,1,0],["2024-04",40,21,2,2,0],["2024-05",38,21,2,2,1],["2024-06",40,21,2,2,1],["2024-07",35,20,2,2,1],["2024-08",38,14,3,3,0],["2024-09",37,23,4,1,0],["2024-10",40,29,6,1,1],["2024-11",35,28,4,2,0],["2024-12",31,25,5,1,1],["2025-01",48,27,6,3,0],["2025-02",48,32,5,1,1],["2025-03",45,35,5,2,0],["2025-04",48,36,6,2,1],["2025-05",60,33,5,1,0],["2025-06",76,28,6,1,1],["2025-07",93,29,6,2,1],["2025-08",100,24,6,1,1],["2025-09",86,41,6,2,0],["2025-10",83,46,5,2,1],["2025-11",94,51,6,2,1],["2025-12",89,56,6,3,1],["2026-01",87,56,5,2,1],["2026-02",100,66,5,2,2],["2026-03",98,79,4,3,1],["2026-04",97,80,5,4,2],["2026-05",86,77,6,6,2],["2026-06",92,69,4,6,2],["2026-07",99,44,5,4,2]];
+const TERMS = ["dental implants","all on 4","Nuvia","ClearChoice","same day teeth"];
+const COL = ["#4E7C63","#B4893C","#7E2B26","#6B7873","#A9B2AD"];
+const svg = document.getElementById('cv'), lg = document.getElementById('lg');
+const W=700,H=300,P={t:14,r:14,b:34,l:34};
+const NS="http://www.w3.org/2000/svg";
+function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+function monthly(){
+  const acc=TERMS.map(()=>Array.from({length:12},()=>[]));
+  D.forEach(r=>{const m=parseInt(r[0].slice(5,7))-1;TERMS.forEach((_,i)=>acc[i][m].push(r[i+1]));});
+  return acc.map(t=>t.map(v=>v.reduce((a,b)=>a+b,0)/v.length));
+}
+
+function render(view){
+  svg.innerHTML='';
+  const iw=W-P.l-P.r, ih=H-P.t-P.b;
+  const season = view==='season';
+  const data = season ? monthly() : TERMS.map((_,i)=>D.map(r=>r[i+1]));
+  const n = data[0].length;
+  const max = season ? 40 : 100;
+  const x = i => P.l + (n===1?0:i*iw/(n-1));
+  const y = v => P.t + ih - (v/max)*ih;
+
+  [0,.25,.5,.75,1].forEach(f=>{
+    const yy=P.t+ih-f*ih;
+    svg.appendChild(el('line',{x1:P.l,x2:W-P.r,y1:yy,y2:yy,stroke:'rgba(16,28,24,.1)','stroke-width':1}));
+    const t=el('text',{x:P.l-8,y:yy+4,'text-anchor':'end',fill:'#6B7873','font-family':'IBM Plex Mono','font-size':10});
+    t.textContent=Math.round(f*max); svg.appendChild(t);
+  });
+
+  if(season){
+    const names=['J','F','M','A','M','J','J','A','S','O','N','D'];
+    names.forEach((nm,i)=>{const t=el('text',{x:x(i),y:H-P.b+18,'text-anchor':'middle',fill:i===7?'#7E2B26':'#6B7873','font-family':'IBM Plex Mono','font-size':10,'font-weight':i===7?600:400});t.textContent=nm;svg.appendChild(t);});
+    svg.appendChild(el('line',{x1:x(7),x2:x(7),y1:P.t,y2:P.t+ih,stroke:'#7E2B26','stroke-width':1,'stroke-dasharray':'3 3'}));
+    const lb=el('text',{x:x(7),y:P.t-2,'text-anchor':'middle',fill:'#7E2B26','font-family':'IBM Plex Mono','font-size':10,'letter-spacing':'.06em'});
+    lb.textContent='YOU ARE HERE'; svg.appendChild(lb);
+  } else {
+    D.forEach((r,i)=>{ if(r[0].slice(5)==='01'){
+      const t=el('text',{x:x(i),y:H-P.b+18,'text-anchor':'middle',fill:'#6B7873','font-family':'IBM Plex Mono','font-size':10});
+      t.textContent=r[0].slice(0,4); svg.appendChild(t);
+    }});
+  }
+
+  data.forEach((s,i)=>{
+    const d=s.map((v,j)=>(j?'L':'M')+x(j).toFixed(1)+' '+y(v).toFixed(1)).join(' ');
+    svg.appendChild(el('path',{d,fill:'none',stroke:COL[i],'stroke-width':i<2?2.4:1.4,'stroke-linejoin':'round','stroke-linecap':'round',class:'series',opacity:i<2?1:.75}));
+  });
+
+  lg.innerHTML = TERMS.map((t,i)=>`<span><i style="background:${COL[i]}"></i>${t}</span>`).join('');
+}
+
+document.querySelectorAll('.ctrls button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.ctrls button').forEach(o=>o.setAttribute('aria-pressed',o===b));
+    render(b.dataset.view);
+  });
+});
+render('growth');
+
+const money = v => '$'+v.toLocaleString('en-US',{maximumFractionDigits:0});
+function calc(p){
+  const g=id=>parseFloat(document.getElementById(p+id).value);
+  const cv=g(1),mg=g(2),sh=g(3),ac=g(4),tg=g(5);
+  const out=document.getElementById('out'+p.toUpperCase());
+  if([cv,mg,sh,ac,tg].some(v=>isNaN(v)||v<=0)){
+    out.innerHTML='<div class="row"><span>Enter all five fields</span><span>—</span></div>';return;
+  }
+  const contrib=cv*(mg/100);
+  const perCase=contrib*(tg/100);
+  const perConsult=perCase*(ac/100);
+  const perBooked=perConsult*(sh/100);
+  out.innerHTML=
+    `<div class="row"><span>Contribution per accepted case</span><span>${money(contrib)}</span></div>`+
+    `<div class="row"><span>Allowable cost per accepted case</span><span>${money(perCase)}</span></div>`+
+    `<div class="row"><span>Allowable cost per consult</span><span>${money(perConsult)}</span></div>`+
+    `<div class="row key"><span>Allowable cost per booked appointment</span><span>${money(perBooked)}</span></div>`;
+}
+['a','b'].forEach(p=>{[1,2,3,4,5].forEach(i=>document.getElementById(p+i).addEventListener('input',()=>calc(p)));calc(p);});
+</script>
+</body>
+</html>
