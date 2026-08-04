@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enzymedica — Competitor & Keyword Demand Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C2A44;
+  --ink-soft:#3C5B75;
+  --ink-faint:#7B93A6;
+  --paper:#F4F7F8;
+  --card:#FFFFFF;
+  --line:#D6E1E7;
+  --line-strong:#B3C6D1;
+  --gold:#A9761F;
+  --gold-lite:#EBD6A0;
+  --olive:#7E7C2C;
+  --teal:#166F82;
+  --steel:#2A5F8C;
+  --indigo:#414691;
+  --rust:#93372A;
+  --band-h:58px;
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+h1,h2,h3,h4,.disp{font-family:"Bricolage Grotesque","Helvetica Neue",sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.06;margin:0}
+
+/* ---------- eyebrow / label system ---------- */
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+}
+.sec-no{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--gold);font-weight:600;text-transform:uppercase;
+}
+
+/* ---------- confidence chips ---------- */
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 8px;border-radius:2px;border:1px solid;white-space:nowrap;
+}
+.chip.confirmed{color:#1B5E4A;border-color:#9CCBB9;background:#E9F5F0}
+.chip.inferred{color:var(--gold);border-color:var(--gold-lite);background:#FBF4E3}
+.chip.unknown{color:var(--ink-faint);border-color:var(--line-strong);background:#EEF3F5}
+
+/* ---------- hero ---------- */
+header.hero{
+  background:var(--ink);color:#EAF1F4;padding:56px 0 0;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:6px;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold) 20%,var(--olive) 20%,var(--olive) 38%,var(--teal) 38%,var(--teal) 60%,var(--steel) 60%,var(--steel) 78%,var(--indigo) 78%,var(--indigo) 100%);
+}
+.hero .eyebrow{color:#7FA3B8}
+.hero h1{
+  font-size:clamp(34px,6.4vw,68px);color:#fff;margin:22px 0 0;max-width:16ch;
+}
+.hero h1 em{font-style:normal;color:var(--gold-lite)}
+.hero .standfirst{
+  font-size:clamp(17px,2.1vw,21px);color:#B9CEDA;max-width:62ch;margin:22px 0 0;line-height:1.55;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin:34px 0 0;padding:18px 0 40px;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+.hero-meta div{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;color:#8FB0C2}
+.hero-meta b{color:#DCE8EE;font-weight:500}
+
+/* ---------- sections ---------- */
+section{padding:66px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.sec-head{display:flex;gap:16px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap}
+h2{font-size:clamp(25px,3.6vw,38px);max-width:22ch}
+.lede{font-size:19px;color:var(--ink-soft);max-width:66ch;margin:18px 0 0}
+p{max-width:68ch;margin:16px 0 0}
+a{color:var(--teal)}
+
+/* ---------- source list ---------- */
+.sources{margin:30px 0 0;border-top:2px solid var(--ink);}
+.src{
+  display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:start;
+  padding:13px 0;border-bottom:1px solid var(--line);
+}
+.src .what{font-size:15.5px}
+.src .what b{font-weight:600}
+.src .note{display:block;color:var(--ink-soft);font-size:14px;margin-top:2px}
+.notseen{
+  margin:26px 0 0;padding:20px 22px;background:#EEF3F5;border-left:3px solid var(--line-strong);
+}
+.notseen h4{font-size:14px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.notseen p{font-size:15.5px;margin:6px 0 0;color:var(--ink-soft)}
+
+/* ---------- working (praise) ---------- */
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:20px;margin-top:34px}
+.work{background:var(--card);border:1px solid var(--line);padding:24px 22px;border-top:3px solid var(--gold)}
+.work h3{font-size:19px;line-height:1.2;margin-bottom:10px}
+.work p{font-size:15.5px;margin:0;color:var(--ink-soft)}
+.work .stamp{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-top:14px}
+
+/* ---------- SIGNATURE: coverage band ---------- */
+.bandwrap{margin:38px 0 0;background:var(--card);border:1px solid var(--line);padding:26px 22px 22px}
+.band-legend{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
+.band{display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
+.seg{
+  border:0;padding:0;margin:0;background:none;cursor:pointer;text-align:left;
+  font-family:inherit;color:inherit;display:block;
+}
+.seg .bar{
+  height:var(--band-h);display:flex;align-items:flex-end;padding:8px 10px;
+  color:#fff;transition:filter .18s ease, transform .18s ease;
+}
+.seg:hover .bar,.seg:focus-visible .bar{filter:brightness(1.14)}
+.seg:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.seg .num{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;opacity:.85;letter-spacing:.1em}
+.seg .lab{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:13.5px;line-height:1.18;
+  padding:10px 10px 0;display:block;
+}
+.seg .sub{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-faint);padding:4px 10px 0;display:block;text-transform:uppercase}
+.seg[aria-expanded="true"] .lab{color:var(--gold)}
+.s1 .bar{background:var(--gold)} .s2 .bar{background:var(--olive)}
+.s3 .bar{background:var(--teal)} .s4 .bar{background:var(--steel)} .s5 .bar{background:var(--indigo)}
+
+/* coverage rail */
+.rail{margin-top:18px;position:relative;height:34px;border-top:1px solid var(--line)}
+.rail-lab{position:absolute;top:9px;left:0;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.rail-track{position:absolute;top:14px;left:0;right:0;height:9px;display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
+.rail-track span{display:block;border-radius:1px}
+.cov-full{background:var(--ink)}
+.cov-part{background:repeating-linear-gradient(90deg,var(--ink) 0 5px,transparent 5px 10px)}
+.cov-none{background:repeating-linear-gradient(45deg,var(--rust) 0 3px,transparent 3px 7px);border:1px dashed #C08277}
+
+/* detail panel */
+.detail{
+  margin-top:3px;background:#EEF3F5;border:1px solid var(--line);border-top:3px solid var(--ink);
+  padding:24px 22px;display:none;
+}
+.detail.open{display:block;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.detail h3{font-size:21px;margin-bottom:4px}
+.detail .askline{font-size:16px;color:var(--ink-soft);font-style:italic;margin:8px 0 20px}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.dcol h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-faint);margin-bottom:10px}
+.kw{list-style:none;padding:0;margin:0}
+.kw li{
+  font-family:"IBM Plex Mono",monospace;font-size:13px;padding:6px 0;border-bottom:1px dotted var(--line-strong);
+  display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+}
+.kw li span{color:var(--ink-faint);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.owner{margin:0 0 14px;font-size:15.5px}
+.owner b{font-weight:600}
+.verdict{margin-top:20px;padding:16px 18px;background:var(--card);border-left:3px solid var(--gold);font-size:15.5px}
+.verdict p{margin:0;max-width:none}
+
+/* ---------- competitor tiers ---------- */
+.tiers{margin-top:34px;border-top:2px solid var(--ink)}
+.tier{
+  display:grid;grid-template-columns:52px 1fr 1.25fr;gap:22px;
+  padding:24px 0;border-bottom:1px solid var(--line);align-items:start;
+}
+.tier .t-no{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;color:var(--line-strong);line-height:1}
+.tier h3{font-size:18px;line-height:1.22;margin-bottom:9px}
+.tier .names{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-soft);line-height:1.75}
+.tier p{font-size:15.5px;margin:0;color:var(--ink-soft)}
+.tier.flag{background:#FBF4E3;margin:0 -18px;padding-left:18px;padding-right:18px;border-left:3px solid var(--gold)}
+.tier.flag h3{color:var(--gold)}
+
+/* ---------- trends loader ---------- */
+.trends{background:var(--card);border:1px solid var(--line);padding:26px 22px;margin-top:32px}
+.drop{
+  border:2px dashed var(--line-strong);background:var(--paper);padding:34px 22px;text-align:center;
+  transition:border-color .18s,background .18s;cursor:pointer;
+}
+.drop.over{border-color:var(--gold);background:#FBF4E3}
+.drop p{margin:0 auto;max-width:46ch;color:var(--ink-soft);font-size:15.5px}
+.drop .big{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:17px;color:var(--ink);display:block;margin-bottom:6px}
+.btn{
+  display:inline-block;margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  background:var(--ink);color:#fff;border:0;padding:11px 20px;cursor:pointer;
+}
+.btn:hover{background:#143A5C}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#chartArea{display:none;margin-top:6px}
+#chartArea.on{display:block}
+.chart-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px}
+.legend div{display:flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:12px}
+.swatch{width:14px;height:3px;display:block}
+.howto{margin-top:22px;padding:20px 22px;background:#EEF3F5;border-left:3px solid var(--line-strong)}
+.howto h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:10px;color:var(--ink-faint)}
+.howto ol{margin:0;padding-left:19px;font-size:15px;color:var(--ink-soft)}
+.howto li{margin:5px 0}
+.howto code{font-family:"IBM Plex Mono",monospace;font-size:13px;background:#fff;padding:1px 5px;border:1px solid var(--line)}
+.caveat{font-size:14px;color:var(--ink-faint);margin-top:18px;max-width:70ch;font-style:italic}
+#errBox{display:none;margin-top:14px;padding:13px 16px;background:#FBEDEA;border-left:3px solid var(--rust);font-size:15px;color:#7A2C21}
+#errBox.on{display:block}
+
+.corr{margin-top:16px}
+.corrow{display:grid;grid-template-columns:158px 1fr 46px;gap:14px;align-items:center;padding:9px 0}
+.cname{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink)}
+.ctrack{display:block;height:12px;background:#E3EBEF}
+.cfill{display:block;height:100%}
+.cval{font-size:13px;font-weight:600;text-align:right}
+@media(max-width:600px){.corrow{grid-template-columns:1fr 44px;row-gap:4px}.cname{grid-column:1/3}.ctrack{grid-column:1/2}}
+
+/* ---------- plan ---------- */
+.plan{margin-top:34px;border-top:2px solid var(--ink)}
+.step{display:grid;grid-template-columns:104px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}
+.step .when{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;padding-top:3px}
+.step h3{font-size:18px;margin-bottom:9px}
+.step p{font-size:15.5px;margin:0 0 10px;color:var(--ink-soft)}
+.step ul{margin:0;padding-left:19px;font-size:15.5px;color:var(--ink-soft)}
+.step li{margin:5px 0}
+
+/* ---------- ask ---------- */
+.ask{background:var(--ink);color:#EAF1F4;padding:56px 0}
+.ask h2{color:#fff;max-width:20ch}
+.ask p{color:#B9CEDA;font-size:18px}
+.ask .credit{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;color:#7FA3B8;margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);max-width:70ch}
+footer{padding:30px 0 46px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--ink-faint)}
+
+@media (max-width:760px){
+  body{font-size:16px}
+  .dgrid{grid-template-columns:1fr;gap:20px}
+  .tier{grid-template-columns:1fr;gap:10px}
+  .tier .t-no{font-size:15px}
+  .step{grid-template-columns:1fr;gap:8px}
+  .band{grid-template-columns:1fr;gap:2px}
+  .rail-track{grid-template-columns:1fr;gap:2px;position:static;height:auto}
+  .rail{height:auto;border-top:0;margin-top:14px}
+  .rail-lab{position:static;display:block;margin-bottom:7px}
+  .rail-track span{height:7px}
+  .seg .bar{height:40px}
+  .seg .lab{font-size:14px}
+  section{padding:46px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+@media print{
+  body{background:#fff}
+  header.hero{background:#fff;color:#000}
+  .hero h1,.ask h2{color:#000}
+  .hero .standfirst,.ask p{color:#333}
+  .ask{background:#fff}
+  .detail{display:block!important}
+  .drop,.btn{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Prepared for Enzymedica &nbsp;·&nbsp; 4 August 2026 &nbsp;·&nbsp; Public sources only</div>
+    <h1>Your biggest search month in five years was <em>built by a competitor.</em></h1>
+    <p class="standfirst">In 2021 you led this category four to one. Physician&rsquo;s Choice passed you in April 2024. Then in April 2026 your search interest hit a five-year high &mdash; in the same month theirs did, driven by a TikTok trend about their capsule. You are the number one enzyme brand in America and your best month was somebody else&rsquo;s marketing.</p>
+    <div class="hero-meta">
+      <div>Subject &nbsp;<b>enzymedica.com</b></div>
+      <div>Scope &nbsp;<b>Competitive set &amp; keyword demand</b></div>
+      <div>Account access &nbsp;<b>None</b></div>
+      <div>Trends data &nbsp;<b>US · monthly · Aug 2021&ndash;Aug 2026</b></div>
+    </div>
+  </div>
+</header>
+
+<section id="looked">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">§ 01</span><h2>What we looked at</h2></div>
+    <p class="lede">Everything below comes from public sources, reviewed on 4 August 2026. Nothing here comes from inside your accounts, because we haven't seen them. Where we're inferring, we say so.</p>
+
+    <div class="sources">
+      <div class="src">
+        <div class="what"><b>enzymedica.com</b> — homepage, navigation tree, best-seller merchandising, pricing
+          <span class="note">Shopify storefront. Shop-by-symptom, shop-by-goal and shop-by-diet taxonomies. Sitewide promotional pricing live on the date of review. Two quiz funnels: Digest 360 and a Find Your Digestive Enzyme quiz on a third-party subdomain.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+      <div class="src">
+        <div class="what"><b>enzymedica.com blog</b> — all four categories and their popular-article rails
+          <span class="note">Ingredient Science, Digest This, Be Well, Get Better. Most recent post dated the day of review. Read for topic coverage, not quality.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+      <div class="src">
+        <div class="what"><b>Amazon</b> — Best Sellers in Enzyme Nutritional Supplements, plus brand filters on <span class="mono">digestive enzymes</span> and <span class="mono">best digestive enzymes</span>
+          <span class="note">Used to establish who ranks where shoppers actually search, independent of shelf presence.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+      <div class="src">
+        <div class="what"><b>The 2026 "best digestive enzymes" SERP</b> — Healthline, Review Scout, and four further affiliate round-ups
+          <span class="note">Read for who is being placed at position one and by whom.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+      <div class="src">
+        <div class="what"><b>The GLP-1 &times; digestion SERP</b> — the pages currently answering "can I take digestive enzymes with Ozempic"
+          <span class="note">Bolt Pharmacy, PlexusDx, GLP1Gut and similar. None of them sell enzymes.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+      <div class="src">
+        <div class="what"><b>Google Trends</b> &mdash; two US exports, monthly, Aug 2021 to Aug 2026
+          <span class="note">Brand set: Enzymedica against Physician's Choice and Zenwise. Category set: digestive enzymes against bloating and GLP-1. Supplied by the reader and charted unedited in &sect;5. An earlier pull included Thorne, whose single-month spike distorted the index; it was discarded and re-run.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+      <div class="src">
+        <div class="what"><b>The Viral Pudding Challenge</b> &mdash; TikTok trend coverage, a national TV spot, and retail activation
+          <span class="note">A trend in which a Physician's Choice enzyme capsule is emptied over pudding to show it break down on camera. Now running as a 30-second TV commercial and in club retail.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+      <div class="src">
+        <div class="what"><b>Category press</b> — Innova launch-tracking, Vitafoods and NutritionInsight coverage of GLP-1 companion formulation
+          <span class="note">Used for direction of travel, not for sizing your opportunity.</span>
+        </div>
+        <div><span class="chip confirmed">Confirmed</span></div>
+      </div>
+    </div>
+
+    <div class="notseen">
+      <h4>What we could not see, and are not pretending to</h4>
+      <p>Your Google Ads and Meta accounts, your spend, your blended CAC, your subscription retention, your Amazon share of the category, your wholesale-versus-DTC revenue split, and the trade-off you've already made between the two. Any of those could change the recommendation in §6. We'd want them before doing anything.</p>
+      <p>We also have not seen your regulatory position. Everything proposed here is written to avoid disease and drug claims, but your counsel gets the final word, not us.</p>
+    </div>
+  </div>
+</section>
+
+<section id="working">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">§ 02</span><h2>Three things you're doing that most of the category can't</h2></div>
+    <p class="lede">Worth saying plainly, because the argument that follows only works <em>because</em> these are true. If the fundamentals were weak this would be a different, much longer document.</p>
+
+    <div class="works">
+      <div class="work">
+        <h3>Your differentiation survives being repeated by a stranger</h3>
+        <p>Third-party reviewers explain Thera-blend unprompted &mdash; multiple enzyme strains per type, active across the full pH range of the digestive tract rather than one narrow window. That is the rarest thing in supplements: a technical claim specific enough that outsiders restate it accurately without being paid to. Hold on to this one. It becomes the whole argument in &sect;5, because a competitor just built a demand event out of a far weaker version of it.</p>
+        <span class="stamp">Observed across four independent 2026 review pages</span>
+      </div>
+      <div class="work">
+        <h3>Your content team reads culture, not a calendar</h3>
+        <p>A Fiber-Maxxing guide in late July. A GlutenEase potency comparison published the morning we looked. Phytosome absorption explainers timed to the new collection. That is a team tracking what people are actually saying, at a cadence most 28-year-old supplement brands gave up on years ago. It also means the gap in §3 is a briefing problem, not a capability problem.</p>
+        <span class="stamp">Blog index reviewed 4 Aug 2026</span>
+      </div>
+      <div class="work">
+        <h3>You already merchandise by problem, not by molecule</h3>
+        <p>Shop by symptom, shop by health goal, shop by dietary need, plus two quiz funnels. Most legacy supplement brands still organise the store the way the lab organises the shelf. You've done the hard structural work of meeting people where their language is — which is exactly why the one missing occasion stands out.</p>
+        <span class="stamp">Site navigation, 4 Aug 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="band">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">§ 03</span><h2>The demand band</h2></div>
+    <p class="lede">Your own Thera-blend chart makes an argument about coverage: one enzyme strain works in a narrow window, a blend works across the whole range. Search demand has the same shape. Below is your category's full range, from the most ingredient-aware buyer on the left to the most occasion-driven on the right — and underneath it, where your coverage actually stops.</p>
+    <p>Select any band to see the queries in it, who currently answers them, and how confident we are.</p>
+
+    <div class="bandwrap">
+      <div class="band-legend"><span>← Ingredient-aware · knows the word "enzyme"</span><span>Occasion-driven · doesn't →</span></div>
+
+      <div class="band" role="group" aria-label="Demand bands">
+        <button class="seg s1" data-seg="1" aria-expanded="false" aria-controls="detail">
+          <span class="bar"><span class="num">01</span></span>
+          <span class="lab">Your brand &amp; SKUs</span>
+          <span class="sub">Already yours</span>
+        </button>
+        <button class="seg s2" data-seg="2" aria-expanded="false" aria-controls="detail">
+          <span class="bar"><span class="num">02</span></span>
+          <span class="lab">Category head terms</span>
+          <span class="sub">Contested</span>
+        </button>
+        <button class="seg s3" data-seg="3" aria-expanded="false" aria-controls="detail">
+          <span class="bar"><span class="num">03</span></span>
+          <span class="lab">Symptom &amp; relief</span>
+          <span class="sub">Partly covered</span>
+        </button>
+        <button class="seg s4" data-seg="4" aria-expanded="false" aria-controls="detail">
+          <span class="bar"><span class="num">04</span></span>
+          <span class="lab">Trigger &amp; clinical</span>
+          <span class="sub">Strong, under-marketed</span>
+        </button>
+        <button class="seg s5" data-seg="5" aria-expanded="false" aria-controls="detail">
+          <span class="bar"><span class="num">05</span></span>
+          <span class="lab">The GLP-1 occasion</span>
+          <span class="sub">Absent</span>
+        </button>
+      </div>
+
+      <div class="rail">
+        <span class="rail-lab">Enzymedica coverage</span>
+        <span class="rail-track">
+          <span class="cov-full"></span><span class="cov-full"></span><span class="cov-full"></span><span class="cov-part"></span><span class="cov-none"></span>
+        </span>
+      </div>
+
+      <div class="detail" id="detail" role="region" aria-live="polite"></div>
+    </div>
+
+    <p class="caveat">Band widths are equal for legibility and do not represent volume. We have not sized these pools — doing that honestly needs Keyword Planner access and the Trends export in §5.</p>
+  </div>
+</section>
+
+<section id="competitors">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">§ 04</span><h2>Who you're actually competing with, in five tiers</h2></div>
+    <p class="lede">Your competitive set has quietly split. Four of these tiers you know intimately. The fifth doesn't sell supplements at all, and it's the one taking band 05.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="t-no">01</div>
+        <div>
+          <h3>Shelf peers</h3>
+          <div class="names">NOW Foods · Garden of Life · Nature's Way · Country Life · Solaray · American Health</div>
+        </div>
+        <p>You share aisles and retail buyers with these brands and you compete on formulation, awards and label quality — the game you've won for a decade. This tier is stable and it is not where your risk is.</p>
+      </div>
+
+      <div class="tier">
+        <div class="t-no">02</div>
+        <div>
+          <h3>Marketplace-native challengers</h3>
+          <div class="names">Physician's CHOICE · Zenwise · Nutricost · Wholesome Wellness · NatureBell · Sports Research</div>
+        </div>
+        <p>These brands have a fraction of your retail footprint and they lead the Amazon Best Sellers ranks in enzyme supplements. They win by treating the search result as the shelf, writing listings to a query rather than to a formulation. Physician's Choice has now gone further: it turned a mechanism demonstration into a TikTok trend, then bought national TV behind it. That is a brand manufacturing category demand, and the manufacturer gets first claim on the traffic. <span class="chip confirmed">Confirmed</span></p>
+      </div>
+
+      <div class="tier">
+        <div class="t-no">03</div>
+        <div>
+          <h3>Clean-label &amp; practitioner</h3>
+          <div class="names">Pure Encapsulations · Thorne · Metagenics · Douglas Labs · Klaire</div>
+        </div>
+        <p>They take the credibility SERP and the clinician recommendation. You have a real answer here in Enzyme Science, but from the outside the two brands read as unconnected, so the halo travels in neither direction. <span class="chip inferred">Inferred</span></p>
+      </div>
+
+      <div class="tier">
+        <div class="t-no">04</div>
+        <div>
+          <h3>Single-mechanism insurgents</h3>
+          <div class="names">Fodzyme · Lactaid · Fructaid · GoodPhyte</div>
+        </div>
+        <p>Each owns one high-intent query outright — FODMAPs, lactose, fructose, phytates. Small companies, but they win the specific question because the whole brand is the answer to it. Company databases now list these as your named competitors, which tells you how the category is being indexed.</p>
+      </div>
+
+      <div class="tier flag">
+        <div class="t-no">05</div>
+        <div>
+          <h3>The tier that isn't a supplement company</h3>
+          <div class="names">Online pharmacies · telehealth GLP-1 sellers · GLP-1 tracking apps · pharmacist blogs</div>
+        </div>
+        <p>Search whether digestive enzymes help on a GLP-1 and you get a compounding pharmacy, a telehealth brand selling semaglutide, and a GLP-1 app. Enzymes are described in those communities as one of the most commonly recommended supplements — and the pages fielding that conversation have no enzyme product to sell. They're capturing the audience and handing it to whoever the reader finds next. <span class="chip confirmed">Confirmed</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trends">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">&sect; 05</span><h2>Share of search</h2></div>
+    <p class="lede">Google Trends, United States, monthly, August 2021 to August 2026. Reproducible in about thirty seconds, which is the point of showing it rather than asserting it. Trends reports relative interest on a 0&ndash;100 scale &mdash; not search volume, and not convertible into searches, spend or revenue.</p>
+
+    <div class="trends">
+      <div class="chart-meta"><span><b>Chart A</b> &nbsp;Brand interest &nbsp;&middot;&nbsp; United States &nbsp;&middot;&nbsp; Aug 2021 &ndash; Aug 2026</span><span>Relative interest, 0&ndash;100</span></div>
+      <svg id="chartA" viewBox="0 0 900 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Brand search interest for Enzymedica, Physician's Choice and Zenwise, 2021 to 2026"></svg>
+      <div class="legend" id="legA"></div>
+      <div class="verdict" style="margin-top:22px">
+        <p><b>You started this chart four times larger than either competitor and finished it second.</b> 2021 yearly averages: Enzymedica 10.4, Physician's Choice 2.6, Zenwise 2.6. Physician's Choice first crossed you in April 2024 and has been permanently above you since September 2024.</p>
+      </div>
+    </div>
+
+    <div class="trends" style="margin-top:24px">
+      <div class="chart-meta"><span><b>The April 2026 spike</b></span><span>All three brands, same month</span></div>
+      <p style="margin-top:6px">Every line on chart A peaks in April 2026 and decays together through the summer. So does <span class="mono">digestive enzymes</span> on chart B. Three competing brands do not spike in the same month by coincidence &mdash; something happened to the category.</p>
+      <p>It appears to be the Viral Pudding Challenge: a TikTok trend in which a <b>Physician's Choice</b> enzyme capsule is emptied over pudding so viewers can watch it visibly break down. Physician's Choice has since converted it into a national 30-second TV spot and club-retail activation. Their peak that month is 100. Yours is 75.</p>
+      <div class="verdict">
+        <p><b>Your best search month in five years was created by a competitor demonstrating a mechanism you can demonstrate better.</b> Thera-blend's claim is that your enzymes stay active across the full pH range of the digestive tract instead of one narrow window. That is a more interesting thing to film than a capsule on pudding, and it is defensibly yours. They made the category watchable and collected most of it. You collected the spillover.</p>
+      </div>
+      <p class="caveat">What is confirmed and what is not. The trend, its Physician's Choice branding, the TV spot and the retail activation are all confirmed. That the trend specifically caused the April peak is an inference &mdash; the press coverage we can see postdates the peak by roughly three months, which is a normal lag but not proof. If you can date the trend's take-off internally, that either confirms or kills this paragraph, and we would want to know which.</p>
+    </div>
+
+    <div class="trends" style="margin-top:24px">
+      <div class="chart-meta"><span><b>What the spike is hiding</b></span><span>2021 vs 2025 yearly averages</span></div>
+      <p style="margin-top:6px">Because the spike sits inside a partial 2026, any five-year multiple computed against it flatters everyone. Ending the comparison at December 2025 removes the anomaly and gives the honest picture:</p>
+      <div class="corr">
+        <div class="corrow"><span class="cname">Physician's Choice</span><span class="ctrack"><span class="cfill" style="width:100%;background:var(--gold)"></span></span><span class="cval mono">5.8&#215;</span></div>
+        <div class="corrow"><span class="cname">Zenwise</span><span class="ctrack"><span class="cfill" style="width:35%;background:var(--teal)"></span></span><span class="cval mono">2.0&#215;</span></div>
+        <div class="corrow"><span class="cname">Enzymedica</span><span class="ctrack"><span class="cfill" style="width:16%;background:var(--rust)"></span></span><span class="cval mono">0.93&#215;</span></div>
+      </div>
+      <p>Across the four years before the spike, the category's head term rose, both challengers rose, and you did not. Physician's Choice went up 5.8&#215;. You went slightly down.</p>
+      <p class="caveat">Correlation with monthly <span class="mono">digestive enzymes</span> interest over the same spike-free window: Physician's Choice 0.60, Zenwise 0.12, Enzymedica &minus;0.06. When the category gets more interesting, they benefit and you do not move. Correlation is not causation and part of any positive figure here is shared time trend &mdash; but a coefficient of roughly zero is still the cleanest way to say that your brand and your category have been moving independently of one another.</p>
+    </div>
+
+    <div class="trends" style="margin-top:24px">
+      <div class="chart-meta"><span><b>Chart B</b> &nbsp;Category demand &nbsp;&middot;&nbsp; United States &nbsp;&middot;&nbsp; Aug 2021 &ndash; Aug 2026</span><span>Relative interest, 0&ndash;100</span></div>
+      <svg id="chartB" viewBox="0 0 900 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Category search interest for GLP-1, bloating and digestive enzymes, 2021 to 2026"></svg>
+      <div class="legend" id="legB"></div>
+      <div class="verdict" style="margin-top:22px">
+        <p><b>GLP&#8209;1 overtook bloating as a search term in August 2025</b>, rising from a yearly average of 1.0 to 85.1. <span class="mono">Bloating</span> is up 1.9&#215; and runs a clean annual cycle underneath everything else: bottoms in November, climbs from January, peaks in June. That cycle is the timing argument in &sect;6.</p>
+      </div>
+    </div>
+
+    <div class="trends" style="margin-top:24px">
+      <div class="chart-meta"><span><b>Check it yourself, or load another</b></span><span>Nothing leaves your browser</span></div>
+      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Load a Google Trends CSV export">
+        <p><span class="big">Drop a Google Trends CSV here</span>
+        Any comparison you like. It draws below.</p>
+        <button class="btn" id="pick" type="button">Choose CSV</button>
+        <input type="file" id="file" accept=".csv,text/csv" hidden>
+      </div>
+      <div id="errBox"></div>
+      <div id="chartArea">
+        <div class="chart-meta"><span id="metaRange">&mdash;</span><span id="metaNote">Relative interest, 0&ndash;100 &middot; not search volume</span></div>
+        <svg id="chart" viewBox="0 0 900 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Loaded Google Trends chart"></svg>
+        <div class="legend" id="legend"></div>
+        <button class="btn" id="reset" type="button" style="margin-top:18px">Clear</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">§ 06</span><h2>What we'd do about band 05</h2></div>
+    <p class="lede"><b>Timing first.</b> The bloating curve in chart B bottoms in November and climbs hard from January to a June peak. It is August. Anything built now is in place before the climb; anything started in February is late. That is the whole argument for doing this in the next ninety days rather than next year.</p>
+    <p class="lede">The instinct in a supplement company is that this is a regulatory dead end. It isn't — but only if you're disciplined about which sentence you're writing. You are not claiming to treat a drug's side effects. You're naming an occasion: people are eating differently, in smaller and more protein-dense meals, and they're asking what to take with them. That's a mealtime question, and mealtime is your category.</p>
+
+    <div class="plan">
+      <div class="step">
+        <div class="when">Days 1–30</div>
+        <div>
+          <h3>Write the page that's missing, before you spend anything</h3>
+          <p>One editorial hub, built to the question people are typing, cleared by counsel line by line. Occasion language, not claim language.</p>
+          <ul>
+            <li>Anchor piece on eating well on a reduced appetite — protein adequacy, fat digestion, fibre pacing.</li>
+            <li>Connect it to what you already sell: Lypo Gold for fat, Digest Gold for mixed meals, the fibre and probiotic lines for regularity.</li>
+            <li>Interlink from Fiber-Maxxing and the blood sugar and berberine posts, which are already pulling this audience without naming it.</li>
+            <li>Every draft gets the same test: would this sentence survive being read aloud by your regulatory lead? If not, cut it.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Days 1&ndash;30</div>
+        <div>
+          <h3>Film the demonstration you already own</h3>
+          <p>A competitor proved the category will watch an enzyme work. Your version is stronger and nobody else can run it.</p>
+          <ul>
+            <li>The pH claim is the asset: same capsule, acid and alkaline conditions, one stays active. That is a visual argument, not a copy claim.</li>
+            <li>Shoot it as a repeatable format rather than one hero film, so creators can copy it. Trends spread because they are easy to remake.</li>
+            <li>Run it as organic and paid social first. If it moves, it earns the TV conversation; it does not start there.</li>
+            <li>Same regulatory test as everything else here: demonstrate the mechanism, claim nothing about outcomes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Days 30&ndash;60</div>
+        <div>
+          <h3>Buy the queries only after you can answer them</h3>
+          <p>Paid traffic to a page that doesn't exist is how a brand ends up with an expensive bounce rate. Sequence matters here.</p>
+          <ul>
+            <li>Tight non-brand Search cluster around the occasion and the symptom, kept away from the drug terms entirely.</li>
+            <li>Defensive brand coverage checked first — we can't see whether it's already solid, and it's cheap to confirm and expensive to be wrong about.</li>
+            <li>On Amazon, test occasion-led titles and A+ content on one SKU against your current formulation-led copy. That's the exact lever tier 02 is pulling.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Days 60–90</div>
+        <div>
+          <h3>Decide whether it deserves a product, not just a page</h3>
+          <p>You already launched a fasting formulation, so the merchandising instinct is clearly there. The question is whether the occasion supports a bundle.</p>
+          <ul>
+            <li>Read the hub's conversion and assisted revenue against your existing symptom collections before committing to anything new.</li>
+            <li>If it holds, the obvious shape is a mealtime bundle — enzyme plus fibre plus probiotic — which is a merchandising change, not an R&amp;D programme.</li>
+            <li>Re-run the Trends chart at ninety days. Share of search is the cheapest read on whether any of this moved.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ask">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no" style="color:var(--gold-lite)">§ 07</span><h2>One ask</h2></div>
+    <p>Reproduce chart A. It takes about thirty seconds and you do not need us to do it. If your line looks flat to you too, we would like thirty minutes to walk through what we would test first, before the January climb. If you think we have read it wrong, we would rather hear that.</p>
+    <p class="credit"><b style="color:#DCE8EE">Evan Baker</b> &nbsp;&middot;&nbsp; paid media &amp; search<br><br>
+      Written without access to your accounts, from public sources, on 4 August 2026. Every inference is labelled as one. If something here is wrong, I would rather hear which part &mdash; it is the fastest way for this to be more useful next time.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Prepared by Evan Baker &middot; 4 August 2026. Independent analysis. Not affiliated with or endorsed by Enzymedica, Inc. Brand names are the property of their respective owners.</div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var TR={"labels": ["2021-08", "2021-09", "2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06", "2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08"], "brand": {"Enzymedica": [10.0, 7.0, 6.0, 6.0, 23.0, 19.0, 7.0, 7.0, 8.0, 7.0, 7.0, 7.0, 8.0, 7.0, 8.0, 7.0, 8.0, 9.0, 8.0, 9.0, 8.0, 8.0, 11.0, 9.0, 8.0, 8.0, 8.0, 8.0, 8.0, 8.0, 9.0, 10.0, 9.0, 9.0, 9.0, 9.0, 9.0, 8.0, 8.0, 7.0, 8.0, 8.0, 9.0, 9.0, 10.0, 9.0, 11.0, 14.0, 10.0, 8.0, 9.0, 10.0, 9.0, 8.0, 11.0, 19.0, 75.0, 44.0, 39.0, 14.0, 10.0], "Physician's Choice": [3.0, 3.0, 3.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 6.0, 5.0, 5.0, 5.0, 4.0, 6.0, 7.0, 5.0, 6.0, 5.0, 6.0, 5.0, 8.0, 8.0, 9.0, 10.0, 9.0, 8.0, 10.0, 8.0, 9.0, 10.0, 9.0, 10.0, 13.0, 15.0, 17.0, 17.0, 12.0, 14.0, 20.0, 16.0, 16.0, 14.0, 13.0, 13.0, 15.0, 20.0, 32.0, 100.0, 84.0, 72.0, 26.0, 22.0], "Zenwise": [3.0, 3.0, 2.0, 2.0, 3.0, 3.0, 3.0, 4.0, 5.0, 7.0, 8.0, 7.0, 6.0, 5.0, 6.0, 5.0, 4.0, 10.0, 6.0, 7.0, 6.0, 5.0, 5.0, 9.0, 8.0, 5.0, 4.0, 4.0, 5.0, 7.0, 6.0, 7.0, 5.0, 5.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.0, 5.0, 5.0, 6.0, 5.0, 5.0, 7.0, 5.0, 6.0, 5.0, 5.0, 4.0, 5.0, 5.0, 4.0, 8.0, 24.0, 15.0, 13.0, 10.0, 7.0]}, "cat": {"GLP-1": [1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 3.0, 2.0, 3.0, 4.0, 4.0, 4.0, 4.0, 4.0, 5.0, 4.0, 5.0, 4.0, 6.0, 5.0, 6.0, 10.0, 10.0, 12.0, 12.0, 14.0, 14.0, 15.0, 17.0, 18.0, 20.0, 19.0, 20.0, 30.0, 31.0, 31.0, 33.0, 34.0, 39.0, 46.0, 54.0, 48.0, 45.0, 64.0, 61.0, 77.0, 74.0, 90.0, 100.0, 91.0, 94.0, 90.0, 65.0], "bloating": [40.0, 37.0, 39.0, 32.0, 33.0, 40.0, 43.0, 47.0, 45.0, 47.0, 49.0, 49.0, 46.0, 40.0, 37.0, 34.0, 35.0, 43.0, 44.0, 46.0, 48.0, 48.0, 53.0, 50.0, 46.0, 42.0, 39.0, 37.0, 36.0, 42.0, 45.0, 47.0, 49.0, 51.0, 51.0, 49.0, 45.0, 43.0, 41.0, 39.0, 38.0, 43.0, 48.0, 49.0, 50.0, 51.0, 56.0, 56.0, 49.0, 43.0, 42.0, 41.0, 42.0, 49.0, 53.0, 69.0, 76.0, 81.0, 92.0, 68.0, 55.0], "digestive enzymes": [3.0, 5.0, 4.0, 4.0, 4.0, 5.0, 6.0, 6.0, 7.0, 5.0, 4.0, 5.0, 5.0, 5.0, 6.0, 6.0, 5.0, 6.0, 6.0, 7.0, 7.0, 6.0, 5.0, 4.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 7.0, 7.0, 9.0, 7.0, 6.0, 6.0, 5.0, 7.0, 7.0, 7.0, 6.0, 7.0, 8.0, 9.0, 10.0, 7.0, 7.0, 7.0, 5.0, 7.0, 6.0, 6.0, 6.0, 6.0, 7.0, 9.0, 14.0, 12.0, 11.0, 10.0, 8.0]}};
+
+/* ============ §3 demand band ============ */
+var DATA = {
+  1:{
+    title:"Band 01 — Your brand and your SKUs",
+    ask:"\u201cI already know what I want, I'm looking for where to get it.\u201d",
+    kws:[
+      ["enzymedica","navigational"],["digest gold","product"],["digest spectrum","product"],
+      ["lypo gold","product"],["glutenease","product"],["digest gold vs spectrum","comparison"],
+      ["enzymedica subculture","product"],["enzymedica coupon","transactional"]
+    ],
+    owner:"<b>You do</b> — but so does every retailer you sell through, plus marketplace listings and coupon aggregators. This band is won by default and lost by neglect.",
+    conf:"confirmed",
+    verdict:"Nothing to fix here that we can see from outside. The one thing worth confirming internally is whether defensive brand coverage is intact on the terms where a reseller can outbid you on your own name. We can't see that from here."
+  },
+  2:{
+    title:"Band 02 — Category head terms",
+    ask:"\u201cWhich digestive enzyme should I buy?\u201d",
+    kws:[
+      ["digestive enzymes","head"],["digestive enzyme supplement","head"],
+      ["best digestive enzymes","commercial"],["enzymes for digestion","head"],
+      ["digestive enzymes reviews","commercial"],["strongest digestive enzyme","commercial"]
+    ],
+    owner:"<b>Affiliate round-ups do.</b> The 2026 \u201cbest digestive enzymes\u201d pages are topped by brands with a fraction of your shelf presence. Healthline names Digest Gold with ATPro its best all-round pick — but on other high-ranking round-ups you sit mid-table beneath brands most buyers have never encountered offline.",
+    conf:"confirmed",
+    verdict:"Interest in the head term is up 2.4&#215; since 2021 (&sect;5, chart B). Measured to the end of 2025, before the April spike distorts things, your own brand interest over the same period is 0.93&#215;. You are the answer to this question and the question got asked more often without you benefiting. That's a placement and PR problem more than an advertising one, and it's the least surprising finding in this document — you almost certainly know it already."
+  },
+  3:{
+    title:"Band 03 — Symptom and relief",
+    ask:"\u201cWhy am I bloated and how do I stop it?\u201d",
+    kws:[
+      ["bloating relief","symptom"],["how to debloat","symptom"],["gas and bloating","symptom"],
+      ["why am i so bloated","question"],["what helps with bloating","question"],
+      ["supplements for bloating","commercial"],["stomach feels heavy after eating","long tail"]
+    ],
+    owner:"<b>Split.</b> You have real collections here and blog coverage going back years. But marketplace-native brands have built entire product names around the symptom — \u201cfor bloating &amp; digestion\u201d, \u201cno bloat\u201d — so they match the query in the title, which is where the click is decided.",
+    conf:"confirmed",
+    verdict:"Your coverage is genuine but your naming is formulation-led while the demand is symptom-led. That gap is narrowest on your own site and widest on Amazon."
+  },
+  4:{
+    title:"Band 04 — Trigger foods and clinical need",
+    ask:"\u201cI can't eat dairy / I had my gallbladder out / gluten got into something.\u201d",
+    kws:[
+      ["lactose intolerance pills","trigger"],["lactase supplement","trigger"],
+      ["enzymes after gallbladder removal","clinical"],["gluten enzyme supplement","trigger"],
+      ["fodmap enzyme","trigger"],["enzymes for fat digestion","clinical"],
+      ["low stomach acid supplement","clinical"]
+    ],
+    owner:"<b>You're strong here and quiet about it.</b> Lacto, GlutenEase, Lypo Gold and DairyAssist map cleanly onto these queries. One of your own homepage reviews describes using Lypo Gold after gallbladder removal — a high-intent, high-loyalty use case sitting in a testimonial rather than in a landing page.",
+    conf:"inferred",
+    verdict:"This is the cheapest win in the document and it needs no new product and no new claim. The demand is specific, your answer is specific, and single-mechanism insurgents are currently taking these queries with far less product behind them."
+  },
+  5:{
+    title:"Band 05 — The GLP-1 occasion",
+    ask:"\u201cI'm eating completely differently now. What should I be taking?\u201d",
+    kws:[
+      ["digestive enzymes with ozempic","occasion"],["glp-1 bloating","occasion"],
+      ["glp-1 constipation","occasion"],["what to eat on glp-1","occasion"],
+      ["natural ozempic","adjacent"],["berberine","adjacent"],["fiber maxxing","adjacent"],
+      ["protein absorption small meals","long tail"]
+    ],
+    owner:"<b>Nobody who sells enzymes.</b> The pages answering these are compounding pharmacies, telehealth semaglutide sellers, pharmacist blogs and a GLP-1 tracking app. Enzymes are among the most commonly recommended supplements inside GLP-1 communities, and the brand that makes America's best-selling enzyme is not in that conversation.",
+    conf:"confirmed",
+    verdict:"US interest in GLP-1 rose from an index of 1.0 to 85.1 across the five years charted in &sect;5, overtaking bloating as a search term in August 2025. You are adjacent to it on every side: berberine in two formats, a fasting product, a Fiber-Maxxing guide in July, a blood-sugar guide before that. Across four blog categories and their popular-article rails we found no content naming the occasion driving any of it. That is the gap, and it is a briefing gap rather than a capability one."
+  }
+};
+
+var detail = document.getElementById('detail');
+var segs = Array.prototype.slice.call(document.querySelectorAll('.seg'));
+var openSeg = null;
+
+function esc(s){return String(s).replace(/[<>&]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;'}[c];});}
+
+function render(n){
+  var d = DATA[n];
+  var rows = d.kws.map(function(k){
+    return '<li>'+esc(k[0])+'<span>'+esc(k[1])+'</span></li>';
+  }).join('');
+  detail.innerHTML =
+    '<h3>'+d.title+'</h3>'+
+    '<p class="askline">'+d.ask+'</p>'+
+    '<div class="dgrid">'+
+      '<div class="dcol"><h4>Representative queries</h4><ul class="kw">'+rows+'</ul></div>'+
+      '<div class="dcol"><h4>Who answers them today</h4>'+
+        '<p class="owner">'+d.owner+'</p>'+
+        '<span class="chip '+d.conf+'">'+(d.conf==='confirmed'?'Confirmed':'Inferred')+'</span>'+
+      '</div>'+
+    '</div>'+
+    '<div class="verdict"><p>'+d.verdict+'</p></div>';
+  detail.classList.add('open');
+}
+
+segs.forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var n = btn.getAttribute('data-seg');
+    if(openSeg === n){
+      detail.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      openSeg = null;
+      return;
+    }
+    segs.forEach(function(b){b.setAttribute('aria-expanded','false');});
+    btn.setAttribute('aria-expanded','true');
+    openSeg = n;
+    render(n);
+  });
+});
+render(5);
+segs[4].setAttribute('aria-expanded','true');
+openSeg = '5';
+
+
+/* ============ static Trends charts ============ */
+function lineChart(svgEl, legEl, seriesObj, labels, colors, forceMax){
+  var W=900,H=300,ml=42,mr=14,mt=16,mb=32,iw=W-ml-mr,ih=H-mt-mb;
+  var keys=Object.keys(seriesObj), max=0;
+  keys.forEach(function(k){seriesObj[k].forEach(function(v){if(v>max)max=v;});});
+  max = forceMax || Math.ceil(max*1.12);
+  if(max<=0)max=10;
+  var n=labels.length;
+  function X(i){return ml+(i/(n-1))*iw;}
+  function Y(v){return mt+ih-(v/max)*ih;}
+  var g='', steps=4;
+  for(var t=0;t<=steps;t++){
+    var gv=max*t/steps, y=Y(gv);
+    g+='<line x1="'+ml+'" y1="'+y.toFixed(1)+'" x2="'+(W-mr)+'" y2="'+y.toFixed(1)+'" stroke="#D6E1E7" stroke-width="1"/>';
+    g+='<text x="'+(ml-8)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7B93A6">'+Math.round(gv)+'</text>';
+  }
+  keys.forEach(function(k,idx){
+    var pts=seriesObj[k].map(function(v,i){return X(i).toFixed(1)+','+Y(v).toFixed(1);}).join(' ');
+    g+='<polyline points="'+pts+'" fill="none" stroke="'+colors[idx]+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>';
+  });
+  for(var t2=0;t2<6;t2++){
+    var i=Math.round(t2*(n-1)/5);
+    g+='<text x="'+X(i).toFixed(1)+'" y="'+(H-10)+'" text-anchor="'+(t2===0?'start':(t2===5?'end':'middle'))+'" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7B93A6">'+labels[i]+'</text>';
+  }
+  svgEl.innerHTML=g;
+  legEl.innerHTML=keys.map(function(k,i){
+    return '<div><span class="swatch" style="background:'+colors[i]+'"></span>'+k+'</div>';
+  }).join('');
+}
+lineChart(document.getElementById('chartA'),document.getElementById('legA'),
+  TR.brand,TR.labels,['#0C2A44','#A9761F','#166F82'],100);
+lineChart(document.getElementById('chartB'),document.getElementById('legB'),
+  TR.cat,TR.labels,['#414691','#166F82','#A9761F'],100);
+
+/* ============ §5 Google Trends CSV loader ============ */
+var PAL = ['#0C2A44','#A9761F','#166F82','#414691','#93372A','#7E7C2C'];
+var drop=document.getElementById('drop'), fileIn=document.getElementById('file'),
+    pick=document.getElementById('pick'), chartArea=document.getElementById('chartArea'),
+    svg=document.getElementById('chart'), legend=document.getElementById('legend'),
+    metaRange=document.getElementById('metaRange'), errBox=document.getElementById('errBox'),
+    reset=document.getElementById('reset');
+
+function fail(msg){
+  errBox.textContent = msg;
+  errBox.classList.add('on');
+  chartArea.classList.remove('on');
+}
+function clearErr(){errBox.classList.remove('on');errBox.textContent='';}
+
+function splitCsvLine(line){
+  var out=[],cur='',q=false;
+  for(var i=0;i<line.length;i++){
+    var ch=line[i];
+    if(ch==='"'){ if(q&&line[i+1]==='"'){cur+='"';i++;} else {q=!q;} }
+    else if(ch===','&&!q){out.push(cur);cur='';}
+    else cur+=ch;
+  }
+  out.push(cur);
+  return out.map(function(s){return s.trim();});
+}
+
+function parseTrends(text){
+  var lines = text.split(/\r?\n/).filter(function(l){return l.trim().length;});
+  var headIdx = -1;
+  for(var i=0;i<lines.length;i++){
+    var cells = splitCsvLine(lines[i]);
+    if(cells.length < 2) continue;
+    if(/^(week|month|day|time|date)\b/i.test(cells[0])){ headIdx = i; break; }
+  }
+  if(headIdx === -1) throw new Error('no-header');
+
+  var header = splitCsvLine(lines[headIdx]);
+  var seriesNames = header.slice(1).map(function(h){
+    return h.replace(/:\s*\([^)]*\)\s*$/,'').trim() || 'Series';
+  });
+  var region = (header[1]||'').match(/\(([^)]*)\)/);
+  region = region ? region[1] : '';
+
+  var labels=[], series = seriesNames.map(function(){return [];});
+  for(var j=headIdx+1;j<lines.length;j++){
+    var row = splitCsvLine(lines[j]);
+    if(row.length < 2) continue;
+    if(!/\d/.test(row[0])) continue;
+    labels.push(row[0]);
+    for(var k=0;k<seriesNames.length;k++){
+      var raw = (row[k+1]||'').replace('%','').trim();
+      var v = raw === '<1' ? 0.5 : parseFloat(raw);
+      series[k].push(isNaN(v) ? 0 : v);
+    }
+  }
+  if(labels.length < 2) throw new Error('no-rows');
+  return {names:seriesNames, labels:labels, series:series, region:region};
+}
+
+function draw(d){
+  var W=900,H=340,ml=42,mr=14,mt=16,mb=34;
+  var iw=W-ml-mr, ih=H-mt-mb;
+  var max=0;
+  d.series.forEach(function(s){s.forEach(function(v){if(v>max)max=v;});});
+  if(max<=0) max=100;
+  max = Math.max(max,100);
+  var n=d.labels.length;
+  function X(i){return ml + (n<2?0:(i/(n-1))*iw);}
+  function Y(v){return mt + ih - (v/max)*ih;}
+
+  var s='';
+  [0,25,50,75,100].forEach(function(g){
+    var y=Y(g);
+    s+='<line x1="'+ml+'" y1="'+y.toFixed(1)+'" x2="'+(W-mr)+'" y2="'+y.toFixed(1)+'" stroke="#D6E1E7" stroke-width="1"/>';
+    s+='<text x="'+(ml-8)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7B93A6">'+g+'</text>';
+  });
+
+  d.series.forEach(function(ser,idx){
+    var pts = ser.map(function(v,i){return X(i).toFixed(1)+','+Y(v).toFixed(1);}).join(' ');
+    s+='<polyline points="'+pts+'" fill="none" stroke="'+PAL[idx%PAL.length]+'" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"/>';
+  });
+
+  var ticks=Math.min(6,n);
+  for(var t=0;t<ticks;t++){
+    var i=Math.round(t*(n-1)/(ticks-1||1));
+    s+='<text x="'+X(i).toFixed(1)+'" y="'+(H-12)+'" text-anchor="'+(t===0?'start':(t===ticks-1?'end':'middle'))+'" font-family="IBM Plex Mono,monospace" font-size="10" fill="#7B93A6">'+esc(d.labels[i])+'</text>';
+  }
+  svg.innerHTML=s;
+
+  legend.innerHTML = d.names.map(function(nm,i){
+    return '<div><span class="swatch" style="background:'+PAL[i%PAL.length]+'"></span>'+esc(nm)+'</div>';
+  }).join('');
+
+  metaRange.textContent = d.labels[0]+' — '+d.labels[n-1]+(d.region?' · '+d.region:'');
+  chartArea.classList.add('on');
+  clearErr();
+}
+
+function handle(file){
+  if(!file){return;}
+  var r=new FileReader();
+  r.onload=function(){
+    try{ draw(parseTrends(String(r.result))); }
+    catch(e){
+      fail("That file didn't look like a Google Trends export. Use the download button above the \u201cInterest over time\u201d panel — the file should start with a Category line and have a Week or Month column.");
+    }
+  };
+  r.onerror=function(){fail("Couldn't read that file. Try downloading it again.");};
+  r.readAsText(file);
+}
+
+pick.addEventListener('click',function(e){e.stopPropagation();fileIn.click();});
+drop.addEventListener('click',function(){fileIn.click();});
+drop.addEventListener('keydown',function(e){
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();fileIn.click();}
+});
+fileIn.addEventListener('change',function(){handle(fileIn.files[0]);});
+['dragenter','dragover'].forEach(function(ev){
+  drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add('over');});
+});
+['dragleave','drop'].forEach(function(ev){
+  drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove('over');});
+});
+drop.addEventListener('drop',function(e){
+  if(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) handle(e.dataTransfer.files[0]);
+});
+reset.addEventListener('click',function(){
+  chartArea.classList.remove('on'); fileIn.value=''; clearErr();
+  drop.scrollIntoView({behavior:'smooth',block:'center'});
+});
+})();
+</script>
+</body>
+</html>
