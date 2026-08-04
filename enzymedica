@@ -512,11 +512,17 @@ footer{padding:30px 0 46px;font-family:"IBM Plex Mono",monospace;font-size:11px;
     </div>
 
     <div class="trends" style="margin-top:24px">
+      <div class="chart-meta"><span><b>One question only you can answer</b></span><span>December 2021</span></div>
+      <p style="margin-top:6px">Your line has exactly one peak that is not the April 2026 category event: December 2021, at 23, with January 2022 still at 19. Every December since reads 8 or 9. Whatever you did that winter roughly doubled your search interest for two months and has not been repeated in four years. We cannot see from outside what it was. If anyone still remembers, that is worth more than most of this document.</p>
+      <p class="caveat">Flagging it as a question rather than a finding. It could equally be a PR hit, a retail promotion, a broadcast buy, or an artefact.</p>
+    </div>
+
+    <div class="trends" style="margin-top:24px">
       <div class="chart-meta"><span><b>Chart B</b> &nbsp;Category demand &nbsp;&middot;&nbsp; United States &nbsp;&middot;&nbsp; Aug 2021 &ndash; Aug 2026</span><span>Relative interest, 0&ndash;100</span></div>
       <svg id="chartB" viewBox="0 0 900 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Category search interest for GLP-1, bloating and digestive enzymes, 2021 to 2026"></svg>
       <div class="legend" id="legB"></div>
       <div class="verdict" style="margin-top:22px">
-        <p><b>GLP&#8209;1 overtook bloating as a search term in August 2025</b>, rising from a yearly average of 1.0 to 85.1. <span class="mono">Bloating</span> is up 1.9&#215; and runs a clean annual cycle underneath everything else: bottoms in November, climbs from January, peaks in June. That cycle is the timing argument in &sect;6.</p>
+        <p><b>GLP&#8209;1 overtook bloating as a search term in August 2025.</b> Its yearly average went from 1.0 in 2021 to 43.0 in 2025, and stands at 85.1 across 2026 so far. On the same 2021-to-2025 window, <span class="mono">bloating</span> is up 1.3&#215; and <span class="mono">digestive enzymes</span> 1.8&#215;. Bloating also runs a clean annual cycle underneath everything else: bottoms in November, climbs from January, peaks in June. That cycle is the timing argument in &sect;6.</p>
       </div>
     </div>
 
@@ -642,7 +648,7 @@ var DATA = {
     ],
     owner:"<b>Affiliate round-ups do.</b> The 2026 \u201cbest digestive enzymes\u201d pages are topped by brands with a fraction of your shelf presence. Healthline names Digest Gold with ATPro its best all-round pick — but on other high-ranking round-ups you sit mid-table beneath brands most buyers have never encountered offline.",
     conf:"confirmed",
-    verdict:"Interest in the head term is up 2.4&#215; since 2021 (&sect;5, chart B). Measured to the end of 2025, before the April spike distorts things, your own brand interest over the same period is 0.93&#215;. You are the answer to this question and the question got asked more often without you benefiting. That's a placement and PR problem more than an advertising one, and it's the least surprising finding in this document — you almost certainly know it already."
+    verdict:"Measured on the same spike-free window &mdash; 2021 against 2025 &mdash; interest in the head term is up 1.8&#215; and your own brand interest is 0.93&#215;. You are the answer to this question and the question got asked more often without you benefiting. That's a placement and PR problem more than an advertising one, and it's the least surprising finding in this document — you almost certainly know it already."
   },
   3:{
     title:"Band 03 — Symptom and relief",
