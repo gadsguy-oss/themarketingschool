@@ -441,7 +441,9 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
     <li><a href="#pricing">Packages</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="mailto:hello@themarketingschool.com">Contact</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/privacy.html">Privacy</a></li>
+    <li><a href="/terms.html">Terms</a></li>
   </ul>
   <span class="footer-copy">© 2026 The Marketing School</span>
 </footer>
@@ -501,7 +503,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
       <div class="hp-field" aria-hidden="true"><label>Leave blank<input name="company_hp" tabindex="-1" autocomplete="off"></label></div>
       <p class="lead-err" id="leadErr">Please add your name, a valid email, a phone number, and your monthly ad spend.</p>
       <button class="lead-submit" type="submit" id="leadSubmit">Send — we'll reach out</button>
-      <p class="lead-fine">We usually reply within one business day. No spam, ever.</p>
+      <p class="lead-fine">We usually reply within one business day. No spam, ever. <a href="/privacy.html" style="color:inherit">Privacy policy</a>.</p>
     </form>
     <div class="lead-done" id="leadDone">
       <div class="check">✓</div>
@@ -553,11 +555,11 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     var lead={source:'Package form',name:d.name,email:d.email,phone:d.phone,contact_pref:d.contact_pref,ad_spend:d.ad_spend,package:d.package,website:d.website,details:d.message,tracking:trk.join(' | ')};
     if(typeof window.tmsSubmitLead!=='function'){
       var body='Name: '+d.name+'\nEmail: '+d.email+'\nPhone: '+d.phone+'\nContact by: '+d.contact_pref+'\nWebsite: '+d.website+'\nAd spend: '+d.ad_spend+'\nPackage: '+d.package+'\n\n'+d.message;
-      location.href='mailto:hello@themarketingschool.com?subject='+encodeURIComponent('Package inquiry — '+d.package)+'&body='+encodeURIComponent(body);
+      location.href='mailto:evan@themarketingschool.com?subject='+encodeURIComponent('Package inquiry — '+d.package)+'&body='+encodeURIComponent(body);
       return;
     }
     btn.disabled=true; btn.textContent='Sending…';
-    window.tmsSubmitLead(lead).then(done).catch(function(){ btn.disabled=false; btn.textContent='Send — we\'ll reach out'; err.textContent='Something went wrong. Please email hello@themarketingschool.com.'; err.style.display='block'; });
+    window.tmsSubmitLead(lead).then(done).catch(function(){ btn.disabled=false; btn.textContent='Send — we\'ll reach out'; err.textContent='Something went wrong. Please email evan@themarketingschool.com.'; err.style.display='block'; });
   });
 })();
 </script>
