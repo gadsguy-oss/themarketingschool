@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Marketing School — Run Ads That Actually Work</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A2342">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -164,6 +169,40 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
 .fade-up.visible{opacity:1;transform:translateY(0)}
 .fade-up.d1{transition-delay:.1s}.fade-up.d2{transition-delay:.2s}.fade-up.d3{transition-delay:.3s}
 @media (prefers-reduced-motion:reduce){.fade-up{opacity:1;transform:none;transition:none}}
+
+/* LEAD FORM MODAL */
+.lead-overlay{position:fixed;inset:0;z-index:500;background:rgba(10,35,66,.62);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+.lead-overlay.open{display:flex}
+.lead-card{position:relative;width:100%;max-width:540px;background:var(--surface);border-radius:14px;padding:38px 34px 30px;box-shadow:0 30px 80px -30px rgba(10,35,66,.5)}
+.lead-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:26px;line-height:1;color:var(--muted);cursor:pointer;padding:4px 8px}
+.lead-close:hover{color:var(--ink)}
+.lead-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.lead-card h2{font-family:var(--serif);font-size:1.85rem;font-weight:600;color:var(--ink);line-height:1.15;margin-bottom:8px}
+.lead-card h2 em{font-style:italic;color:var(--brass);font-weight:500}
+.lead-intro{font-size:14.5px;margin-bottom:22px}
+.lead-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lead-field{margin-bottom:14px}
+.lead-field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:5px}
+.lead-field label span{color:var(--muted);font-weight:400}
+.lead-field input,.lead-field select,.lead-field textarea{width:100%;font:inherit;font-size:15.5px;padding:12px 13px;border:1px solid var(--border);border-radius:6px;background:var(--paper);color:var(--ink)}
+.lead-field textarea{min-height:84px;resize:vertical}
+.lead-field input:focus,.lead-field select:focus,.lead-field textarea:focus{outline:none;border-color:var(--go);box-shadow:0 0 0 3px rgba(30,122,85,.15)}
+.lead-err{display:none;color:#B3402E;font-size:13px;margin-bottom:10px}
+.lead-submit{width:100%;border:none;cursor:pointer;background:var(--go);color:#fff;font:inherit;font-weight:600;font-size:15px;padding:15px;border-radius:6px;transition:background .2s}
+.lead-submit:hover{background:var(--go-dark)}
+.lead-submit[disabled]{opacity:.65;cursor:wait}
+.lead-fine{font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
+.lead-done{display:none;text-align:center;padding:16px 0 6px}
+.lead-done .check{width:56px;height:56px;border-radius:50%;background:#F0F7F3;color:var(--go);font-size:28px;line-height:56px;margin:0 auto 16px}
+.lead-done p{font-size:15px;max-width:380px;margin:0 auto 20px}
+.contact-pref{display:flex;gap:8px}
+.contact-pref label{flex:1;margin:0;cursor:pointer}
+.contact-pref input{position:absolute;opacity:0;pointer-events:none}
+.contact-pref span{display:block;text-align:center;padding:11px 8px;border:1px solid var(--border);border-radius:6px;background:var(--paper);font-size:14.5px;font-weight:500;color:var(--slate);transition:border-color .15s,background .15s}
+.contact-pref input:checked+span{border-color:var(--go);background:#F0F7F3;color:var(--ink);font-weight:600}
+.contact-pref input:focus-visible+span{box-shadow:0 0 0 3px rgba(30,122,85,.2)}
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media (max-width:520px){.lead-row{grid-template-columns:1fr;gap:0}.lead-card{padding:32px 22px 24px}}
 </style>
 </head>
 <body>
@@ -258,7 +297,7 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
         <p class="tier-tagline">We teach you everything. The playbook, the audits, the creative direction.</p>
         <div class="tier-price-block">
           <div class="tier-price"><span class="currency">$</span>997<span class="tier-period">/month</span></div>
-          <div class="tier-price-note">Cancel anytime · ACH</div>
+          <div class="tier-price-note">Cancel anytime</div>
         </div>
         <ul class="tier-features">
           <li>Monthly account audit</li>
@@ -267,7 +306,7 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
           <li>Community + live calls</li>
           <li>Full curriculum library</li>
         </ul>
-        <a href="#" class="tier-cta tier-cta-secondary">Join the School</a>
+        <a href="#apply" class="tier-cta tier-cta-secondary" data-plan="Teaching — $997/mo">Join the School</a>
       </div>
 
       <div class="tier tier-featured fade-up d2">
@@ -287,7 +326,7 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
           <li>Hooks, scripts, and angles tested</li>
           <li>Dedicated creative lead</li>
         </ul>
-        <a href="#" class="tier-cta tier-cta-primary">Get Creative</a>
+        <a href="#apply" class="tier-cta tier-cta-primary" data-plan="Done-For-You Creative — $7,500/mo">Get Creative</a>
       </div>
 
       <div class="tier fade-up d3">
@@ -306,7 +345,7 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
           <li>Dedicated strategist</li>
           <li>White glove support</li>
         </ul>
-        <a href="#" class="tier-cta tier-cta-secondary">Apply Now</a>
+        <a href="#apply" class="tier-cta tier-cta-secondary" data-plan="Full Agency — $15,000/mo">Apply Now</a>
       </div>
     </div>
 
@@ -385,7 +424,7 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
   <p class="cta-sub fade-up d2">Start with the free diagnosis. It scores your account, names the leak, and points you to the right package — in 3 minutes.</p>
   <div class="fade-up d3">
     <a href="assessment.html" class="btn btn-go">Get your free Ad Account Score</a>
-    <p class="cta-price-note">Packages from $997/month · Cancel anytime</p>
+    <p class="cta-price-note">Packages from $997/month · Talk to us before you pay a dime</p>
   </div>
 </section>
 
@@ -417,6 +456,105 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     if (!isOpen) item.classList.add('open');
   });
 });
+</script>
+
+<!-- LEAD FORM -->
+<div class="lead-overlay" id="leadOverlay" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+  <div class="lead-card">
+    <button class="lead-close" type="button" id="leadClose" aria-label="Close">&times;</button>
+    <form id="leadForm" novalidate>
+      <div class="lead-eyebrow" id="leadEyebrow">Let's talk first</div>
+      <h2 id="leadTitle">Tell us about your <em>ads.</em></h2>
+      <p class="lead-intro">No checkout, no card. Send us the basics and we'll reach out the way you prefer to set up a quick call to see which package fits.</p>
+      <div class="lead-row">
+        <div class="lead-field"><label for="lfName">Name</label><input id="lfName" name="name" autocomplete="name" required></div>
+        <div class="lead-field"><label for="lfEmail">Email</label><input id="lfEmail" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="lead-row">
+        <div class="lead-field"><label for="lfPhone">Phone</label><input id="lfPhone" name="phone" type="tel" autocomplete="tel" required></div>
+        <div class="lead-field"><label for="lfSite">Website</label><input id="lfSite" name="website" autocomplete="url" placeholder="yourbrand.com"></div>
+      </div>
+      <div class="lead-field"><label>Best way to reach you?</label>
+        <div class="contact-pref">
+          <label><input type="radio" name="contact_pref" value="Text" checked><span>Text</span></label>
+          <label><input type="radio" name="contact_pref" value="Call"><span>Call</span></label>
+          <label><input type="radio" name="contact_pref" value="Email"><span>Email</span></label>
+        </div>
+      </div>
+      <div class="lead-row">
+        <div class="lead-field"><label for="lfSpend">Monthly ad spend</label>
+          <select id="lfSpend" name="ad_spend" required>
+            <option value="">Select…</option><option>Under $5k</option><option>$5k – $20k</option><option>$20k – $50k</option><option>$50k – $250k</option><option>$250k+</option>
+          </select></div>
+        <div class="lead-field"><label for="lfPlan">Interested in</label>
+          <select id="lfPlan" name="package">
+            <option>Not sure yet</option><option>Teaching — $997/mo</option><option>Done-For-You Creative — $7,500/mo</option><option>Full Agency — $15,000/mo</option>
+          </select></div>
+      </div>
+      <div class="lead-field"><label for="lfMsg">What's going on with your ads? <span>(optional)</span></label><textarea id="lfMsg" name="message"></textarea></div>
+      <div class="hp-field" aria-hidden="true"><label>Leave blank<input name="company_hp" tabindex="-1" autocomplete="off"></label></div>
+      <p class="lead-err" id="leadErr">Please add your name, a valid email, a phone number, and your monthly ad spend.</p>
+      <button class="lead-submit" type="submit" id="leadSubmit">Send — we'll reach out</button>
+      <p class="lead-fine">We usually reply within one business day. No spam, ever.</p>
+    </form>
+    <div class="lead-done" id="leadDone">
+      <div class="check">✓</div>
+      <h2>Got it, <em id="leadDoneName">thanks</em>.</h2>
+      <p>We'll be in touch shortly to find a time. Meanwhile, the free Ad Account Score shows us where your account is leaking.</p>
+      <a href="assessment.html" class="btn btn-go">Take the 3-minute diagnosis</a>
+    </div>
+  </div>
+</div>
+
+<script src="lead-config.js"></script>
+<script>
+(function(){
+  var overlay=document.getElementById('leadOverlay'), form=document.getElementById('leadForm');
+  var planSel=document.getElementById('lfPlan'), err=document.getElementById('leadErr'), btn=document.getElementById('leadSubmit');
+  function openLead(plan){
+    if(plan){ for(var i=0;i<planSel.options.length;i++){ if(planSel.options[i].text===plan||planSel.options[i].text.toLowerCase().indexOf(plan.toLowerCase())===0){ planSel.selectedIndex=i; } } }
+    overlay.classList.add('open'); document.body.style.overflow='hidden';
+    setTimeout(function(){ document.getElementById('lfName').focus(); },50);
+    try{ if(typeof gtag==='function') gtag('event','lead_form_open',{plan:planSel.value}); }catch(e){}
+  }
+  function closeLead(){ overlay.classList.remove('open'); document.body.style.overflow=''; if(location.hash==='#apply') history.replaceState(null,'',location.pathname+location.search); }
+  document.querySelectorAll('[data-plan], a[href="#apply"]').forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); openLead(a.getAttribute('data-plan')); });
+  });
+  document.getElementById('leadClose').addEventListener('click',closeLead);
+  overlay.addEventListener('click',function(e){ if(e.target===overlay) closeLead(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&overlay.classList.contains('open')) closeLead(); });
+
+  var qs=new URLSearchParams(location.search);
+  var PLAN_KEYS={teaching:'Teaching',creative:'Done-For-You Creative',allin:'Full Agency'};
+  if(location.hash==='#apply'||qs.get('plan')) openLead(PLAN_KEYS[qs.get('plan')]||null);
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d={}; new FormData(form).forEach(function(v,k){ d[k]=String(v).trim(); });
+    if(d.company_hp){ return; }
+    if(!d.name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)||d.phone.replace(/\D/g,'').length<10||!d.ad_spend){ err.style.display='block'; return; }
+    err.style.display='none'; delete d.company_hp;
+    d.event='package_lead'; d.page=location.href; d.referrer=document.referrer;
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){ d[k]=qs.get(k)||''; });
+    d.submitted_at=new Date().toISOString();
+    var url=window.TMS_LEAD_ENDPOINT;
+    function done(){
+      document.getElementById('leadDoneName').textContent=d.name.split(' ')[0];
+      form.style.display='none'; document.getElementById('leadDone').style.display='block';
+      try{ if(typeof gtag==='function') gtag('event','generate_lead',{plan:d.package}); }catch(e){}
+      try{ if(typeof fbq==='function') fbq('track','Lead'); }catch(e){}
+    }
+    if(!url){
+      var body='Name: '+d.name+'\nEmail: '+d.email+'\nPhone: '+d.phone+'\nContact by: '+d.contact_pref+'\nWebsite: '+d.website+'\nAd spend: '+d.ad_spend+'\nPackage: '+d.package+'\n\n'+d.message;
+      location.href='mailto:hello@themarketingschool.com?subject='+encodeURIComponent('Package inquiry — '+d.package)+'&body='+encodeURIComponent(body);
+      return;
+    }
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)})
+      .then(done).catch(function(){ btn.disabled=false; btn.textContent='Send — we\'ll reach out'; err.textContent='Something went wrong. Please email hello@themarketingschool.com.'; err.style.display='block'; });
+  });
+})();
 </script>
 </body>
 </html>

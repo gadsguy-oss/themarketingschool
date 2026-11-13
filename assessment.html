@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What's Your Ad Account Score? — The Marketing School</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A2342">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -62,6 +67,11 @@ h1 em{font-style:italic;color:var(--brass);font-weight:500}
 .gate-field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .gate-field input{width:100%;font-size:16px;font-family:var(--sans);padding:13px 14px;border:1px solid var(--border);border-radius:6px;background:var(--paper);color:var(--ink)}
 .gate-field input:focus{outline:none;border-color:var(--go);box-shadow:0 0 0 3px rgba(30,122,85,.15)}
+.contact-pref{display:flex;gap:8px}
+.contact-pref label{flex:1;margin:0;cursor:pointer}
+.contact-pref input{position:absolute;opacity:0;pointer-events:none}
+.contact-pref span{display:block;text-align:center;padding:11px 8px;border:1px solid var(--border);border-radius:6px;background:var(--paper);font-size:14.5px;font-weight:500;color:var(--slate)}
+.contact-pref input:checked+span{border-color:var(--go);background:#F0F7F3;color:var(--ink);font-weight:600}
 .gate-err{display:none;color:var(--danger);font-size:13px;margin-bottom:12px}
 .gate-fine{font-size:12px;color:var(--slate);margin-top:14px}
 /* RESULTS */
@@ -111,7 +121,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
 </head>
 <body>
 
-<div class="topbar"><a href="REPLACE_ME_HOMEPAGE_URL">The <em>Marketing</em> School</a></div>
+<div class="topbar"><a href="/">The <em>Marketing</em> School</a></div>
 
 <div class="progress-bar" id="progressBar">
   <div class="progress-inner">
@@ -162,7 +172,19 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
         <label for="gEmail">Email</label>
         <input type="email" id="gEmail" autocomplete="email" placeholder="you@company.com">
       </div>
-      <p class="gate-err" id="gateErr">Please enter your first name and a valid email.</p>
+      <div class="gate-field">
+        <label for="gPhone">Phone <span style="font-weight:400;color:var(--slate)">(optional — for a free walkthrough of your score)</span></label>
+        <input type="tel" id="gPhone" autocomplete="tel" placeholder="(555) 555-5555">
+      </div>
+      <div class="gate-field">
+        <label>Best way to reach you?</label>
+        <div class="contact-pref" id="gPref">
+          <label><input type="radio" name="gPref" value="Email" checked><span>Email</span></label>
+          <label><input type="radio" name="gPref" value="Text"><span>Text</span></label>
+          <label><input type="radio" name="gPref" value="Call"><span>Call</span></label>
+        </div>
+      </div>
+      <p class="gate-err" id="gateErr">Please enter your first name and a valid email (phone must be 10+ digits if added).</p>
       <button class="btn btn-go" id="gateBtn" style="width:100%">Show my score</button>
       <p class="gate-fine">We'll email you a link back to your results. No spam — unsubscribe anytime.</p>
     </div>
@@ -204,7 +226,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
       <ul class="plan-feats" id="planFeats"></ul>
       <div class="plan-cta-row">
         <a class="btn btn-go" id="planCta" href="#">Join the School</a>
-        <a class="btn btn-ink" href="REPLACE_ME_HOMEPAGE_URL#pricing">Compare all packages</a>
+        <a class="btn btn-ink" href="/#pricing">Compare all packages</a>
       </div>
     </div>
     <div class="alt-strip" id="altStrip"></div>
@@ -214,19 +236,20 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
 
 <div class="sticky-cta" id="stickyCta">
   <span class="s-txt" id="stickyTxt">Your recommended next step</span>
-  <a class="btn btn-go" id="stickyBtn" href="#">Join the School — $300/mo</a>
+  <a class="btn btn-go" id="stickyBtn" href="#">Join the School</a>
 </div>
 
 <footer>© 2026 The Marketing School · This diagnosis is educational and based on your answers; results depend on your business, offer, and execution.</footer>
 
+<script src="lead-config.js"></script>
 <script>
 /* ============ CONFIG — the only block a non-developer edits ============ */
 var CONFIG = {
-  WEBHOOK_URL: "REPLACE_ME_WEBHOOK_URL",            /* your Next.js API route that writes to Neon + relays Resend email */
-  CHECKOUT_TEACHING: "REPLACE_ME_TEACHING_CHECKOUT", /* Stripe checkout link for Teaching $300/mo */
-  CHECKOUT_CREATIVE: "REPLACE_ME_CREATIVE_CHECKOUT", /* Stripe checkout link for Creative $2,500/mo */
-  APPLY_ALLIN: "REPLACE_ME_ALLIN_APPLICATION",       /* Application link for All-In */
-  HOMEPAGE_URL: "REPLACE_ME_HOMEPAGE_URL",           /* e.g. https://www.themarketingschool.com */
+  WEBHOOK_URL: (typeof window !== 'undefined' && window.TMS_LEAD_ENDPOINT) || "", /* set once in lead-config.js — Google Sheet via Apps Script */
+  CHECKOUT_TEACHING: "/?plan=teaching#apply",        /* opens the homepage lead form (no online checkout) */
+  CHECKOUT_CREATIVE: "/?plan=creative#apply",
+  APPLY_ALLIN: "/?plan=allin#apply",
+  HOMEPAGE_URL: "/",
   NEXT_QA_DATE: ""                                    /* e.g. "Thursday, June 18" — when set, urgency line invites to the next live call */
 };
 
@@ -553,7 +576,8 @@ if (typeof document !== 'undefined'){ (function(){
   function submitGate(){
     var n = $('gName').value.trim();
     var e = $('gEmail').value.trim();
-    if (!n || !validEmail(e)){ $('gateErr').style.display = 'block'; return; }
+    var ph = ($('gPhone').value || '').replace(/\D/g,'');
+    if (!n || !validEmail(e) || (ph && ph.length < 10)){ $('gateErr').style.display = 'block'; return; }
     $('gateErr').style.display = 'none';
     leadName = n; leadEmail = e;
     track('gate_submit', {});
@@ -569,15 +593,20 @@ if (typeof document !== 'undefined'){ (function(){
     if (fromGate){
       var payload = buildPayload(leadName, leadEmail, answers, computed, profile, resultsUrl);
       try {
-        fetch(CONFIG.WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-        fetch(CONFIG.WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
-          event: 'results_email_requested',
-          email: leadEmail, first_name: leadName,
-          email_subject: leadName + ", your Ad Account Score is " + computed.score + "/100 — here's the leak",
-          email_html: buildResultsEmailHtml(leadName, computed, profile, resultsUrl)
-        })});
-        $('emailNoteTxt').textContent = 'Results sent to ' + leadEmail;
-        $('emailNote').style.display = 'flex';
+        if (CONFIG.WEBHOOK_URL){
+          payload.event = 'quiz_lead';
+          payload.phone = ($('gPhone').value || '').trim();
+          var pr = document.querySelector('input[name="gPref"]:checked');
+          payload.contact_pref = pr ? pr.value : 'Email';
+          payload.email_subject = leadName + ", your Ad Account Score is " + computed.score + "/100 — here's the leak";
+          payload.email_html = buildResultsEmailHtml(leadName, computed, profile, resultsUrl);
+          var qp = new URLSearchParams(location.search);
+          ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){ payload[k] = qp.get(k) || ''; });
+          payload.referrer = document.referrer;
+          fetch(CONFIG.WEBHOOK_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload), keepalive:true });
+          $('emailNoteTxt').textContent = 'Results sent to ' + leadEmail;
+          $('emailNote').style.display = 'flex';
+        }
       } catch(err) {}
       try { history.replaceState(null, '', '?r=' + token); } catch(err) {}
     }
@@ -633,10 +662,10 @@ if (typeof document !== 'undefined'){ (function(){
       var li = document.createElement('li'); li.textContent = f; pf.appendChild(li);
     });
     var ctaUrl = CONFIG[plan.ctaKey];
-    $('planCta').textContent = plan.cta + ' — ' + plan.price + plan.period;
+    $('planCta').textContent = plan.cta + ' — talk to us first';
     $('planCta').href = ctaUrl;
     $('planCta').addEventListener('click', function(){ track('plan_cta_click', { plan: plan.name }); });
-    $('stickyBtn').textContent = plan.cta + ' — ' + plan.price + plan.period;
+    $('stickyBtn').textContent = plan.cta;
     $('stickyBtn').href = ctaUrl;
     $('stickyTxt').textContent = 'Recommended: ' + plan.name;
 
