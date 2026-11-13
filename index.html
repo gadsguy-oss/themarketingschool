@@ -538,21 +538,22 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     d.event='package_lead'; d.page=location.href; d.referrer=document.referrer;
     ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){ d[k]=qs.get(k)||''; });
     d.submitted_at=new Date().toISOString();
-    var url=window.TMS_LEAD_ENDPOINT;
     function done(){
       document.getElementById('leadDoneName').textContent=d.name.split(' ')[0];
       form.style.display='none'; document.getElementById('leadDone').style.display='block';
       try{ if(typeof gtag==='function') gtag('event','generate_lead',{plan:d.package}); }catch(e){}
       try{ if(typeof fbq==='function') fbq('track','Lead'); }catch(e){}
     }
-    if(!url){
+    var trk=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].filter(function(k){return d[k];}).map(function(k){return k+'='+d[k];});
+    trk.push('page='+d.page); if(d.referrer) trk.push('referrer='+d.referrer);
+    var lead={source:'Package form',name:d.name,email:d.email,phone:d.phone,contact_pref:d.contact_pref,ad_spend:d.ad_spend,package:d.package,website:d.website,details:d.message,tracking:trk.join(' | ')};
+    if(typeof window.tmsSubmitLead!=='function'){
       var body='Name: '+d.name+'\nEmail: '+d.email+'\nPhone: '+d.phone+'\nContact by: '+d.contact_pref+'\nWebsite: '+d.website+'\nAd spend: '+d.ad_spend+'\nPackage: '+d.package+'\n\n'+d.message;
       location.href='mailto:hello@themarketingschool.com?subject='+encodeURIComponent('Package inquiry — '+d.package)+'&body='+encodeURIComponent(body);
       return;
     }
     btn.disabled=true; btn.textContent='Sending…';
-    fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)})
-      .then(done).catch(function(){ btn.disabled=false; btn.textContent='Send — we\'ll reach out'; err.textContent='Something went wrong. Please email hello@themarketingschool.com.'; err.style.display='block'; });
+    window.tmsSubmitLead(lead).then(done).catch(function(){ btn.disabled=false; btn.textContent='Send — we\'ll reach out'; err.textContent='Something went wrong. Please email hello@themarketingschool.com.'; err.style.display='block'; });
   });
 })();
 </script>

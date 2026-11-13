@@ -163,7 +163,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
   <div class="wrap">
     <div class="gate-card">
       <h2>Your score is ready.</h2>
-      <p>Tell us where to send your results and we'll reveal your score, your weakest link, and your fix-it-first roadmap.</p>
+      <p>Tell us who you are and we'll reveal your score, your weakest link, and your fix-it-first roadmap.</p>
       <div class="gate-field">
         <label for="gName">First name</label>
         <input type="text" id="gName" autocomplete="given-name" placeholder="First name">
@@ -186,7 +186,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
       </div>
       <p class="gate-err" id="gateErr">Please enter your first name and a valid email (phone must be 10+ digits if added).</p>
       <button class="btn btn-go" id="gateBtn" style="width:100%">Show my score</button>
-      <p class="gate-fine">We'll email you a link back to your results. No spam — unsubscribe anytime.</p>
+      <p class="gate-fine">Your results show on the next screen. No spam — unsubscribe anytime.</p>
     </div>
   </div>
 </section>
@@ -245,7 +245,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
 <script>
 /* ============ CONFIG — the only block a non-developer edits ============ */
 var CONFIG = {
-  WEBHOOK_URL: (typeof window !== 'undefined' && window.TMS_LEAD_ENDPOINT) || "", /* set once in lead-config.js — Google Sheet via Apps Script */
+  /* leads are sent via window.tmsSubmitLead() in lead-config.js (Google Form -> TMS Leads (Responses) sheet) */
   CHECKOUT_TEACHING: "/?plan=teaching#apply",        /* opens the homepage lead form (no online checkout) */
   CHECKOUT_CREATIVE: "/?plan=creative#apply",
   APPLY_ALLIN: "/?plan=allin#apply",
@@ -593,19 +593,23 @@ if (typeof document !== 'undefined'){ (function(){
     if (fromGate){
       var payload = buildPayload(leadName, leadEmail, answers, computed, profile, resultsUrl);
       try {
-        if (CONFIG.WEBHOOK_URL){
-          payload.event = 'quiz_lead';
-          payload.phone = ($('gPhone').value || '').trim();
-          var pr = document.querySelector('input[name="gPref"]:checked');
-          payload.contact_pref = pr ? pr.value : 'Email';
-          payload.email_subject = leadName + ", your Ad Account Score is " + computed.score + "/100 — here's the leak";
-          payload.email_html = buildResultsEmailHtml(leadName, computed, profile, resultsUrl);
+        if (typeof window.tmsSubmitLead === 'function'){
           var qp = new URLSearchParams(location.search);
-          ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){ payload[k] = qp.get(k) || ''; });
-          payload.referrer = document.referrer;
-          fetch(CONFIG.WEBHOOK_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload), keepalive:true });
-          $('emailNoteTxt').textContent = 'Results sent to ' + leadEmail;
-          $('emailNote').style.display = 'flex';
+          var pr = document.querySelector('input[name="gPref"]:checked');
+          var trk = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].filter(function(k){ return qp.get(k); }).map(function(k){ return k + '=' + qp.get(k); });
+          if (document.referrer) trk.push('referrer=' + document.referrer);
+          window.tmsSubmitLead({
+            source: 'Quiz',
+            name: leadName,
+            email: leadEmail,
+            phone: ($('gPhone').value || '').trim(),
+            contact_pref: pr ? pr.value : 'Email',
+            ad_spend: answerText(answers, QIDX.spend),
+            package: 'Recommended: ' + PLANS[profile.recommended].name,
+            quiz_score: computed.score,
+            details: 'Profile: ' + profile.name + ' | Weakest link: ' + (PILLAR_NAMES[computed.weakestPillar] || '') + ' | Business: ' + answerText(answers, 0) + ' | Runs ads: ' + answerText(answers, 2) + ' | Goal: ' + answerText(answers, QIDX.goal) + ' | Results: ' + resultsUrl,
+            tracking: trk.join(' | ')
+          });
         }
       } catch(err) {}
       try { history.replaceState(null, '', '?r=' + token); } catch(err) {}
