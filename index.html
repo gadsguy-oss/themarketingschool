@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0A2342">
+<script src="/lead-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -115,6 +116,8 @@ section{padding:110px 48px;position:relative}
 .tier-cta-primary:hover{background:var(--go-dark)}
 .tier-cta-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink)}
 .tier-cta-secondary:hover{background:var(--ink);color:var(--paper)}
+.tier-talk{display:block;text-align:center;margin-top:12px;font-size:13px;color:var(--slate);text-decoration:underline;text-underline-offset:3px}
+.tier-talk:hover{color:var(--ink)}
 @media (max-width:980px){.tier-grid{grid-template-columns:1fr;gap:30px}}
 
 /* LADDER */
@@ -306,7 +309,8 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
           <li>Community + live calls</li>
           <li>Full curriculum library</li>
         </ul>
-        <a href="#apply" class="tier-cta tier-cta-secondary" data-plan="Teaching — $997/mo">Join the School</a>
+        <a href="assessment.html?plan=teaching" class="tier-cta tier-cta-secondary">Get my score first</a>
+        <a href="#apply" class="tier-talk" data-plan="Teaching — $997/mo">or talk to us directly</a>
       </div>
 
       <div class="tier tier-featured fade-up d2">
@@ -326,7 +330,8 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
           <li>Hooks, scripts, and angles tested</li>
           <li>Dedicated creative lead</li>
         </ul>
-        <a href="#apply" class="tier-cta tier-cta-primary" data-plan="Done-For-You Creative — $7,500/mo">Get Creative</a>
+        <a href="assessment.html?plan=creative" class="tier-cta tier-cta-primary">Get my score first</a>
+        <a href="#apply" class="tier-talk" data-plan="Done-For-You Creative — $7,500/mo">or talk to us directly</a>
       </div>
 
       <div class="tier fade-up d3">
@@ -345,7 +350,8 @@ footer{padding:44px 48px;background:var(--paper);border-top:1px solid var(--bord
           <li>Dedicated strategist</li>
           <li>White glove support</li>
         </ul>
-        <a href="#apply" class="tier-cta tier-cta-secondary" data-plan="Full Agency — $15,000/mo">Apply Now</a>
+        <a href="assessment.html?plan=allin" class="tier-cta tier-cta-secondary">Get my score first</a>
+        <a href="#apply" class="tier-talk" data-plan="Full Agency — $15,000/mo">or talk to us directly</a>
       </div>
     </div>
 
@@ -506,7 +512,6 @@ document.querySelectorAll('.faq-q').forEach(function(q){
   </div>
 </div>
 
-<script src="lead-config.js"></script>
 <script>
 (function(){
   var overlay=document.getElementById('leadOverlay'), form=document.getElementById('leadForm');
@@ -541,8 +546,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     function done(){
       document.getElementById('leadDoneName').textContent=d.name.split(' ')[0];
       form.style.display='none'; document.getElementById('leadDone').style.display='block';
-      try{ if(typeof gtag==='function') gtag('event','generate_lead',{plan:d.package}); }catch(e){}
-      try{ if(typeof fbq==='function') fbq('track','Lead'); }catch(e){}
+      try{ if(typeof window.tmsConversion==='function') window.tmsConversion('contact',{plan:d.package}); }catch(e){}
     }
     var trk=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].filter(function(k){return d[k];}).map(function(k){return k+'='+d[k];});
     trk.push('page='+d.page); if(d.referrer) trk.push('referrer='+d.referrer);

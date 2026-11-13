@@ -17,3 +17,48 @@ window.tmsSubmitLead = function (lead) {
   });
   return fetch(cfg.action, { method: "POST", mode: "no-cors", body: body, keepalive: true });
 };
+
+/* ============ Conversion tracking ============
+   Paste IDs to switch each one on. Blank = off. Main goal = quiz sign-up (the score gate). */
+window.TMS_TRACKING = {
+  GA4_ID: "",            // e.g. "G-XXXXXXXXXX"
+  GOOGLE_ADS_ID: "",     // e.g. "AW-123456789"
+  ADS_QUIZ_LABEL: "",    // conversion label for "Quiz sign-up" (primary)
+  ADS_CONTACT_LABEL: "", // conversion label for "Package contact form" (secondary, optional)
+  META_PIXEL_ID: ""      // e.g. "1234567890"
+};
+(function () {
+  var t = window.TMS_TRACKING;
+  if (t.GA4_ID || t.GOOGLE_ADS_ID) {
+    var s = document.createElement("script"); s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + (t.GA4_ID || t.GOOGLE_ADS_ID);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date());
+    if (t.GA4_ID) gtag("config", t.GA4_ID);
+    if (t.GOOGLE_ADS_ID) gtag("config", t.GOOGLE_ADS_ID);
+  }
+  if (t.META_PIXEL_ID) {
+    !function(f,b,e,v,n,t2,s2){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t2=b.createElement(e);t2.async=!0;t2.src=v;s2=b.getElementsByTagName(e)[0];s2.parentNode.insertBefore(t2,s2)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq("init", t.META_PIXEL_ID); fbq("track", "PageView");
+  }
+})();
+/* kind: "quiz" (primary goal) or "contact" */
+window.tmsConversion = function (kind, data) {
+  var t = window.TMS_TRACKING || {}, d = data || {};
+  try {
+    if (typeof gtag === "function") {
+      gtag("event", kind === "quiz" ? "quiz_signup" : "contact_form_submit", d);
+      if (kind === "quiz") gtag("event", "generate_lead", { method: "quiz", value: d.score });
+      var label = kind === "quiz" ? t.ADS_QUIZ_LABEL : t.ADS_CONTACT_LABEL;
+      if (t.GOOGLE_ADS_ID && label) gtag("event", "conversion", { send_to: t.GOOGLE_ADS_ID + "/" + label });
+    }
+  } catch (e) {}
+  try {
+    if (typeof fbq === "function") {
+      if (kind === "quiz") fbq("track", "Lead", { content_name: "Ad Account Score quiz" });
+      else fbq("track", "Contact");
+    }
+  } catch (e) {}
+};
