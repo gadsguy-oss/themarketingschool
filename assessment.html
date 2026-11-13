@@ -122,6 +122,11 @@ h1 em{font-style:italic;color:var(--brass);font-weight:500}
 .alt-strip a{color:var(--go-dark);font-weight:600}
 .email-note{font-size:13.5px;color:var(--slate);display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .email-note .dot{color:var(--go);font-weight:700}
+.bonus{background:#FBF6EA;border:1px solid #EADFC4;border-radius:10px;padding:18px 20px;margin:0 0 26px}
+.bonus .bk{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:6px}
+.bonus h3{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.bonus p{font-size:14.5px;color:var(--slate);line-height:1.6}
+.bonus .val{font-weight:600;color:var(--ink)}
 .urgency{display:none;font-size:14px;color:var(--ink);background:#FBF6EA;border:1px solid #EADFC4;border-radius:8px;padding:12px 16px;margin-bottom:22px}
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--border);box-shadow:0 -8px 30px rgba(10,35,66,.12);padding:10px 14px calc(10px + env(safe-area-inset-bottom));transform:translateY(120%);transition:transform .3s ease;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .sticky-cta.show{transform:translateY(0)}
@@ -146,13 +151,18 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
 <!-- INTRO -->
 <section class="screen active" id="screen-intro">
   <div class="wrap">
-    <span class="intro-eyebrow">Free · 3 minutes · 14 questions</span>
+    <span class="intro-eyebrow">Free · 3 minutes · + bonus account audit</span>
     <h1>What's your <em>Ad Account Score?</em></h1>
     <p class="intro-sub">Most operators can't say exactly where their ad spend is leaking. This diagnosis scores your acquisition machine, names your weakest link, and shows you what to fix first.</p>
     <div class="intro-points">
       <div><strong>Your score out of 100</strong> — benchmarked across creative, tracking, channels, follow-up, and testing.</div>
       <div><strong>Your weakest link, named</strong> — the one thing quietly inflating your cost per customer.</div>
       <div><strong>A clear next step</strong> — matched to where you actually are, not a one-size pitch.</div>
+    </div>
+    <div class="bonus" style="max-width:520px;margin-top:18px">
+      <div class="bk">Free bonus for finishing</div>
+      <h3>A real audit of your ad account.</h3>
+      <p>Finish the quiz and a senior strategist personally reviews your actual account — the same audit our members get — and walks you through the fixes. <span class="val">Normally included in paid plans. Yours free.</span></p>
     </div>
     <div class="brass-rule"></div>
     <button class="btn btn-go" id="startBtn">Start the diagnosis</button>
@@ -175,7 +185,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
   <div class="wrap">
     <div class="gate-card">
       <h2>Your score is ready.</h2>
-      <p>Tell us who you are and we'll reveal your score, your weakest link, and your fix-it-first roadmap.</p>
+      <p>Tell us who you are and we'll reveal your score, your weakest link, and your fix-it-first roadmap — <strong style="color:var(--ink)">plus claim your free account audit.</strong></p>
       <div class="gate-field">
         <label for="gName">First name</label>
         <input type="text" id="gName" autocomplete="given-name" placeholder="First name">
@@ -185,7 +195,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
         <input type="email" id="gEmail" autocomplete="email" placeholder="you@company.com">
       </div>
       <div class="gate-field">
-        <label for="gPhone">Phone <span style="font-weight:400;color:var(--slate)">(optional — for a free walkthrough of your score)</span></label>
+        <label for="gPhone">Phone <span style="font-weight:400;color:var(--slate)">(add it to claim your free account audit)</span></label>
         <input type="tel" id="gPhone" autocomplete="tel" placeholder="(555) 555-5555">
       </div>
       <div class="gate-field">
@@ -228,16 +238,21 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
       <p id="weakDetail"></p>
     </div>
     <div class="gaps" id="gapCards"></div>
+    <div class="bonus" id="bonusBox">
+      <div class="bk">Your free bonus</div>
+      <h3>Your free account audit is reserved.</h3>
+      <p>Your score is based on your answers. The audit goes deeper: a senior strategist looks inside your actual account, finds where the money is leaking, and walks you through what to fix first. <span class="val">No cost, no obligation.</span> <span id="bonusNext">We'll reach out within one business day to set it up.</span></p>
+    </div>
     <div class="urgency" id="urgencyLine"></div>
     <div class="plan-card" id="planCard">
-      <span class="plan-rec">Recommended for your score</span>
+      <span class="plan-rec">Recommended for your account</span>
       <h3 id="planName"></h3>
       <div class="plan-price" id="planPrice"></div>
       <div class="plan-note" id="planNote"></div>
       <div class="plan-why" id="planWhy"></div>
       <ul class="plan-feats" id="planFeats"></ul>
       <div class="plan-cta-row">
-        <a class="btn btn-go" id="planCta" href="#">Join the School</a>
+        <a class="btn btn-go" id="planCta" href="#">Talk to us</a>
         <a class="btn btn-ink" href="/#pricing">Compare all packages</a>
       </div>
     </div>
@@ -248,7 +263,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
 
 <div class="sticky-cta" id="stickyCta">
   <span class="s-txt" id="stickyTxt">Your recommended next step</span>
-  <a class="btn btn-go" id="stickyBtn" href="#">Join the School</a>
+  <a class="btn btn-go" id="stickyBtn" href="#">Talk to us</a>
 </div>
 
 <footer>© 2026 The Marketing School · <a href="/privacy.html" style="color:inherit">Privacy</a> · <a href="/terms.html" style="color:inherit">Terms</a> · <a href="/contact.html" style="color:inherit">Contact</a> · This diagnosis is educational and based on your answers; results depend on your business, offer, and execution.</footer>
@@ -258,7 +273,7 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
 var CONFIG = {
   /* leads are sent via window.tmsSubmitLead() in lead-config.js (Google Form -> TMS Leads (Responses) sheet) */
   CHECKOUT_TEACHING: "/?plan=teaching#apply",        /* opens the homepage lead form (no online checkout) */
-  CHECKOUT_CREATIVE: "/?plan=creative#apply",
+  CHECKOUT_CLUB: "/?plan=club#apply",
   APPLY_ALLIN: "/?plan=allin#apply",
   HOMEPAGE_URL: "/",
   NEXT_QA_DATE: ""                                    /* e.g. "Thursday, June 18" — when set, urgency line invites to the next live call */
@@ -280,8 +295,8 @@ var QUESTIONS = [
 
   {section:"About you", kind:"seg", key:"ad_spend",
    text:"What's your monthly ad spend right now?",
-   options:["Under $5k","$5k – $20k","$20k – $50k","$50k+"],
-   values:["under5k","5to20k","20to50k","50kplus"]},
+   options:["Under $5k","$5k – $30k","$30k – $100k","$100k+"],
+   values:["under5k","5to30k","30to100k","100kplus"]},
 
   {section:"About you", kind:"seg", key:"who_runs",
    text:"Who runs your ads today?",
@@ -340,7 +355,7 @@ var QUESTIONS = [
 
   {section:"Are you ready?", kind:"intent",
    text:"If the diagnosis shows a clear fix, what's your appetite?",
-   options:["Just want the free roadmap","Around $300/mo to learn it right","A few thousand/mo to have parts done for me","Whatever it takes — I want it handled"],
+   options:["Just want the free roadmap","Around $1k/mo to learn it right","A few thousand/mo to have it run with me","Whatever it takes — I want it handled"],
    scores:[1,2,3,5]}
 ];
 
@@ -359,17 +374,24 @@ var PILLAR_DETAILS = {
   pages:"Your ads can only be as good as where they land. An untested landing experience caps every campaign upstream of it."
 };
 
+/* Prices here must match the homepage pricing section */
 var PLANS = [
-  {name:"The Marketing School — Teaching", price:"$300", period:"/month", note:"Cancel anytime · ACH available",
+  {name:"The Marketing School — Teaching", price:"$997", period:"/month", note:"Cancel anytime",
    cta:"Join the School", ctaKey:"CHECKOUT_TEACHING",
-   features:["Monthly account audit","Creative direction + monthly creatives","Member-only AI chat tool","Community + live calls","Full curriculum library"]},
-  {name:"Done-For-You Creative", price:"$2,500", period:"/month", note:"3-month minimum",
-   cta:"Get Creative", ctaKey:"CHECKOUT_CREATIVE",
-   features:["Everything in Teaching","8–12 fresh creatives per month","Static + video formats","Monthly creative strategy call","Hooks, scripts, and angles tested","Dedicated creative lead"]},
-  {name:"Full Agency — All-In", price:"$10,000", period:"/month", note:"+ ad spend · 90-day minimum",
-   cta:"Apply Now", ctaKey:"APPLY_ALLIN",
-   features:["Everything in Creative","Full media buying (Meta + Google)","Weekly reporting + strategy calls","Landing page + funnel consulting","Dedicated strategist","White glove support"]}
+   features:["Monthly account audit","Creative direction + briefs","Free AI marketing training","Community + live calls","Full curriculum library"],
+   why:"At your spend, the highest-return move is learning to run the machine yourself. <strong>Teaching</strong> starts with an audit of your actual account, then the curriculum and live calls walk you through the fixes in the right order — starting with your weakest link."},
+  {name:"The Growth Club", price:"$3,000", period:"/month", note:"90-day start, then month to month",
+   cta:"Join the Club", ctaKey:"CHECKOUT_CLUB",
+   features:["Everything in Teaching","Ads management (Meta + Google)","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
+   why:"At your spend, you shouldn't be doing this alone — and you don't need a full agency yet. <strong>The Growth Club</strong> runs your ads with you: we manage the account, keep fresh creative flowing, build a dashboard so you see every number, and work on your weakest link in the weekly sessions."},
+  {name:"Full Agency — All-In", price:"$15,000", period:"/month", note:"+ 10% of ad spend · 90-day minimum",
+   cta:"Apply for All-In", ctaKey:"APPLY_ALLIN",
+   features:["Everything in Growth Club","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
+   why:"At your spend, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."}
 ];
+
+/* Recommendation is driven by ad spend (matches homepage FAQ) */
+var SPEND_TO_PLAN = { under5k:0, "5to30k":1, "30to100k":2, "100kplus":2 };
 
 var PROFILES = [
   {min:0, max:29, name:"No Machine Yet", title:"You're buying clicks, not customers.",
@@ -378,9 +400,7 @@ var PROFILES = [
      {title:"No creative pipeline", detail:"Ads get made when someone has time, which means they mostly don't get made."},
      {title:"No ground truth", detail:"Without a trusted cost-per-customer number, you can't tell working from wasting."},
      {title:"No safety net", detail:"Clicks that don't convert vanish — no retargeting, no follow-up, no second chance."}
-   ],
-   recommended:0,
-   why:"You don't need a $2,500/mo creative retainer yet — you need the operating system. <strong>Teaching</strong> installs the playbook in the right order: the monthly audit shows you exactly what to build first, the curriculum teaches the build, and the live calls keep you from learning it the expensive way."},
+   ]},
 
   {min:30, max:49, name:"Duct-Taped Machine", title:"The pieces exist. Nothing connects.",
    hook:"<strong>Sound familiar?</strong> There's an ad account, a landing page, maybe an email list — each built in a different sprint, none of them talking to each other. Results come in bursts you can't repeat. <strong>That's not a you problem — it's a wiring problem.</strong>",
@@ -388,19 +408,15 @@ var PROFILES = [
      {title:"Creative trickle", detail:"One or two new ads a month means winners fatigue faster than you replace them."},
      {title:"Decisions by feel", detail:"Kill/scale calls without thresholds mean good ads die early and bad ones linger."},
      {title:"Single-channel exposure", detail:"Most of your growth rides on one platform's mood."}
-   ],
-   recommended:0,
-   why:"What you're missing is connection, not effort. <strong>Teaching</strong> starts with an audit of your actual account — finding where the wires are loose — then walks you through reconnecting creative, tracking, and follow-up so wins become repeatable instead of lucky."},
+   ]},
 
   {min:50, max:69, name:"Machine With a Leak", title:"It runs — and it leaks money every day.",
-   hook:"<strong>Sound familiar?</strong> ROAS was fine a quarter ago. Now CPMs are creeping, the team is busy, and nobody can point to exactly why the same spend buys fewer customers. <strong>That's not a you problem — it's a leak.</strong> And leaks don't fix themselves; they compound.",
+   hook:"<strong>Sound familiar?</strong> Results were fine a quarter ago. Now CPMs are creeping, the team is busy, and nobody can point to exactly why the same spend buys fewer customers. <strong>That's not a you problem — it's a leak.</strong> And leaks don't fix themselves; they compound.",
    gaps:[
      {title:"Creative fatigue", detail:"Your winners are carrying too much weight for too long, and the platform is charging you for it."},
      {title:"Attribution blind spots", detail:"Parts of the funnel are invisible, so budget flows to what's measurable, not what's working."},
      {title:"Untested landing experience", detail:"The page hasn't changed while your traffic and CPMs have."}
-   ],
-   recommended:0,
-   why:"A leak this size rarely needs an agency — it needs a finder. The <strong>monthly account audit in Teaching is literally a leak-detector</strong>: fresh expert eyes on your account every month, plus the creative direction to restock the engine before fatigue eats another quarter."},
+   ]},
 
   {min:70, max:85, name:"Scaling-Ready", title:"You're two bolts from pouring fuel.",
    hook:"<strong>Sound familiar?</strong> The fundamentals work. The question keeping you cautious is whether the machine holds at 2–3x the spend — or whether scaling just buys the same problems at a bigger size. <strong>That's not hesitation — that's good judgment.</strong> A couple of weak points need tightening first.",
@@ -408,9 +424,7 @@ var PROFILES = [
      {title:"Volume ceiling", detail:"Your testing cadence is built for current spend, not for the spend you want."},
      {title:"Concentration risk", detail:"Scale will magnify your dependence on your strongest channel."},
      {title:"Follow-up depth", detail:"At higher volume, every un-nurtured click is a bigger absolute loss."}
-   ],
-   recommended:0,
-   why:"You'll move through <strong>Teaching</strong> fast — and that's the point. The audits keep your scale honest month over month, and the creative direction raises your testing ceiling before you raise budgets. When creative volume becomes the bottleneck, that's the signal to step up to Done-For-You Creative."},
+   ]},
 
   {min:86, max:100, name:"Operator", title:"The machine works. Now compound it.",
    hook:"<strong>Sound familiar?</strong> You already run a real system — the score says so. Your constraint isn't knowledge anymore; it's throughput. More concepts, more angles, more shots on goal than your current production can supply. <strong>That's not a gap — that's a ceiling.</strong>",
@@ -418,12 +432,10 @@ var PROFILES = [
      {title:"Creative volume is the ceiling", detail:"You can read the data; you can't out-produce fatigue at your current cadence."},
      {title:"Incrementality unknowns", detail:"At your level, the next wins come from knowing what spend is truly additive."},
      {title:"Expansion bandwidth", detail:"New channels need creative variants you don't have time to make."}
-   ],
-   recommended:1,
-   why:"You don't need more teaching — you need <strong>throughput</strong>. Done-For-You Creative puts 8–12 fresh, tested creatives into your account every month with a dedicated creative lead, so your system finally gets the volume it was built to exploit."}
+   ]}
 ];
 
-var SPEND_MIDPOINTS = { under5k:3000, "5to20k":12500, "20to50k":35000, "50kplus":60000 };
+var SPEND_MIDPOINTS = { under5k:3000, "5to30k":17500, "30to100k":65000, "100kplus":150000 };
 
 /* ============ Pure logic (Node-testable) ============ */
 function maxMaturityPoints(){
@@ -462,6 +474,12 @@ function pickProfile(score){
     if (score >= PROFILES[i].min && score <= PROFILES[i].max) return PROFILES[i];
   }
   return PROFILES[PROFILES.length-1];
+}
+
+function recommendPlan(answers){
+  var q = QUESTIONS[QIDX.spend], a = answers[QIDX.spend];
+  var v = (a == null) ? null : q.values[a];
+  return (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
 }
 
 function estimateLeak(spendValue){
@@ -509,7 +527,7 @@ function buildPayload(firstName, email, answers, computed, profile, resultsUrl){
     weakest_pillar: computed.weakestPillar,
     profile_name: profile.name,
     profile_title: profile.title,
-    recommended_plan: PLANS[profile.recommended].name,
+    recommended_plan: PLANS[recommendPlan(answers)].name,
     results_url: resultsUrl,
     quiz_answers: answers.slice(),
     submitted_at: new Date().toISOString(),
@@ -529,8 +547,8 @@ function buildResultsEmailHtml(firstName, computed, profile, resultsUrl){
 }
 
 if (typeof module !== 'undefined' && module.exports){
-  module.exports = { QUESTIONS:QUESTIONS, PROFILES:PROFILES, PLANS:PLANS, QIDX:QIDX,
-    maxMaturityPoints:maxMaturityPoints, computeScores:computeScores, pickProfile:pickProfile,
+  module.exports = { QUESTIONS:QUESTIONS, PROFILES:PROFILES, PLANS:PLANS, QIDX:QIDX, SPEND_TO_PLAN:SPEND_TO_PLAN,
+    maxMaturityPoints:maxMaturityPoints, computeScores:computeScores, pickProfile:pickProfile, recommendPlan:recommendPlan,
     estimateLeak:estimateLeak, encodeToken:encodeToken, decodeToken:decodeToken,
     buildPayload:buildPayload, buildResultsEmailHtml:buildResultsEmailHtml, PILLAR_NAMES:PILLAR_NAMES };
 }
@@ -582,6 +600,8 @@ if (typeof document !== 'undefined'){ (function(){
     }, 320);
   }
 
+  function fromGateHasPhone(){ var el=$('gPhone'); return !!(el && el.value.replace(/\D/g,'').length>=10); }
+
   function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
   function submitGate(){
@@ -599,11 +619,11 @@ if (typeof document !== 'undefined'){ (function(){
   function finishAndRender(fromGate){
     var computed = computeScores(answers);
     var profile = pickProfile(computed.score);
+    var rec = recommendPlan(answers);
     var token = encodeToken({ s: computed.score, n: leadName, a: answers });
     var resultsUrl = location.origin + location.pathname + '?r=' + token;
 
     if (fromGate){
-      var payload = buildPayload(leadName, leadEmail, answers, computed, profile, resultsUrl);
       try {
         if (typeof window.tmsSubmitLead === 'function'){
           var qp = new URLSearchParams(location.search);
@@ -617,21 +637,21 @@ if (typeof document !== 'undefined'){ (function(){
             phone: ($('gPhone').value || '').trim(),
             contact_pref: pr ? pr.value : 'Email',
             ad_spend: answerText(answers, QIDX.spend),
-            package: 'Recommended: ' + PLANS[profile.recommended].name,
+            package: 'Recommended: ' + PLANS[rec].name + ' (' + PLANS[rec].price + '/mo)',
             quiz_score: computed.score,
-            details: 'Profile: ' + profile.name + ' | Weakest link: ' + (PILLAR_NAMES[computed.weakestPillar] || '') + ' | Business: ' + answerText(answers, 0) + ' | Runs ads: ' + answerText(answers, 2) + ' | Goal: ' + answerText(answers, QIDX.goal) + ' | Results: ' + resultsUrl,
+            details: 'Profile: ' + profile.name + ' | Weakest link: ' + (PILLAR_NAMES[computed.weakestPillar] || '') + ' | Business: ' + answerText(answers, 0) + ' | Runs ads: ' + answerText(answers, 2) + ' | Goal: ' + answerText(answers, QIDX.goal) + ' | Free audit: claimed | Appetite: ' + answerText(answers, 13) + ' | Results: ' + resultsUrl,
             tracking: trk.join(' | ')
           });
         }
       } catch(err) {}
       try { history.replaceState(null, '', '?r=' + token); } catch(err) {}
     }
-    renderResults(computed, profile);
+    renderResults(computed, profile, rec);
     show('screen-results');
-    track('results_view', { score: computed.score, profile: profile.name });
+    track('results_view', { score: computed.score, profile: profile.name, plan: PLANS[rec].name });
   }
 
-  function renderResults(computed, profile){
+  function renderResults(computed, profile, rec){
     var arc = $('gaugeArc');
     var circ = 326.7;
     setTimeout(function(){ arc.style.strokeDashoffset = String(circ - (computed.score/100)*circ); }, 80);
@@ -645,9 +665,11 @@ if (typeof document !== 'undefined'){ (function(){
     } else { $('goalMirror').style.display = 'none'; }
 
     $('profileHook').innerHTML = profile.hook;
+    if (!fromGateHasPhone()){ $('bonusNext').innerHTML = 'Want it faster? <a href="' + CONFIG.CHECKOUT_TEACHING.replace("teaching",["teaching","club","allin"][rec]) + '" style="color:var(--go-dark);font-weight:600">Send us your number and we\'ll text you to set it up →</a>'; }
 
     var weakKey = computed.weakestPillar;
-    $('weakName').textContent = PILLAR_NAMES[weakKey] || '';
+    var weakName = PILLAR_NAMES[weakKey] || '';
+    $('weakName').textContent = weakName;
     var detail = PILLAR_DETAILS[weakKey] || '';
     var leak = estimateLeak(answerValue(answers, QIDX.spend));
     if (leak){
@@ -668,11 +690,11 @@ if (typeof document !== 'undefined'){ (function(){
       $('urgencyLine').style.display = 'block';
     }
 
-    var plan = PLANS[profile.recommended];
+    var plan = PLANS[rec];
     $('planName').textContent = plan.name;
     $('planPrice').innerHTML = plan.price + '<span>' + plan.period + '</span>';
     $('planNote').textContent = plan.note;
-    $('planWhy').innerHTML = '<strong>Why this fits your score:</strong> ' + profile.why;
+    $('planWhy').innerHTML = '<strong>Why this fits you:</strong> ' + plan.why + (weakName ? ' For you, that\'s your <strong>' + weakName.toLowerCase() + '</strong>.' : '');
     var pf = $('planFeats'); pf.innerHTML = '';
     plan.features.forEach(function(f){
       var li = document.createElement('li'); li.textContent = f; pf.appendChild(li);
@@ -685,12 +707,15 @@ if (typeof document !== 'undefined'){ (function(){
     $('stickyBtn').href = ctaUrl;
     $('stickyTxt').textContent = 'Recommended: ' + plan.name;
 
-    var spend = answerValue(answers, QIDX.spend);
     var alt = $('altStrip');
-    if (spend === '50kplus' || spend === '20to50k'){
-      alt.innerHTML = '<strong>Spending $20k+/mo and want it handled?</strong> All-In is our full agency tier — media buying, creative, and strategy, done with you. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for All-In →</a>';
-      alt.style.display = 'block';
+    if (rec === 0){
+      alt.innerHTML = '<strong>Rather have us run it with you?</strong> The Growth Club ($3,000/mo) adds ads management, a custom dashboard, and creative. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
+    } else if (rec === 1){
+      alt.innerHTML = '<strong>Want it fully handled?</strong> Full Agency ($15,000/mo + 10% of spend) is our all-in tier for $30k+/mo accounts. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for All-In →</a>';
+    } else {
+      alt.innerHTML = '<strong>Prefer to keep a hand on the wheel?</strong> The Growth Club ($3,000/mo) runs your ads with you. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
     }
+    alt.style.display = 'block';
 
     if ('IntersectionObserver' in window){
       var io = new IntersectionObserver(function(entries){
@@ -722,10 +747,6 @@ if (typeof document !== 'undefined'){ (function(){
   });
   $('gateBtn').addEventListener('click', submitGate);
   $('gEmail').addEventListener('keydown', function(ev){ if (ev.key === 'Enter') submitGate(); });
-
-  document.querySelectorAll('a[href="REPLACE_ME_HOMEPAGE_URL"], a[href^="REPLACE_ME_HOMEPAGE_URL#"]').forEach(function(a){
-    a.href = a.getAttribute('href').replace('REPLACE_ME_HOMEPAGE_URL', CONFIG.HOMEPAGE_URL);
-  });
 
   /* Deep-link return path */
   var params = new URLSearchParams(location.search);
