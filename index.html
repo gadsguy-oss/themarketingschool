@@ -657,13 +657,6 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
 </footer>
 
 <script>
-var observer = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if (e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.').forEach(function(el){ observer.observe(el); });
-
 document.querySelectorAll('.faq-q').forEach(function(q){
   q.addEventListener('click', function(){
     var item = q.closest('.faq-item');
