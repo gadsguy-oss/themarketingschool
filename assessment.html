@@ -23,7 +23,7 @@
 <script src="/lead-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0A2342; --slate:#3D4A5C; --paper:#F7F6F2; --surface:#FFFFFF;
@@ -134,11 +134,63 @@ h1 em{font-style:italic;color:var(--brass);font-weight:500}
 .sticky-cta .btn{padding:11px 20px;font-size:13.5px}
 @media (max-width:560px){.sticky-cta .s-txt{display:none}.sticky-cta{justify-content:center}}
 footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:center;font-size:12px;color:var(--slate);border-top:1px solid var(--border);margin-top:40px}
+
+/* ===================== DIRECT-RESPONSE THEME (overrides) ===================== */
+:root{--ink:#0A2342;--ink-deep:#061830;--gold:#FFC62E;--brass:#9A7424;--paper:#FFFFFF;--mist:#EEF2F7;--slate:#2C3A4E;
+  --display:'Anton', Impact, 'Arial Narrow Bold', sans-serif;--sans:'Manrope', -apple-system, 'Segoe UI', sans-serif;--serif:var(--display)}
+body{font-family:var(--sans);background:var(--mist);color:var(--slate)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.topbar{background:#fff;border-bottom:3px solid var(--ink)}
+.topbar a{font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.02em;color:var(--ink)}
+.progress-bar{background:#fff;border-bottom:3px solid var(--ink)}
+.progress-label{letter-spacing:0;text-transform:none;font-weight:800}
+.progress-track{height:10px;border:2px solid var(--ink);border-radius:2px;background:#fff}
+.progress-fill{background:var(--gold)}
+h1,.q-text,.gate-card h2,.score-head h2,.plan-card h3,.weak-box h3,.bonus h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-style:normal;letter-spacing:.005em;line-height:.95}
+h1{font-size:clamp(2.8rem,8vw,4.6rem)}
+.marker{position:relative;display:inline-block;color:var(--ink);padding:0 .1em;z-index:0}
+.marker::before{content:"";position:absolute;inset:.08em -.04em .02em;background:var(--gold);transform:skew(-6deg) rotate(-1.5deg);z-index:-1}
+.intro-eyebrow{font-size:14px;letter-spacing:0;text-transform:none;font-weight:800;color:var(--ink);background:var(--gold);border:2px solid var(--ink);border-radius:3px;padding:6px 12px}
+.intro-points div{border:2px solid var(--ink);border-radius:3px}
+.brass-rule{display:none}
+.btn{font-family:var(--sans);font-weight:800;font-size:16px;border-radius:4px;border:3px solid var(--ink);transition:transform .12s,box-shadow .12s}
+.btn-go{background:var(--gold);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn-go:hover{background:var(--gold);transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn-ink{background:#fff;color:var(--ink)}
+.q-section{letter-spacing:0;text-transform:none;font-weight:800;font-size:14px;color:var(--brass)}
+.q-text{font-size:clamp(1.9rem,5.5vw,2.8rem);color:var(--ink)}
+.opt{border:3px solid var(--ink);border-radius:4px;font-weight:700;color:var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .1s,box-shadow .1s,background .1s}
+.opt:hover{border-color:var(--ink);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.opt.sel{background:var(--gold);border-color:var(--ink);color:var(--ink)}
+.gate-card,.plan-card{border:3px solid var(--ink);border-radius:4px;box-shadow:8px 8px 0 var(--ink)}
+.plan-card{box-shadow:8px 8px 0 var(--gold)}
+.gate-card h2{font-size:2.4rem}
+.gate-field input,.contact-pref span{border:2px solid var(--ink);border-radius:3px;background:#fff}
+.contact-pref input:checked+span{background:var(--gold);border-color:var(--ink)}
+.score-head .kicker,.weak-box .wk,.bonus .bk,.plan-rec{letter-spacing:0;text-transform:none;font-weight:800;font-size:14px}
+.score-head h2{font-size:clamp(2.2rem,6vw,3.2rem);color:var(--ink)}
+.profile-title{font-family:var(--sans);font-style:normal;font-weight:700}
+.goal-mirror{border-left:10px solid var(--gold);border-top:2px solid var(--ink);border-right:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.hook,.gap-card,.alt-strip{border:2px solid var(--ink);border-radius:3px}
+.gap-card h4{font-weight:800}
+.weak-box{background:var(--ink-deep);border-radius:4px;border:3px solid var(--ink)}
+.weak-box .wk{color:var(--gold)}
+.weak-box h3{font-size:2rem;color:#fff}
+.bonus{background:var(--gold);border:3px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--ink)}
+.bonus .bk{color:var(--ink)}
+.bonus h3{font-size:1.9rem;color:var(--ink)}
+.bonus p{color:var(--ink)}
+.plan-rec{background:var(--gold);color:var(--ink);border:2px solid var(--ink);border-radius:3px}
+.plan-card h3{font-size:2.2rem}
+.plan-price{font-family:var(--display);font-size:3rem}
+.plan-feats li::before{color:var(--ink);font-weight:800}
+.urgency{border:2px solid var(--ink);background:#fff}
+.sticky-cta{border-top:3px solid var(--ink)}
 </style>
 </head>
 <body>
 
-<div class="topbar"><a href="/">The <em>Marketing</em> School</a></div>
+<div class="topbar"><a href="/">The Marketing School</a></div>
 
 <div class="progress-bar" id="progressBar">
   <div class="progress-inner">
@@ -151,8 +203,8 @@ footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:cen
 <!-- INTRO -->
 <section class="screen active" id="screen-intro">
   <div class="wrap">
-    <span class="intro-eyebrow">Free · 3 minutes · + free ad account audit</span>
-    <h1>What's your <em>Ad Account Score?</em></h1>
+    <span class="intro-eyebrow">Free, 3 minutes, and you get a free ad account audit</span>
+    <h1>What's your ad account <span class="marker">score?</span></h1>
     <p class="intro-sub">Most operators can't say exactly where their ad spend is leaking. This diagnosis scores your acquisition machine, names your weakest link, and shows you what to fix first.</p>
     <div class="intro-points">
       <div><strong>Your score out of 100</strong> — benchmarked across creative, tracking, channels, follow-up, and testing.</div>
@@ -378,15 +430,15 @@ var PILLAR_DETAILS = {
 var PLANS = [
   {name:"The Marketing School — Teaching", price:"$997", period:"/month", note:"Cancel anytime",
    cta:"Join the School", ctaKey:"CHECKOUT_TEACHING",
-   features:["Monthly account audit","Creative direction + briefs","Free AI marketing training","Community + live calls","Full curriculum library"],
+   features:["Free AI marketing training","Monthly account audit","Creative direction + briefs","Community + live calls","Full curriculum library"],
    why:"At your spend, the highest-return move is learning to run the machine yourself. <strong>Teaching</strong> starts with an audit of your actual account, then the curriculum and live calls walk you through the fixes in the right order — starting with your weakest link."},
   {name:"The Growth Club", price:"$3,000", period:"/month", note:"90-day start, then month to month",
    cta:"Join the Club", ctaKey:"CHECKOUT_CLUB",
-   features:["Everything in Teaching","Ads management (Meta + Google)","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
+   features:["Free AI marketing training","Everything in Teaching","Ads management (Meta + Google)","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
    why:"At your spend, you shouldn't be doing this alone — and you don't need a full agency yet. <strong>The Growth Club</strong> runs your ads with you: we manage the account, keep fresh creative flowing, build a dashboard so you see every number, and work on your weakest link in the weekly sessions."},
   {name:"Full Agency — All-In", price:"$15,000", period:"/month", note:"+ 10% of ad spend · 90-day minimum",
    cta:"Apply for All-In", ctaKey:"APPLY_ALLIN",
-   features:["Everything in Growth Club","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
+   features:["Free AI marketing training","Everything in Growth Club","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
    why:"At your spend, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."}
 ];
 
