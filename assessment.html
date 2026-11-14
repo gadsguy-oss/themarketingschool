@@ -23,7 +23,7 @@
 <script src="/lead-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0A2342; --slate:#3D4A5C; --paper:#F7F6F2; --surface:#FFFFFF;
@@ -135,57 +135,48 @@ h1 em{font-style:italic;color:var(--brass);font-weight:500}
 @media (max-width:560px){.sticky-cta .s-txt{display:none}.sticky-cta{justify-content:center}}
 footer{padding:34px 20px calc(34px + env(safe-area-inset-bottom));text-align:center;font-size:12px;color:var(--slate);border-top:1px solid var(--border);margin-top:40px}
 
-/* ===================== DIRECT-RESPONSE THEME (overrides) ===================== */
-:root{--ink:#0A2342;--ink-deep:#061830;--gold:#FFC62E;--brass:#9A7424;--paper:#FFFFFF;--mist:#EEF2F7;--slate:#2C3A4E;
-  --display:'Anton', Impact, 'Arial Narrow Bold', sans-serif;--sans:'Manrope', -apple-system, 'Segoe UI', sans-serif;--serif:var(--display)}
-body{font-family:var(--sans);background:var(--mist);color:var(--slate)}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.topbar{background:#fff;border-bottom:3px solid var(--ink)}
-.topbar a{font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.02em;color:var(--ink)}
-.progress-bar{background:#fff;border-bottom:3px solid var(--ink)}
-.progress-label{letter-spacing:0;text-transform:none;font-weight:800}
-.progress-track{height:10px;border:2px solid var(--ink);border-radius:2px;background:#fff}
+/* ===================== BOLD OPERATOR THEME ===================== */
+:root{--ink:#0A2342;--night:#06121F;--night2:#0B1D33;--gold:#F2B630;--gold-hi:#FFCB52;--paper:#FFFFFF;--mist:#F3F5F8;--line:#D5DCE5;--slate:#334256;--muted:#66738A;
+  --sans:'Archivo', -apple-system, 'Segoe UI', sans-serif;--serif:var(--sans)}
+body{font-family:var(--sans);background:var(--mist);color:var(--slate);font-feature-settings:"tnum" 1}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.topbar{background:var(--night)}
+.topbar a{font-weight:800;font-stretch:88%;font-size:18px;letter-spacing:-.02em;text-transform:none;color:#fff}
+.progress-bar{background:#fff;border-bottom:1px solid var(--line)}
+.progress-label{letter-spacing:0;text-transform:none;font-weight:700}
+.progress-track{height:6px;background:var(--line)}
 .progress-fill{background:var(--gold)}
-h1,.q-text,.gate-card h2,.score-head h2,.plan-card h3,.weak-box h3,.bonus h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-style:normal;letter-spacing:.005em;line-height:.95}
-h1{font-size:clamp(2.8rem,8vw,4.6rem)}
-.marker{position:relative;display:inline-block;color:var(--ink);padding:0 .1em;z-index:0}
-.marker::before{content:"";position:absolute;inset:.08em -.04em .02em;background:var(--gold);transform:skew(-6deg) rotate(-1.5deg);z-index:-1}
-.intro-eyebrow{font-size:14px;letter-spacing:0;text-transform:none;font-weight:800;color:var(--ink);background:var(--gold);border:2px solid var(--ink);border-radius:3px;padding:6px 12px}
-.intro-points div{border:2px solid var(--ink);border-radius:3px}
+h1,.q-text,.gate-card h2,.score-head h2,.plan-card h3,.weak-box h3,.bonus h3{font-family:var(--sans);font-style:normal;font-weight:800;font-stretch:88%;letter-spacing:-.035em;text-transform:none;line-height:1.02}
+h1 em{font-style:normal;color:inherit}
+h1{font-size:clamp(2.4rem,6vw,3.6rem)}
+.intro-eyebrow{font-size:14px;letter-spacing:0;text-transform:none;font-weight:700;color:var(--ink);background:#FFF6DF;border:1px solid #F0D58C;border-radius:99px}
+.intro-points div{border:1px solid var(--line);border-radius:8px}
 .brass-rule{display:none}
-.btn{font-family:var(--sans);font-weight:800;font-size:16px;border-radius:4px;border:3px solid var(--ink);transition:transform .12s,box-shadow .12s}
-.btn-go{background:var(--gold);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
-.btn-go:hover{background:var(--gold);transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
-.btn-ink{background:#fff;color:var(--ink)}
-.q-section{letter-spacing:0;text-transform:none;font-weight:800;font-size:14px;color:var(--brass)}
-.q-text{font-size:clamp(1.9rem,5.5vw,2.8rem);color:var(--ink)}
-.opt{border:3px solid var(--ink);border-radius:4px;font-weight:700;color:var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .1s,box-shadow .1s,background .1s}
-.opt:hover{border-color:var(--ink);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
-.opt.sel{background:var(--gold);border-color:var(--ink);color:var(--ink)}
-.gate-card,.plan-card{border:3px solid var(--ink);border-radius:4px;box-shadow:8px 8px 0 var(--ink)}
-.plan-card{box-shadow:8px 8px 0 var(--gold)}
-.gate-card h2{font-size:2.4rem}
-.gate-field input,.contact-pref span{border:2px solid var(--ink);border-radius:3px;background:#fff}
-.contact-pref input:checked+span{background:var(--gold);border-color:var(--ink)}
-.score-head .kicker,.weak-box .wk,.bonus .bk,.plan-rec{letter-spacing:0;text-transform:none;font-weight:800;font-size:14px}
-.score-head h2{font-size:clamp(2.2rem,6vw,3.2rem);color:var(--ink)}
-.profile-title{font-family:var(--sans);font-style:normal;font-weight:700}
-.goal-mirror{border-left:10px solid var(--gold);border-top:2px solid var(--ink);border-right:2px solid var(--ink);border-bottom:2px solid var(--ink)}
-.hook,.gap-card,.alt-strip{border:2px solid var(--ink);border-radius:3px}
-.gap-card h4{font-weight:800}
-.weak-box{background:var(--ink-deep);border-radius:4px;border:3px solid var(--ink)}
+.btn{font-family:var(--sans);font-weight:700;font-size:16px;border-radius:6px;border:1px solid transparent}
+.btn-go{background:var(--gold);color:var(--night);border-color:var(--gold)}
+.btn-go:hover{background:var(--gold-hi);transform:none}
+.btn-ink{border:1px solid var(--ink);color:var(--ink)}
+.q-section{letter-spacing:0;text-transform:none;font-weight:700;font-size:14px;color:var(--muted)}
+.q-text{font-size:clamp(1.7rem,4.6vw,2.4rem);color:var(--ink)}
+.opt{border:1px solid var(--line);border-radius:8px;font-weight:600;color:var(--ink)}
+.opt:hover{border-color:var(--ink)}
+.opt.sel{background:#FFF6DF;border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.gate-card,.plan-card{border-radius:10px}
+.plan-card{border:2px solid var(--gold)}
+.gate-field input,.contact-pref span{border:1px solid var(--line);border-radius:6px;background:#fff}
+.contact-pref input:checked+span{background:#FFF6DF;border-color:var(--gold)}
+.score-head .kicker,.weak-box .wk,.bonus .bk,.plan-rec{letter-spacing:0;text-transform:none;font-weight:700;font-size:14px}
+.score-head h2{color:var(--ink)}
+.profile-title{font-family:var(--sans);font-style:normal;font-weight:600}
+.weak-box{background:var(--night);border-radius:10px}
 .weak-box .wk{color:var(--gold)}
-.weak-box h3{font-size:2rem;color:#fff}
-.bonus{background:var(--gold);border:3px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--ink)}
-.bonus .bk{color:var(--ink)}
-.bonus h3{font-size:1.9rem;color:var(--ink)}
-.bonus p{color:var(--ink)}
-.plan-rec{background:var(--gold);color:var(--ink);border:2px solid var(--ink);border-radius:3px}
-.plan-card h3{font-size:2.2rem}
-.plan-price{font-family:var(--display);font-size:3rem}
-.plan-feats li::before{color:var(--ink);font-weight:800}
-.urgency{border:2px solid var(--ink);background:#fff}
-.sticky-cta{border-top:3px solid var(--ink)}
+.bonus{background:#FFF6DF;border:1px solid #F0D58C;border-left:4px solid var(--gold);border-radius:8px}
+.bonus .bk{color:#8A6516}
+.bonus h3{font-size:1.5rem;color:var(--ink)}
+.plan-rec{background:#FFF6DF;color:#8A6516}
+.plan-price{font-family:var(--sans);font-weight:800;font-stretch:80%;letter-spacing:-.04em;font-size:3rem}
+.hook,.gap-card,.alt-strip,.goal-mirror{border-radius:8px}
+.goal-mirror{border-left-color:var(--gold)}
 </style>
 </head>
 <body>
@@ -203,8 +194,8 @@ h1{font-size:clamp(2.8rem,8vw,4.6rem)}
 <!-- INTRO -->
 <section class="screen active" id="screen-intro">
   <div class="wrap">
-    <span class="intro-eyebrow">Free, 3 minutes, and you get a free ad account audit</span>
-    <h1>What's your ad account <span class="marker">score?</span></h1>
+    <span class="intro-eyebrow">Free, 3 minutes, plus a free ad account audit</span>
+    <h1>What's your ad account score?</h1>
     <p class="intro-sub">Most operators can't say exactly where their ad spend is leaking. This diagnosis scores your acquisition machine, names your weakest link, and shows you what to fix first.</p>
     <div class="intro-points">
       <div><strong>Your score out of 100</strong> — benchmarked across creative, tracking, channels, follow-up, and testing.</div>
@@ -272,9 +263,9 @@ h1{font-size:clamp(2.8rem,8vw,4.6rem)}
     <div class="score-block">
       <svg class="gauge" viewBox="0 0 120 120" role="img" aria-label="Score gauge">
         <circle cx="60" cy="60" r="52" fill="none" stroke="#DCE1E8" stroke-width="9"/>
-        <circle id="gaugeArc" cx="60" cy="60" r="52" fill="none" stroke="#B58A2F" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s ease"/>
-        <text id="gaugeNum" x="60" y="66" text-anchor="middle" font-family="'Source Serif 4',Georgia,serif" font-size="30" font-weight="600" fill="#0A2342">0</text>
-        <text x="60" y="84" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#3D4A5C">/ 100</text>
+        <circle id="gaugeArc" cx="60" cy="60" r="52" fill="none" stroke="#F2B630" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s ease"/>
+        <text id="gaugeNum" x="60" y="66" text-anchor="middle" font-family="Archivo,sans-serif" font-size="30" font-weight="600" fill="#0A2342">0</text>
+        <text x="60" y="84" text-anchor="middle" font-family="Archivo,sans-serif" font-size="10" fill="#3D4A5C">/ 100</text>
       </svg>
       <div class="score-head">
         <div class="kicker">Your ad account score</div>
