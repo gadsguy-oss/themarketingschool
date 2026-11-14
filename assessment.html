@@ -20,6 +20,8 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0A2342">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script src="/lead-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -328,6 +330,7 @@ function track(eventName, params){
   var p = params || {};
   try { if (typeof gtag === 'function') { gtag('event', eventName, p); } } catch(e) {}
   try { if (typeof posthog !== 'undefined' && posthog.capture) { posthog.capture(eventName, p); } } catch(e) {}
+  try { if (typeof window.va === 'function') { var d = {}; for (var k in p) { if (typeof p[k] !== 'object') d[k] = p[k]; } window.va('event', { name: eventName, data: d }); } } catch(e) {}
 }
 
 /* ============ Questions: seg (routing), maturity (visible score), intent (hidden) ============ */

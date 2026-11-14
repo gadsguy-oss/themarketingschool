@@ -20,6 +20,8 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0A2342">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script src="/lead-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -815,7 +817,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     if(plan){ for(var i=0;i<planSel.options.length;i++){ if(planSel.options[i].text===plan||planSel.options[i].text.toLowerCase().indexOf(plan.toLowerCase())===0){ planSel.selectedIndex=i; } } }
     overlay.classList.add('open'); document.body.style.overflow='hidden';
     setTimeout(function(){ document.getElementById('lfName').focus(); },50);
-    try{ if(typeof gtag==='function') gtag('event','lead_form_open',{plan:planSel.value}); }catch(e){}
+    try{ if(typeof gtag==='function') gtag('event','lead_form_open',{plan:planSel.value}); }catch(e){} try{ window.va&&window.va('event',{name:'lead_form_open',data:{plan:planSel.value}}); }catch(e){}
   }
   function closeLead(){ overlay.classList.remove('open'); document.body.style.overflow=''; if(location.hash==='#apply') history.replaceState(null,'',location.pathname+location.search); }
   document.querySelectorAll('[data-plan], a[href="#apply"]').forEach(function(a){
@@ -842,7 +844,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     function done(){
       document.getElementById('leadDoneName').textContent=d.name.split(' ')[0];
       form.style.display='none'; document.getElementById('leadDone').style.display='block';
-      try{ if(typeof window.tmsConversion==='function') window.tmsConversion('contact',{plan:d.package}); }catch(e){}
+      try{ if(typeof window.tmsConversion==='function') window.tmsConversion('contact',{plan:d.package}); }catch(e){} try{ window.va&&window.va('event',{name:'package_lead',data:{plan:d.package,spend:d.ad_spend}}); }catch(e){}
     }
     var trk=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].filter(function(k){return d[k];}).map(function(k){return k+'='+d[k];});
     trk.push('page='+d.page); if(d.referrer) trk.push('referrer='+d.referrer);
