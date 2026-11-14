@@ -202,6 +202,7 @@ h1{font-size:clamp(2.4rem,6vw,3.6rem)}
     <div class="intro-points">
       <div><strong>Your score out of 100</strong> — benchmarked across creative, tracking, channels, follow-up, and testing.</div>
       <div><strong>Your weakest link, named</strong> — the one thing quietly inflating your cost per customer.</div>
+      <div><strong>Not running ads yet?</strong> Pick "just getting started" and you'll get a launch readiness score and a first-ads plan instead.</div>
       <div><strong>A clear next step</strong> — matched to where you actually are, not a one-size pitch.</div>
     </div>
     <div class="bonus" style="max-width:520px;margin-top:18px">
@@ -270,7 +271,7 @@ h1{font-size:clamp(2.4rem,6vw,3.6rem)}
         <text x="60" y="84" text-anchor="middle" font-family="Archivo,sans-serif" font-size="10" fill="#3D4A5C">/ 100</text>
       </svg>
       <div class="score-head">
-        <div class="kicker">Your ad account score</div>
+        <div class="kicker" id="scoreKicker">Your ad account score</div>
         <h2 id="profileName"></h2>
         <div class="profile-title" id="profileTitle"></div>
       </div>
@@ -336,59 +337,79 @@ function track(eventName, params){
 /* ============ Questions: seg (routing), maturity (visible score), intent (hidden) ============ */
 var QUESTIONS = [
   {section:"About you", kind:"seg", key:"business_type",
-   text:"What kind of business are you running ads for?",
+   text:"What kind of business do you run?",
    options:["DTC / e-commerce","Info products or coaching","SaaS or software","Local or professional services"],
    values:["dtc","info","saas","local"]},
 
   {section:"About you", kind:"seg", key:"ad_spend",
    text:"What's your monthly ad spend right now?",
-   options:["Under $5k","$5k – $30k","$30k – $100k","$100k+"],
-   values:["under5k","5to30k","30to100k","100kplus"]},
+   options:["Not running ads yet — I'm just getting started","Under $5k","$5k – $30k","$30k – $100k","$100k+"],
+   values:["none","under5k","5to30k","30to100k","100kplus"]},
 
-  {section:"About you", kind:"seg", key:"who_runs",
+  {section:"About you", kind:"seg", path:"existing", key:"who_runs",
    text:"Who runs your ads today?",
-   options:["I do","An in-house media buyer","An agency","Nobody — mostly organic so far"],
+   options:["I do","An in-house media buyer","An agency","Nobody yet"],
    values:["self","inhouse","agency","organic"]},
 
   {section:"About you", kind:"seg", key:"top_goal",
    text:"What's your #1 goal for the next 90 days?",
-   options:["Lower my cost per customer","Scale spend without losing efficiency","Fresh creative that actually converts","Stop guessing — get a real system"],
-   values:["lower_cpa","scale","creative","system"]},
+   options:["Launch my first ads the right way","Lower my cost per customer","Scale spend without losing efficiency","Fresh creative that actually converts","Stop guessing — get a real system"],
+   values:["launch","lower_cpa","scale","creative","system"]},
 
-  {section:"Your machine", kind:"maturity", pillar:"creative",
+  {section:"Your machine", kind:"maturity", path:"existing", pillar:"creative",
    text:"How many NEW ad creatives do you launch per month?",
    options:["None — same ads for months","1–2","3–8","9 or more"],
    scores:[0,1,3,5]},
 
-  {section:"Your machine", kind:"maturity", pillar:"creative",
+  {section:"Your machine", kind:"maturity", path:"existing", pillar:"creative",
    text:"How long has your current best-performing ad been running?",
    options:["I honestly don't know","6+ months — it's tired","2–6 months","Under 2 months — we rotate winners constantly"],
    scores:[0,1,3,5]},
 
-  {section:"Your machine", kind:"maturity", pillar:"tracking",
+  {section:"Your machine", kind:"maturity", path:"existing", pillar:"tracking",
    text:"Do you know your cost to acquire a customer — to the dollar?",
    options:["No idea","A rough guess","Within a range I trust","To the dollar, reviewed weekly"],
    scores:[0,1,3,5]},
 
-  {section:"Your machine", kind:"maturity", pillar:"followup",
+  {section:"Your machine", kind:"maturity", path:"existing", pillar:"followup",
    text:"What happens after someone clicks but doesn't buy?",
    options:["Nothing","Basic retargeting only","We capture emails but barely use them","Full retargeting + email/SMS follow-up"],
    scores:[0,1,3,5]},
 
-  {section:"What it's costing you", kind:"maturity", pillar:"channels",
+  {section:"What it's costing you", kind:"maturity", path:"existing", pillar:"channels",
    text:"If your #1 traffic source disappeared tomorrow, what happens?",
    options:["Business is in serious trouble","A big hit, we'd scramble","We'd absorb it","We run multiple channels — we'd be fine"],
    scores:[0,1,3,5]},
 
-  {section:"What it's costing you", kind:"maturity", pillar:"strategy",
+  {section:"What it's costing you", kind:"maturity", path:"existing", pillar:"strategy",
    text:"How do you decide which ads to kill and which to scale?",
    options:["Gut feel","Whatever the platform suggests","ROAS at a set window","A defined testing system with thresholds"],
    scores:[0,1,3,5]},
 
-  {section:"What it's costing you", kind:"maturity", pillar:"pages",
+  {section:"What it's costing you", kind:"maturity", path:"existing", pillar:"pages",
    text:"How often do you test or change your landing experience?",
    options:["Never — one page since launch","Rarely","Sometimes, when things dip","We test regularly"],
    scores:[0,1,3,5]},
+
+  {section:"Getting started", kind:"maturity", path:"new", pillar:"site",
+   text:"Do you have a website or landing page ready to send ad traffic to?",
+   options:["Not yet","A basic site — not built to convert","A landing page for my offer","A tested page that already converts"],
+   scores:[0,1,3,5]},
+
+  {section:"Getting started", kind:"maturity", path:"new", pillar:"offer",
+   text:"How clear are you on who your ideal customer is and what you're offering them?",
+   options:["Still figuring it out","I have a general idea","Clear customer and offer","Clear — and I've already sold to them"],
+   scores:[0,1,3,5]},
+
+  {section:"Getting started", kind:"maturity", path:"new", pillar:"setup",
+   text:"Do you have ad accounts and tracking (like the Meta pixel or Google tag) set up?",
+   options:["Nothing set up yet","An account, no tracking","Accounts and some tracking","Fully set up and tested"],
+   scores:[0,1,3,5]},
+
+  {section:"Getting started", kind:"seg", path:"new", key:"launch_budget",
+   text:"What could you put into ads per month to start?",
+   options:["Under $1k","$1k – $3k","$3k – $5k","$5k+"],
+   values:["lt1k","1to3k","3to5k","5kplus"]},
 
   {section:"Are you ready?", kind:"intent",
    text:"Have you invested in marketing education, coaching, or an agency before?",
@@ -401,18 +422,27 @@ var QUESTIONS = [
    scores:[1,2,3,5]},
 
   {section:"Are you ready?", kind:"intent",
+   key:"appetite",
    text:"If the diagnosis shows a clear fix, what's your appetite?",
    options:["Just want the free roadmap","Around $1k/mo to learn it right","A few thousand/mo to have it run with me","Whatever it takes — I want it handled"],
    scores:[1,2,3,5]}
 ];
 
 var QIDX = { spend:1, goal:3 };
+function qIndexByKey(k){ for (var i=0;i<QUESTIONS.length;i++){ if (QUESTIONS[i].key===k) return i; } return -1; }
+QIDX.appetite = qIndexByKey('appetite'); QIDX.budget = qIndexByKey('launch_budget');
+function quizPath(answers){ var a = answers[QIDX.spend]; return (a != null && QUESTIONS[QIDX.spend].values[a] === 'none') ? 'new' : 'existing'; }
+function applies(i, answers){ var p = QUESTIONS[i].path; return !p || p === quizPath(answers); }
 
 var PILLAR_NAMES = {
   creative:"Creative engine", tracking:"Tracking & attribution", followup:"Follow-up",
-  channels:"Channel mix", strategy:"Testing strategy", pages:"Landing experience"
+  channels:"Channel mix", strategy:"Testing strategy", pages:"Landing experience",
+  site:"Website & landing page", offer:"Offer & ideal customer", setup:"Ad accounts & tracking"
 };
 var PILLAR_DETAILS = {
+  site:"Ads can only be as good as where they land. Before you spend, you need one page built to turn a click into a lead or a sale.",
+  offer:"The fastest way to waste a first ad budget is an unclear offer. Nail who it's for and why they should act now, and every dollar works harder.",
+  setup:"Without the pixel and conversion tracking in place from day one, the platforms can't learn who your buyers are — and you can't tell what's working.",
   creative:"You're not feeding the machine enough new ads. Winners fatigue, CPMs creep, and every tired creative quietly raises your cost per customer.",
   tracking:"You can't lower a number you can't see. Without ground-truth CAC, every scale and kill decision is a coin flip made with real money.",
   followup:"Most clicks don't buy on day one. Without retargeting and follow-up working together, you're paying full price for traffic and keeping a fraction of its value.",
@@ -486,13 +516,30 @@ var PROFILES = [
    ]}
 ];
 
+var NEW_PROFILES = [
+  {name:"Pre-Launch", title:"Get the foundation right before you spend a dollar.",
+   hook:"<strong>Smart move checking first.</strong> Most new businesses burn their first ad budget learning lessons that cost nothing to avoid: no page built to convert, no tracking, an offer that isn't sharp yet. <strong>You get to skip that.</strong>",
+   gaps:[
+     {title:"Build the landing page first", detail:"One page, one offer, one action — built before the first ad goes live."},
+     {title:"Install tracking on day one", detail:"Pixel and conversion events in place so the platforms learn from your first dollar."},
+     {title:"Start small on one channel", detail:"Prove the offer on the channel where your buyers already are, then expand."}
+   ]},
+  {name:"Launch-Ready", title:"You're ready to run your first ads — the right way.",
+   hook:"<strong>You've done the groundwork.</strong> You know your customer, you have somewhere to send them, and you're ready to spend. <strong>Now it's about launching with a plan</strong> instead of boosting posts and hoping.",
+   gaps:[
+     {title:"Pick the right first channel", detail:"Where your buyers already spend time — not where everyone says you should be."},
+     {title:"Launch with a testing plan", detail:"Several angles from day one, with clear rules for what to kill and what to scale."},
+     {title:"Watch cost per customer from week one", detail:"Set your target number before you start so you know when it's working."}
+   ]}
+];
+
 var SPEND_MIDPOINTS = { under5k:3000, "5to30k":17500, "30to100k":65000, "100kplus":150000 };
 
 /* ============ Pure logic (Node-testable) ============ */
-function maxMaturityPoints(){
+function maxMaturityPoints(answers){
   var m = 0;
   for (var i=0;i<QUESTIONS.length;i++){
-    if (QUESTIONS[i].kind === "maturity"){ m += Math.max.apply(null, QUESTIONS[i].scores); }
+    if (QUESTIONS[i].kind === "maturity" && (!answers || applies(i, answers))){ m += Math.max.apply(null, QUESTIONS[i].scores); }
   }
   return m;
 }
@@ -501,7 +548,7 @@ function computeScores(answers){
   var mat = 0, intent = 0, pillars = {};
   for (var i=0;i<QUESTIONS.length;i++){
     var q = QUESTIONS[i], a = answers[i];
-    if (a == null) continue;
+    if (a == null || !applies(i, answers)) continue;
     if (q.kind === "maturity"){
       mat += q.scores[a];
       if (!(q.pillar in pillars)) pillars[q.pillar] = {pts:0, max:0};
@@ -511,7 +558,7 @@ function computeScores(answers){
       intent += q.scores[a];
     }
   }
-  var score = Math.round(mat / maxMaturityPoints() * 100);
+  var score = Math.round(mat / maxMaturityPoints(answers) * 100);
   var weakest = null, weakestRatio = 2;
   for (var p in pillars){
     var r = pillars[p].pts / pillars[p].max;
@@ -520,7 +567,10 @@ function computeScores(answers){
   return { score: score, intent: intent, pillars: pillars, weakestPillar: weakest };
 }
 
-function pickProfile(score){
+function pickProfile(score, answers){
+  if (answers && quizPath(answers) === 'new'){
+    return score >= 50 ? NEW_PROFILES[1] : NEW_PROFILES[0];
+  }
   for (var i=0;i<PROFILES.length;i++){
     if (score >= PROFILES[i].min && score <= PROFILES[i].max) return PROFILES[i];
   }
@@ -531,7 +581,15 @@ function recommendPlan(answers){
   var q = QUESTIONS[QIDX.spend], a = answers[QIDX.spend];
   var v = (a == null) ? null : q.values[a];
   /* Small spenders who only want to learn -> AI Ads Training */
-  if (v === 'under5k' && answers[13] === 0) return 3;
+  var app = answers[QIDX.appetite];
+  if (v === 'none'){
+    var bq = QUESTIONS[QIDX.budget], b = answers[QIDX.budget];
+    var bv = (b == null) ? null : bq.values[b];
+    if (bv === '5kplus') return 1;
+    if (app === 0 || bv === 'lt1k') return 3;
+    return 0;
+  }
+  if (v === 'under5k' && app === 0) return 3;
   return (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
 }
 
@@ -635,7 +693,9 @@ if (typeof document !== 'undefined'){ (function(){
       box.appendChild(b);
     });
     $('backBtn').style.visibility = current === 0 ? 'hidden' : 'visible';
-    var pct = Math.round(current / QUESTIONS.length * 100);
+    var tot = 0, done = 0;
+    for (var qi=0; qi<QUESTIONS.length; qi++){ if (applies(qi, answers)){ tot++; if (qi < current) done++; } }
+    var pct = Math.round(done / tot * 100);
     $('progressFill').style.width = pct + '%';
     $('progressPct').textContent = pct + '%';
     $('progressSection').textContent = q.section;
@@ -648,7 +708,9 @@ if (typeof document !== 'undefined'){ (function(){
     btn.classList.add('sel');
     track('quiz_answer', { question_index: current, answer_index: idx });
     setTimeout(function(){
-      if (current < QUESTIONS.length - 1){ current++; renderQuestion(); }
+      var nxt = current + 1;
+      while (nxt < QUESTIONS.length && !applies(nxt, answers)) nxt++;
+      if (nxt < QUESTIONS.length){ current = nxt; renderQuestion(); }
       else { track('gate_view', {}); show('screen-gate'); }
     }, 320);
   }
@@ -671,7 +733,7 @@ if (typeof document !== 'undefined'){ (function(){
 
   function finishAndRender(fromGate){
     var computed = computeScores(answers);
-    var profile = pickProfile(computed.score);
+    var profile = pickProfile(computed.score, answers);
     var rec = recommendPlan(answers);
     var token = encodeToken({ s: computed.score, n: leadName, a: answers });
     var resultsUrl = location.origin + location.pathname + '?r=' + token;
@@ -692,7 +754,7 @@ if (typeof document !== 'undefined'){ (function(){
             ad_spend: answerText(answers, QIDX.spend),
             package: 'Recommended: ' + PLANS[rec].name + ' (' + PLANS[rec].price + '/mo)',
             quiz_score: computed.score,
-            details: 'Profile: ' + profile.name + ' | Weakest link: ' + (PILLAR_NAMES[computed.weakestPillar] || '') + ' | Business: ' + answerText(answers, 0) + ' | Runs ads: ' + answerText(answers, 2) + ' | Goal: ' + answerText(answers, QIDX.goal) + ' | Free audit: claimed | Appetite: ' + answerText(answers, 13) + ' | Results: ' + resultsUrl,
+            details: 'Profile: ' + profile.name + ' | Weakest link: ' + (PILLAR_NAMES[computed.weakestPillar] || '') + ' | Business: ' + answerText(answers, 0) + ' | Runs ads: ' + answerText(answers, 2) + ' | Goal: ' + answerText(answers, QIDX.goal) + ' | Free audit: claimed | Path: ' + quizPath(answers) + (quizPath(answers)==='new' ? ' | Launch budget: ' + answerText(answers, QIDX.budget) : '') + ' | Appetite: ' + answerText(answers, QIDX.appetite) + ' | Results: ' + resultsUrl,
             tracking: trk.join(' | ')
           });
         }
@@ -709,6 +771,7 @@ if (typeof document !== 'undefined'){ (function(){
     var circ = 326.7;
     setTimeout(function(){ arc.style.strokeDashoffset = String(circ - (computed.score/100)*circ); }, 80);
     animateNumber($('gaugeNum'), computed.score);
+    if (quizPath(answers) === 'new'){ $('scoreKicker').textContent = 'Your launch readiness score'; }
     $('profileName').textContent = profile.name;
     $('profileTitle').textContent = profile.title;
 
@@ -798,7 +861,9 @@ if (typeof document !== 'undefined'){ (function(){
     current = 0; show('screen-quiz'); renderQuestion();
   });
   $('backBtn').addEventListener('click', function(){
-    if (current > 0){ current--; renderQuestion(); }
+    var prv = current - 1;
+    while (prv > 0 && !applies(prv, answers)) prv--;
+    if (prv >= 0){ current = prv; renderQuestion(); }
   });
   $('gateBtn').addEventListener('click', submitGate);
   $('gEmail').addEventListener('keydown', function(ev){ if (ev.key === 'Enter') submitGate(); });
