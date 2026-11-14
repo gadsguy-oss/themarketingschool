@@ -395,6 +395,31 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
 .contact-pref input:checked+span{background:#FFF6DF;border-color:var(--gold);color:var(--ink)}
 .lead-submit{border-radius:6px;font-weight:700}
 .lead-done .check{background:#FFF6DF;color:var(--ink)}
+
+/* worked-with + what-we-do */
+.proof{background:#fff;padding:90px 40px 30px}
+.proof-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:start}
+.proof-stats{list-style:none;display:grid;gap:22px}
+.proof-stats li{border-top:2px solid var(--ink);padding-top:12px;font-size:15px;color:var(--muted)}
+.proof-stats b{display:block;font-weight:800;font-stretch:80%;font-size:3.2rem;letter-spacing:-.04em;line-height:1;color:var(--ink);margin-bottom:4px}
+.proof h2{font-size:clamp(2rem,3.6vw,2.8rem);line-height:1.02;color:var(--ink);margin-bottom:22px}
+.cats{list-style:none;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.cats li{padding:16px 16px 16px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--slate)}
+.cats li:nth-child(odd){border-right:1px solid var(--line)}
+.cats li:nth-child(even){padding-left:20px}
+.cats strong{display:block;color:var(--ink);font-weight:700;font-size:16.5px}
+@media (max-width:880px){.proof-inner{grid-template-columns:1fr;gap:36px}.proof-stats{grid-template-columns:repeat(2,1fr);gap:16px}.proof-stats b{font-size:2.2rem}.proof{padding:70px 20px 20px}}
+@media (max-width:560px){.cats{grid-template-columns:1fr}.cats li:nth-child(odd){border-right:0}.cats li:nth-child(even){padding-left:0}}
+.services{background:var(--mist)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;border-top:2px solid var(--ink)}
+.svc{padding:26px 28px 28px 0;border-bottom:1px solid var(--line)}
+.svc:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+.svc h3{font-size:1.35rem;letter-spacing:-.02em;color:var(--ink);margin-bottom:6px}
+.svc p{font-size:15.5px}
+.svc .ch{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.svc .ch span{font-size:12.5px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px 10px}
+@media (max-width:880px){.svc-grid{grid-template-columns:1fr 1fr}.svc,.svc:not(:nth-child(3n+1)){padding:22px 20px 22px 0;border-left:0}.svc:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}}
+@media (max-width:560px){.svc-grid{grid-template-columns:1fr}.svc,.svc:nth-child(even){padding:20px 0;border-left:0}}
 </style>
 </head>
 <body>
@@ -440,6 +465,30 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
 <!-- HERO PHOTO -->
 <div class="hero-photo"><picture><source srcset="/images/hero-team.webp" type="image/webp"><img class="ph" src="/images/hero-team.jpg" width="1600" height="900" alt="Marketing team smiling while reviewing a rising ad performance dashboard" fetchpriority="high"></picture></div>
 
+
+<!-- WHO WE'VE WORKED WITH -->
+<section class="proof" id="experience">
+  <div class="proof-inner">
+    <ul class="proof-stats">
+      <li><b>$200MM+</b>in ad spend managed</li>
+      <li><b>150+</b>businesses served</li>
+    </ul>
+    <div>
+      <h2>Who we've worked with</h2>
+      <ul class="cats">
+        <li><strong>Financial services &amp; investing</strong>Real estate funds, retirement, wealth</li>
+        <li><strong>Coaching &amp; info products</strong>Courses, personal development, events</li>
+        <li><strong>Fashion &amp; outdoor apparel</strong>National DTC and retail brands</li>
+        <li><strong>Food &amp; specialty e-commerce</strong>Gourmet, gifting, subscriptions</li>
+        <li><strong>Health &amp; wellness</strong>Supplements, dental, medical practices</li>
+        <li><strong>Local &amp; professional services</strong>Legal, consulting, home services</li>
+        <li><strong>SaaS &amp; AI</strong>Software, apps, lead-gen tools</li>
+        <li><strong>Automotive</strong>Aftermarket and accessories brands</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- PROBLEM -->
 <section class="problem">
   <div class="section-inner">
@@ -457,6 +506,23 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
         <h3>Wasted spend</h3>
         <p>Your CPMs are climbing, your ROAS is dropping, and your team is busy — but nobody can tell you exactly why.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHAT WE DO -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <h2 class="section-title">What we do</h2>
+    <p class="section-sub">Everything it takes to turn ad spend into customers — taught, done with you, or done for you.</p>
+    <div class="svc-grid">
+      <div class="svc"><h3>Paid ads management</h3><p>Campaign builds, bidding, budgets, and weekly optimization.</p><div class="ch"><span>Google</span><span>Meta</span><span>YouTube</span><span>LinkedIn</span><span>TikTok</span></div></div>
+      <div class="svc"><h3>Ad creative</h3><p>Static ads, hooks, and angles built to test — with video as an add-on.</p></div>
+      <div class="svc"><h3>Tracking &amp; dashboards</h3><p>Know your real cost per customer, with a dashboard you can actually read.</p></div>
+      <div class="svc"><h3>Funnels &amp; landing pages</h3><p>Landing pages and quiz funnels that turn clicks into leads and sales.</p></div>
+      <div class="svc"><h3>Account audits</h3><p>An Ad Account Health Report showing where the money is leaking and what to fix first.</p></div>
+      <div class="svc"><h3>AI marketing training</h3><p>Teach your team to use AI to write ads, build creative, and audit campaigns.</p></div>
     </div>
   </div>
 </section>
