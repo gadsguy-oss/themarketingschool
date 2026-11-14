@@ -120,7 +120,7 @@ section{padding:110px 48px;position:relative}
 .pricing-header{text-align:center;max-width:700px;margin:0 auto 72px}
 .pricing-header .section-sub{margin:0 auto}
 .pricing-header .ledger-rule{margin:22px auto 0}
-.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch}
 .tier{position:relative;padding:44px 32px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;transition:transform .3s,border-color .3s}
 .tier:hover{transform:translateY(-5px)}
 .tier-featured{border:2px solid var(--go);box-shadow:0 22px 50px -28px rgba(10,35,66,.28)}
@@ -145,7 +145,8 @@ section{padding:110px 48px;position:relative}
 .tier-cta-secondary:hover{background:var(--ink);color:var(--paper)}
 .tier-talk{display:block;text-align:center;margin-top:12px;font-size:13px;color:var(--slate);text-decoration:underline;text-underline-offset:3px}
 .tier-talk:hover{color:var(--ink)}
-@media (max-width:980px){.tier-grid{grid-template-columns:1fr;gap:30px}}
+@media (max-width:1180px){.tier-grid{grid-template-columns:repeat(2,1fr);gap:30px}}
+@media (max-width:680px){.tier-grid{grid-template-columns:1fr}}
 
 /* ADD-ONS */
 .addons{margin-top:28px;text-align:center;font-size:14px;color:var(--slate)}
@@ -420,6 +421,8 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
 .svc .ch span{font-size:12.5px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px 10px}
 @media (max-width:880px){.svc-grid{grid-template-columns:1fr 1fr}.svc,.svc:not(:nth-child(3n+1)){padding:22px 20px 22px 0;border-left:0}.svc:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}}
 @media (max-width:560px){.svc-grid{grid-template-columns:1fr}.svc,.svc:nth-child(even){padding:20px 0;border-left:0}}
+
+.tier-grid .tier{padding:32px 24px}.tier-grid .tier-name{font-size:1.65rem}.tier-grid .tier-price{font-size:3rem}
 </style>
 </head>
 <body>
@@ -558,12 +561,31 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
   <div class="section-inner">
     <div class="pricing-header">
       <h2 class="section-title">Pick your level.</h2>
-      <p class="section-sub">Whether you want the playbook, a team running it with you, or the whole operation handled — we have a fit. Each tier builds on the one before it.</p>
+      <p class="section-sub">Learn AI for ads on your own, or have us run it with you or for you. Every management package includes AI Ads Training free.</p>
     </div>
 
     <div class="tier-grid">
+      <div class="tier tier-ai">
+        <div class="tier-num">Learn AI</div>
+        <h3 class="tier-name">AI Ads Training</h3>
+        <p class="tier-tagline">Learn to write, build, and audit your ads with AI — the way we do it on big accounts.</p>
+        <div class="tier-price-block">
+          <div class="tier-price"><span class="currency">$</span>297<span class="tier-period">/mo</span></div>
+          <div class="tier-price-note">Cancel anytime</div>
+        </div>
+        <ul class="tier-features">
+          <li>Step-by-step AI ad lessons</li>
+          <li>Prompt + template library</li>
+          <li>Write ad copy and briefs with AI</li>
+          <li>Audit your own campaigns with AI</li>
+          <li>Monthly live Q&amp;A</li>
+        </ul>
+        <a href="assessment.html?plan=ai" class="tier-cta tier-cta-secondary">Get my score first</a>
+        <a href="#apply" class="tier-talk" data-plan="AI Ads Training — $297/mo">or talk to us directly</a>
+      </div>
+
       <div class="tier">
-        <div class="tier-num">Learn it</div>
+        <div class="tier-num">Learn it + we run one channel</div>
         <h3 class="tier-name">The Marketing School</h3>
         <p class="tier-tagline">We run one ad channel for you and teach you everything else.</p>
         <div class="tier-price-block">
@@ -571,7 +593,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <div class="tier-price-note">Cancel anytime</div>
         </div>
         <ul class="tier-features">
-          <li class="gift">Free AI marketing training</li>
+          <li class="gift">AI Ads Training included ($297/mo value)</li>
           <li>Ads management on one channel of your choice</li>
           <li>Monthly account audit</li>
           <li>Creative direction + briefs</li>
@@ -593,7 +615,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <div class="tier-price-note">90-day start, then month to month</div>
         </div>
         <ul class="tier-features">
-          <li class="gift">Free AI marketing training</li>
+          <li class="gift">AI Ads Training included ($297/mo value)</li>
           <li>Everything in Teaching</li>
           <li>Ads management on all channels (Google, Meta, YouTube, LinkedIn, TikTok), optimized weekly</li>
           <li>Custom performance dashboard</li>
@@ -614,7 +636,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <div class="tier-price-note">+ 10% of ad spend · 90-day minimum</div>
         </div>
         <ul class="tier-features">
-          <li class="gift">Free AI marketing training</li>
+          <li class="gift">AI Ads Training included ($297/mo value)</li>
           <li>Everything in Growth Club</li>
           <li>Full media buying on all channels</li>
           <li>8–12 fresh creatives per month (static + video)</li>
@@ -630,7 +652,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
 
     <div class="every-client">
       <h3>Every client gets</h3>
-      <div><strong>Free AI Marketing Training</strong>How to use AI to write ads, build creative, and audit your own campaigns. Included with all packages.</div>
+      <div><strong>AI Ads Training, free</strong>A $297/mo value. How to use AI to write ads, build creative, and audit your own campaigns. Included with every management package.</div>
       <div><strong>Free Ad Account Audit</strong>A senior strategist reviews your actual accounts and sends you an Ad Account Health Report showing where the money is leaking.</div>
     </div>
     <p class="addons"><strong>Add-ons for any package:</strong> video ad editing, extra creative packs, additional funnel builds.</p>
@@ -638,6 +660,8 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
     <div class="ladder">
       <div class="ladder-title">Most operators start where their spend is and grow from there.</div>
       <div class="ladder-flow">
+        <div class="ladder-step"><strong>$297</strong>AI Training</div>
+        <div class="ladder-arrow">→</div>
         <div class="ladder-step"><strong>$997</strong>Teaching</div>
         <div class="ladder-arrow">→</div>
         <div class="ladder-step"><strong>$3,000</strong>Growth Club</div>
@@ -662,7 +686,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
         <picture><source srcset="/images/strategy-call.webp" type="image/webp"><img class="about-photo" src="/images/strategy-call.jpg" width="1000" height="667" alt="Strategist smiling on a video call with a client" loading="lazy" decoding="async"></picture>
         <p>Our team has scaled brands across DTC, info products, and SaaS — managing millions in monthly ad spend.</p>
         <p>Most agencies hide their process behind retainers and reports. We don't. We'd rather teach you to do it yourself than babysit your account forever — and for the people who want the full lift, we do that too.</p>
-        <p>Three packages. One philosophy: ads that actually work.</p>
+        <p>Four ways in. One philosophy: ads that actually work.</p>
       </div>
     </div>
   </div>
@@ -675,7 +699,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">Which package is right for me? <span class="faq-icon">+</span></div>
-        <div class="faq-a">If you're spending under $5k a month, start with Teaching: we manage one channel for you and teach you the rest. If you're spending $5k–$30k a month and want us running the account with you — management, creative, dashboard, weekly sessions — the Growth Club is your fit. If you're spending $30k+ and want the whole operation handled, All-In is the move. Not sure? Take the free 3-minute diagnosis and we'll point you to the right one.</div>
+        <div class="faq-a">If you want to learn AI for ads on your own, start with AI Ads Training at $297/mo. If you're spending under $5k a month and want help running it, start with Teaching: we manage one channel for you and teach you the rest. If you're spending $5k–$30k a month and want us running the account with you — management, creative, dashboard, weekly sessions — the Growth Club is your fit. If you're spending $30k+ and want the whole operation handled, All-In is the move. Not sure? Take the free 3-minute diagnosis and we'll point you to the right one.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Can I upgrade between packages? <span class="faq-icon">+</span></div>
@@ -707,7 +731,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
   <p class="cta-sub">Start with the free diagnosis. It scores your account, names the leak, and points you to the right package — in 3 minutes. Then get a Free Ad Account Audit and Health Report — no strings attached.</p>
   <div>
     <a href="assessment.html" class="btn btn-go">Get my score + Free Audit</a>
-    <p class="cta-price-note">Packages from $997/mo · Talk to us before you pay a dime</p>
+    <p class="cta-price-note">Packages from $297/mo · Talk to us before you pay a dime</p>
   </div>
 </section>
 
@@ -765,7 +789,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
           </select></div>
         <div class="lead-field"><label for="lfPlan">Interested in</label>
           <select id="lfPlan" name="package">
-            <option>Not sure yet</option><option>Teaching — $997/mo</option><option>Growth Club — $3,000/mo</option><option>Full Agency — $15,000/mo</option>
+            <option>Not sure yet</option><option>AI Ads Training — $297/mo</option><option>Teaching — $997/mo</option><option>Growth Club — $3,000/mo</option><option>Full Agency — $15,000/mo</option>
           </select></div>
       </div>
       <div class="lead-field"><label for="lfMsg">What's going on with your ads? <span>(optional)</span></label><textarea id="lfMsg" name="message"></textarea></div>
@@ -803,7 +827,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
 
   var qs=new URLSearchParams(location.search);
   /* "creative" kept so older links/ads still open the form on the middle tier */
-  var PLAN_KEYS={teaching:'Teaching',club:'Growth Club',creative:'Growth Club',allin:'Full Agency'};
+  var PLAN_KEYS={ai:'AI Ads Training',teaching:'Teaching',club:'Growth Club',creative:'Growth Club',allin:'Full Agency'};
   if(location.hash==='#apply'||qs.get('plan')) openLead(PLAN_KEYS[qs.get('plan')]||null);
 
   form.addEventListener('submit',function(e){

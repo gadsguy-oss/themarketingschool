@@ -315,6 +315,7 @@ h1{font-size:clamp(2.4rem,6vw,3.6rem)}
 /* ============ CONFIG — the only block a non-developer edits ============ */
 var CONFIG = {
   /* leads are sent via window.tmsSubmitLead() in lead-config.js (Google Form -> TMS Leads (Responses) sheet) */
+  CHECKOUT_AI: "/?plan=ai#apply",
   CHECKOUT_TEACHING: "/?plan=teaching#apply",        /* opens the homepage lead form (no online checkout) */
   CHECKOUT_CLUB: "/?plan=club#apply",
   APPLY_ALLIN: "/?plan=allin#apply",
@@ -421,16 +422,20 @@ var PILLAR_DETAILS = {
 var PLANS = [
   {name:"The Marketing School — Teaching", price:"$997", period:"/mo", note:"Cancel anytime",
    cta:"Join the School", ctaKey:"CHECKOUT_TEACHING",
-   features:["Free AI marketing training","Ads management on one channel of your choice","Monthly account audit","Creative direction + briefs","Community + live calls","Full curriculum library"],
+   features:["AI Ads Training included ($297/mo value)","Ads management on one channel of your choice","Monthly account audit","Creative direction + briefs","Community + live calls","Full curriculum library"],
    why:"At your spend, you need your ads running right on the channel that matters most — and the know-how to grow from there. <strong>Teaching</strong> puts us in charge of one channel of your choice while the audit, curriculum, and live calls teach you the rest — starting with your weakest link."},
   {name:"The Growth Club", price:"$3,000", period:"/mo", note:"90-day start, then month to month",
    cta:"Join the Club", ctaKey:"CHECKOUT_CLUB",
-   features:["Free AI marketing training","Everything in Teaching","Ads management on all channels (Google, Meta, YouTube, LinkedIn, TikTok), optimized weekly","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
+   features:["AI Ads Training included ($297/mo value)","Everything in Teaching","Ads management on all channels (Google, Meta, YouTube, LinkedIn, TikTok), optimized weekly","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
    why:"At your spend, you shouldn't be doing this alone — and you don't need a full agency yet. <strong>The Growth Club</strong> runs your ads with you: we manage the account, keep fresh creative flowing, build a dashboard so you see every number, and work on your weakest link in the weekly sessions."},
   {name:"Full Agency — All-In", price:"$15,000", period:"/mo", note:"+ 10% of ad spend · 90-day minimum",
    cta:"Apply for All-In", ctaKey:"APPLY_ALLIN",
-   features:["Free AI marketing training","Everything in Growth Club","Full media buying on all channels","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
-   why:"At your spend, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."}
+   features:["AI Ads Training included ($297/mo value)","Everything in Growth Club","Full media buying on all channels","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
+   why:"At your spend, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."},
+  {name:"AI Ads Training", price:"$297", period:"/mo", note:"Cancel anytime",
+   cta:"Start AI Ads Training", ctaKey:"CHECKOUT_AI",
+   features:["Step-by-step AI ad lessons","Prompt + template library","Write ad copy and briefs with AI","Audit your own campaigns with AI","Monthly live Q&A"],
+   why:"You said you want to learn this yourself. <strong>AI Ads Training</strong> teaches you to write, build, and audit your ads with AI — the same workflows we use on big accounts — so you can fix your weakest link on your own."}
 ];
 
 /* Recommendation is driven by ad spend (matches homepage FAQ) */
@@ -522,6 +527,8 @@ function pickProfile(score){
 function recommendPlan(answers){
   var q = QUESTIONS[QIDX.spend], a = answers[QIDX.spend];
   var v = (a == null) ? null : q.values[a];
+  /* Small spenders who only want to learn -> AI Ads Training */
+  if (v === 'under5k' && answers[13] === 0) return 3;
   return (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
 }
 
@@ -751,7 +758,9 @@ if (typeof document !== 'undefined'){ (function(){
     $('stickyTxt').textContent = 'Recommended: ' + plan.name;
 
     var alt = $('altStrip');
-    if (rec === 0){
+    if (rec === 3){
+      alt.innerHTML = '<strong>Want us to run it too?</strong> Teaching ($997/mo) manages one ad channel for you and includes AI Ads Training. <a href="' + CONFIG.CHECKOUT_TEACHING + '">Talk to us about Teaching →</a>';
+    } else if (rec === 0){
       alt.innerHTML = '<strong>Want both platforms handled?</strong> The Growth Club ($3,000/mo) manages all your ad channels weekly and adds a custom dashboard and creative. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
     } else if (rec === 1){
       alt.innerHTML = '<strong>Want it fully handled?</strong> Full Agency ($15,000/mo + 10% of spend) is our all-in tier for $30k+/mo accounts. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for All-In →</a>';
