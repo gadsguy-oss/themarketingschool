@@ -487,6 +487,56 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
 .tier-grid .tier{padding:32px 24px}.tier-grid .tier-name{font-size:1.65rem}.tier-grid .tier-price{font-size:3rem}
 
 .hero .hero-for{margin:0 0 18px;max-width:none;text-align:left}
+
+/* ===================== MOBILE PASS ===================== */
+.lead-field input,.lead-field select,.lead-field textarea{font-size:16px}
+.lead-overlay{overscroll-behavior:contain}
+.lead-close{width:48px;height:48px;display:flex;align-items:center;justify-content:center;top:6px;right:6px;padding:0}
+.tier-talk{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:4px}
+.nav-logo{padding-block:10px}
+.footer-links{gap:4px 12px}
+.footer-links a{display:inline-block;padding:12px 8px}
+.footer-copy{color:#9AA6B8}
+.case-num span{color:#55617A}
+.feat-details{flex:1}
+.feat-details > summary{display:none}
+.nav-toggle-wrap,.mobile-menu,.compare-hint{display:none}
+@media (max-width:820px){
+  .nav-links{gap:10px}
+  .nav-links li.nav-toggle-wrap{display:block}
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:transparent;border:1px solid rgba(255,255,255,.22);border-radius:6px;color:#fff;cursor:pointer;padding:0}
+  .nav-toggle svg{width:22px;height:22px}
+  .mobile-menu.open{display:block;position:fixed;left:0;right:0;z-index:199;background:var(--night);border-bottom:1px solid rgba(255,255,255,.1);padding:6px 0 14px;max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:0 24px 40px -20px rgba(0,0,0,.6)}
+  .mobile-menu a{display:block;min-height:48px;padding:14px 20px;font-size:17px;font-weight:600;color:#fff;text-decoration:none;border-top:1px solid rgba(255,255,255,.06)}
+  .mobile-menu a:first-child{border-top:0}
+}
+@media (max-width:720px){
+  body{line-height:1.5}
+  section,.diagnosis{padding:56px 20px}
+  .proof{padding:56px 20px 16px}
+  .hero{padding:104px 20px 64px}
+  .hero-ctas .btn{width:100%;min-height:56px;display:flex;align-items:center;justify-content:center}
+  .pricing-header{margin-bottom:36px}
+  .tier-tagline{min-height:0;margin-bottom:18px}
+  .tier-features li{font-size:16px}
+  .feat-details > summary{display:flex;align-items:center;justify-content:space-between;min-height:48px;cursor:pointer;font-weight:700;font-size:16px;color:var(--ink);list-style:none;border-top:1px solid var(--line);margin-bottom:6px}
+  .feat-details > summary::-webkit-details-marker{display:none}
+  .feat-details > summary::after{content:"+";font-size:1.4rem;font-weight:400;line-height:1}
+  .feat-details[open] > summary::after{content:"−"}
+  .tier-featured .feat-details > summary{color:var(--gold);border-color:rgba(255,255,255,.12)}
+  .tier-features{margin-bottom:16px}
+  .lead-field label{font-size:14px}
+  .footer-links a,.footer-copy{font-size:14px}
+  .compare{margin-top:48px}
+  .compare-hint{display:block;font-size:15px;font-weight:700;color:var(--ink);margin:0 0 10px}
+  .compare-scroll{scroll-snap-type:x mandatory;scroll-padding-left:110px}
+  .compare table{min-width:740px}
+  .compare th,.compare td{font-size:15px;padding:12px}
+  .compare tbody th{min-width:96px;max-width:110px;width:110px}
+  .compare thead th:not(:first-child),.compare tbody td{scroll-snap-align:start}
+  .ladder{display:none}
+  .nav-links a.nav-cta{min-height:48px}
+}
 </style>
 </head>
 <body>
@@ -499,8 +549,18 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
     <li><a href="#about">About</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li class="nav-cta-wrap"><a href="assessment.html" class="nav-cta"><span class="lg">Free Ad Account Audit</span><span class="sm">Free Audit</span> <span class="tag">No strings</span></a></li>
+    <li class="nav-cta-wrap nav-toggle-wrap"><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></li>
   </ul>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#pricing">Packages</a>
+  <a href="#compare">Compare</a>
+  <a href="#about">About</a>
+  <a href="#faq">FAQ</a>
+  <a href="/contact.html">Contact</a>
+</div>
+
+<main>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -653,13 +713,14 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <div class="tier-price-note">Cancel anytime</div>
         </div>
         <p class="tier-best"><strong>Best for:</strong> owners and marketers running their own ads, at any spend — including just starting out.</p>
+        <details class="feat-details" open><summary>See what's included</summary>
         <ul class="tier-features">
           <li>Step-by-step AI ad lessons</li>
           <li>Prompt + template library</li>
           <li>Write ad copy and briefs with AI</li>
           <li>Audit your own campaigns with AI</li>
           <li>Monthly live Q&amp;A</li>
-        </ul>
+        </ul></details>
         <a href="assessment.html?plan=ai" class="tier-cta tier-cta-secondary" data-cta-plan="ai" data-cta-loc="card">Get my score first</a>
         <a href="#apply" class="tier-talk" data-plan="AI Ads Training — $297/mo" data-cta-plan="ai" data-cta-loc="card">or talk to us directly</a>
       </div>
@@ -673,6 +734,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <div class="tier-price-note">Cancel anytime</div>
         </div>
         <p class="tier-best"><strong>Best for:</strong> businesses spending under $5k/mo that want a pro running Google or Meta while they learn.</p>
+        <details class="feat-details" open><summary>See what's included</summary>
         <ul class="tier-features">
           <li class="gift">AI Ads Training included ($297/mo value)</li>
           <li>Ads management on one channel of your choice</li>
@@ -680,7 +742,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <li>Creative direction + briefs</li>
           <li>Community + live calls</li>
           <li>Full curriculum library</li>
-        </ul>
+        </ul></details>
         <a href="assessment.html?plan=teaching" class="tier-cta tier-cta-secondary" data-cta-plan="teaching" data-cta-loc="card">Get my score first</a>
         <a href="#apply" class="tier-talk" data-plan="The Marketing School — $997/mo" data-cta-plan="teaching" data-cta-loc="card">or talk to us directly</a>
       </div>
@@ -695,6 +757,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <div class="tier-price-note">90-day start, then month to month</div>
         </div>
         <p class="tier-best"><strong>Best for:</strong> businesses spending $5k–$30k/mo that want a team running the account alongside them.</p>
+        <details class="feat-details" open><summary>See what's included</summary>
         <ul class="tier-features">
           <li class="gift">AI Ads Training included ($297/mo value)</li>
           <li>Everything in The Marketing School</li>
@@ -703,7 +766,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <li>Static ad creative (video is an add-on)</li>
           <li>One funnel or landing page build</li>
           <li>Weekly group strategy session</li>
-        </ul>
+        </ul></details>
         <a href="assessment.html?plan=club" class="tier-cta tier-cta-primary" data-cta-plan="club" data-cta-loc="card">Get my score first</a>
         <a href="#apply" class="tier-talk" data-plan="The Growth Club — $3,000/mo" data-cta-plan="club" data-cta-loc="card">or talk to us directly</a>
       </div>
@@ -717,6 +780,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <div class="tier-price-note">+ 10% of ad spend · 90-day minimum</div>
         </div>
         <p class="tier-best"><strong>Best for:</strong> brands spending $30k+/mo that want the whole operation handled.</p>
+        <details class="feat-details" open><summary>See what's included</summary>
         <ul class="tier-features">
           <li class="gift">AI Ads Training included ($297/mo value)</li>
           <li>Everything in The Growth Club</li>
@@ -726,7 +790,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
           <li>Weekly 1:1 reporting + strategy calls</li>
           <li>Full landing page + funnel builds</li>
           <li>White glove support</li>
-        </ul>
+        </ul></details>
         <a href="assessment.html?plan=allin" class="tier-cta tier-cta-secondary" data-cta-plan="allin" data-cta-loc="card">Get my score first</a>
         <a href="#apply" class="tier-talk" data-plan="Full Agency — $15,000/mo" data-cta-plan="allin" data-cta-loc="card">or talk to us directly</a>
       </div>
@@ -743,6 +807,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
     <div class="compare" id="compare">
       <h3>Which package is right for you?</h3>
       <p>Start where your spend is. Most people move up as results come in, and we credit the unused part of your current plan when you upgrade.</p>
+      <p class="compare-hint" aria-hidden="true">Swipe to compare →</p>
       <div class="compare-scroll">
         <table>
           <thead>
@@ -848,6 +913,7 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
     <p class="cta-price-note">Packages from $297/mo · Talk to us before you pay a dime</p>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="footer-logo">The Marketing School<small>AI ads training + Google &amp; Meta ads management</small></div>
@@ -878,6 +944,31 @@ document.querySelectorAll('[data-cta-plan]').forEach(function(a){
     try{ window.va && window.va('event', { name:'package_cta_click', data:{ plan:a.getAttribute('data-cta-plan'), location:a.getAttribute('data-cta-loc')||'card' } }); }catch(e){}
   });
 });
+/* mobile menu */
+(function(){
+  var btn=document.querySelector('.nav-toggle'), menu=document.getElementById('mobile-menu'), nav=document.querySelector('nav');
+  if(!btn||!menu) return;
+  function setOpen(o){
+    menu.classList.toggle('open',o); btn.setAttribute('aria-expanded',o?'true':'false');
+    btn.setAttribute('aria-label',o?'Close menu':'Open menu');
+    if(o){ menu.style.top=nav.offsetHeight+'px'; }
+    document.body.style.overflow=o?'hidden':'';
+  }
+  btn.addEventListener('click',function(e){ e.stopPropagation(); setOpen(!menu.classList.contains('open')); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setOpen(false); }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&menu.classList.contains('open')){ setOpen(false); btn.focus(); } });
+  document.addEventListener('click',function(e){ if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target)) setOpen(false); });
+  window.addEventListener('resize',function(){ if(innerWidth>820&&menu.classList.contains('open')) setOpen(false); });
+})();
+/* pricing bullets: collapsed on phones (except the featured Growth Club card), always open on desktop */
+(function(){
+  var mq=window.matchMedia('(max-width:720px)');
+  function apply(){ document.querySelectorAll('.feat-details').forEach(function(d){
+    var featured=!!d.closest('.tier-featured');
+    if(mq.matches){ if(!featured) d.removeAttribute('open'); else d.setAttribute('open',''); } else d.setAttribute('open','');
+  }); }
+  apply(); if(mq.addEventListener) mq.addEventListener('change',apply); else if(mq.addListener) mq.addListener(apply);
+})();
 </script>
 
 <!-- LEAD FORM -->
@@ -889,11 +980,11 @@ document.querySelectorAll('[data-cta-plan]').forEach(function(a){
       <p class="lead-intro">No checkout, no card. Send us the basics and we'll reach out the way you prefer to set up a quick call to see which package fits.</p>
       <div class="lead-row">
         <div class="lead-field"><label for="lfName">Name</label><input id="lfName" name="name" autocomplete="name" required></div>
-        <div class="lead-field"><label for="lfEmail">Email</label><input id="lfEmail" name="email" type="email" autocomplete="email" required></div>
+        <div class="lead-field"><label for="lfEmail">Email</label><input id="lfEmail" name="email" type="email" autocomplete="email" autocapitalize="off" spellcheck="false" required></div>
       </div>
       <div class="lead-row">
         <div class="lead-field"><label for="lfPhone">Phone</label><input id="lfPhone" name="phone" type="tel" autocomplete="tel" required></div>
-        <div class="lead-field"><label for="lfSite">Website</label><input id="lfSite" name="website" autocomplete="url" placeholder="yourbrand.com"></div>
+        <div class="lead-field"><label for="lfSite">Website</label><input id="lfSite" name="website" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="yourbrand.com"></div>
       </div>
       <div class="lead-field"><label>Best way to reach you?</label>
         <div class="contact-pref">

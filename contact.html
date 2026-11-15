@@ -89,6 +89,20 @@ footer{padding:40px 48px;border-top:1px solid var(--border);display:flex;align-i
 .contact-side h3{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
 .contact-side p{font-size:15px}
 .contact-side .big{font-family:var(--serif);font-size:1.25rem;color:var(--ink)}
+/* mobile pass */
+.field input,.field select,.field textarea{font-size:16px}
+.contact-pref span{min-height:48px;display:flex;align-items:center;justify-content:center}
+.footer-links{gap:4px 12px}
+.footer-links a{display:inline-block;padding:12px 8px}
+.nav-logo{padding-block:14px;display:inline-block}
+@media (max-width:720px){
+  body{line-height:1.5}
+  .field label{font-size:14px}
+  .footer-links a,.footer-copy{font-size:14px}
+  .page-hero{padding:56px 20px 44px}
+  .wrap{padding:40px 16px 64px}
+  .nav-cta{min-height:44px;display:inline-flex;align-items:center}
+}
 </style>
 </head>
 <body>
@@ -110,11 +124,11 @@ footer{padding:40px 48px;border-top:1px solid var(--border);display:flex;align-i
         <p class="intro">Goes straight to our inbox — a real person reads every one.</p>
         <div class="row">
           <div class="field"><label for="cName">Name</label><input id="cName" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" autocomplete="email" autocapitalize="off" spellcheck="false" required></div>
         </div>
         <div class="row">
           <div class="field"><label for="cPhone">Phone <span>(for text or call)</span></label><input id="cPhone" name="phone" type="tel" autocomplete="tel"></div>
-          <div class="field"><label for="cSite">Website <span>(optional)</span></label><input id="cSite" name="website" autocomplete="url" placeholder="yourbrand.com"></div>
+          <div class="field"><label for="cSite">Website <span>(optional)</span></label><input id="cSite" name="website" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="yourbrand.com"></div>
         </div>
         <div class="field"><label>Best way to reach you?</label>
           <div class="contact-pref">
