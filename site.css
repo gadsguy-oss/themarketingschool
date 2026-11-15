@@ -81,7 +81,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .submit{width:100%;min-height:52px;border:1px solid var(--gold);cursor:pointer;background:var(--gold);color:var(--night);font:inherit;font-weight:700;font-size:16px;padding:14px;border-radius:6px}
 .submit:hover{background:var(--gold-hi)}
 .submit[disabled]{opacity:.65;cursor:wait}
-.fine{font-size:13.5px;color:var(--muted);margin-top:12px;text-align:center}
+.fine{font-size:14px;color:var(--muted);margin-top:12px;text-align:center}
 .fine a{color:inherit}
 .done{display:none;text-align:center;padding:20px 0}
 .done .check{width:56px;height:56px;border-radius:50%;background:#FFF6DF;color:var(--ink);font-size:28px;line-height:56px;margin:0 auto 16px}
@@ -97,11 +97,11 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 /* FOOTER (same as homepage) */
 footer{padding:40px;background:var(--night);border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
 .footer-logo{font-weight:800;font-stretch:88%;font-size:17px;letter-spacing:-.02em;color:#fff}
-.footer-logo small{display:block;font-size:12.5px;font-weight:600;font-stretch:100%;letter-spacing:0;color:#9AA6B8;margin-top:2px}
+.footer-logo small{display:block;font-size:14px;font-weight:600;font-stretch:100%;letter-spacing:0;color:#9AA6B8;margin-top:2px}
 .footer-links{list-style:none;display:flex;gap:4px 12px;flex-wrap:wrap}
 .footer-links a{display:inline-block;padding:12px 8px;font-weight:600;font-size:14px;color:#AEBBCC;text-decoration:none}
 .footer-links a:hover{color:#fff}
-.footer-copy{font-size:13px;color:#9AA6B8}
+.footer-copy{font-size:14px;color:#9AA6B8}
 
 @media (max-width:820px){.contact-grid{grid-template-columns:1fr}}
 @media (max-width:720px){
