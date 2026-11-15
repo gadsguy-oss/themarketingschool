@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What's Your Ad Account Score? — The Marketing School</title>
-<meta name="description" content="Score your ad account out of 100, find your weakest link, and see exactly what to fix first. Free, 3 minutes, no call required.">
-<link rel="canonical" href="https://www.themarketingschool.com/assessment.html">
+<title>Free Ad Account Score (Google &amp; Meta Ads) | The Marketing School</title>
+<meta name="description" content="Score your Google or Meta ad account out of 100 in 3 minutes, find your weakest link, and get a free Ad Account Health Report from a real strategist.">
+<link rel="canonical" href="https://www.themarketingschool.com/assessment">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Marketing School">
 <meta property="og:title" content="What's Your Ad Account Score? — Free 3-Minute Diagnosis">
-<meta property="og:description" content="Score your ad account out of 100, find your weakest link, and see exactly what to fix first. Free, 3 minutes, no call required.">
-<meta property="og:url" content="https://www.themarketingschool.com/assessment.html">
+<meta property="og:description" content="Score your Google or Meta ad account out of 100 in 3 minutes, find your weakest link, and get a free Ad Account Health Report from a real strategist.">
+<meta property="og:url" content="https://www.themarketingschool.com/assessment">
 <meta property="og:image" content="https://www.themarketingschool.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,6 +23,18 @@
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="/lead-config.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "WebPage", "name": "Free Ad Account Score (Google & Meta Ads)", "url": "https://www.themarketingschool.com/assessment", "description": "Score your Google or Meta ad account out of 100 in 3 minutes, find your weakest link, and get a free Ad Account Health Report from a real strategist.", "isPartOf": {"@type": "WebSite", "name": "The Marketing School", "url": "https://www.themarketingschool.com/"}},
+    {"@type": "BreadcrumbList", "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.themarketingschool.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Free Ad Account Score", "item": "https://www.themarketingschool.com/assessment"}
+    ]}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
@@ -212,7 +224,7 @@ h1{font-size:clamp(2.4rem,6vw,3.6rem)}
     </div>
     <div class="brass-rule"></div>
     <button class="btn btn-go" id="startBtn">Start the diagnosis</button>
-    <p class="intro-meta">Built from real accounts — we've managed eight and nine-figure ad budgets.</p>
+    <p class="intro-meta">Built by an operator who's managed $200M+ in ad spend over 20+ years.</p>
   </div>
 </section>
 
@@ -299,7 +311,7 @@ h1{font-size:clamp(2.4rem,6vw,3.6rem)}
       <ul class="plan-feats" id="planFeats"></ul>
       <div class="plan-cta-row">
         <a class="btn btn-go" id="planCta" href="#">Talk to us</a>
-        <a class="btn btn-ink" href="/#pricing">Compare all packages</a>
+        <a class="btn btn-ink" href="/#compare">Compare all packages</a>
       </div>
     </div>
     <div class="alt-strip" id="altStrip"></div>
@@ -326,7 +338,7 @@ var CONFIG = {
   NEXT_QA_DATE: ""                                    /* e.g. "Thursday, June 18" — when set, urgency line invites to the next live call */
 };
 
-/* ============ Tracking (GA4 + PostHog, safe no-op) ============ */
+/* ============ Tracking (Vercel Analytics custom events; gtag/PostHog if present) ============ */
 function track(eventName, params){
   var p = params || {};
   try { if (typeof gtag === 'function') { gtag('event', eventName, p); } } catch(e) {}
@@ -453,22 +465,22 @@ var PILLAR_DETAILS = {
 
 /* Prices here must match the homepage pricing section */
 var PLANS = [
-  {name:"The Marketing School — Teaching", price:"$997", period:"/mo", note:"Cancel anytime",
-   cta:"Join the School", ctaKey:"CHECKOUT_TEACHING",
+  {key:"teaching", name:"The Marketing School", price:"$997", period:"/mo", note:"Cancel anytime",
+   cta:"Join The Marketing School", ctaKey:"CHECKOUT_TEACHING",
    features:["AI Ads Training included ($297/mo value)","Ads management on one channel of your choice","Monthly account audit","Creative direction + briefs","Community + live calls","Full curriculum library"],
-   why:"At your spend, you need your ads running right on the channel that matters most — and the know-how to grow from there. <strong>Teaching</strong> puts us in charge of one channel of your choice while the audit, curriculum, and live calls teach you the rest — starting with your weakest link."},
-  {name:"The Growth Club", price:"$3,000", period:"/mo", note:"90-day start, then month to month",
-   cta:"Join the Club", ctaKey:"CHECKOUT_CLUB",
-   features:["AI Ads Training included ($297/mo value)","Everything in Teaching","Ads management on all channels (Google, Meta, YouTube, LinkedIn, TikTok), optimized weekly","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
+   why:"At your spend, you need your ads running right on the channel that matters most — and the know-how to grow from there. <strong>The Marketing School</strong> puts us in charge of one channel of your choice while the audit, curriculum, and live calls teach you the rest — starting with your weakest link."},
+  {key:"club", name:"The Growth Club", price:"$3,000", period:"/mo", note:"90-day start, then month to month",
+   cta:"Apply for the Growth Club", ctaKey:"CHECKOUT_CLUB",
+   features:["AI Ads Training included ($297/mo value)","Everything in The Marketing School","Ads management on all channels (Google, Meta, YouTube, LinkedIn, TikTok), optimized weekly","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
    why:"At your spend, you shouldn't be doing this alone — and you don't need a full agency yet. <strong>The Growth Club</strong> runs your ads with you: we manage the account, keep fresh creative flowing, build a dashboard so you see every number, and work on your weakest link in the weekly sessions."},
-  {name:"Full Agency — All-In", price:"$15,000", period:"/mo", note:"+ 10% of ad spend · 90-day minimum",
-   cta:"Apply for All-In", ctaKey:"APPLY_ALLIN",
-   features:["AI Ads Training included ($297/mo value)","Everything in Growth Club","Full media buying on all channels","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
+  {key:"allin", name:"Full Agency", price:"$15,000", period:"/mo", note:"+ 10% of ad spend · 90-day minimum",
+   cta:"Book a Full Agency call", ctaKey:"APPLY_ALLIN",
+   features:["AI Ads Training included ($297/mo value)","Everything in The Growth Club","Full media buying on all channels","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
    why:"At your spend, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."},
-  {name:"AI Ads Training", price:"$297", period:"/mo", note:"Cancel anytime",
+  {key:"ai", name:"AI Ads Training", price:"$297", period:"/mo", note:"Cancel anytime",
    cta:"Start AI Ads Training", ctaKey:"CHECKOUT_AI",
    features:["Step-by-step AI ad lessons","Prompt + template library","Write ad copy and briefs with AI","Audit your own campaigns with AI","Monthly live Q&A"],
-   why:"You said you want to learn this yourself. <strong>AI Ads Training</strong> teaches you to write, build, and audit your ads with AI — the same workflows we use on big accounts — so you can fix your weakest link on your own."}
+   why:"You said you want to learn this yourself. <strong>AI Ads Training</strong> teaches you to write, build, and audit your ads with AI — the same workflows we use on live accounts — so you can fix your weakest link on your own."}
 ];
 
 /* Recommendation is driven by ad spend (matches homepage FAQ) */
@@ -727,7 +739,7 @@ if (typeof document !== 'undefined'){ (function(){
     $('gateErr').style.display = 'none';
     leadName = n; leadEmail = e;
     track('gate_submit', {});
-    try { if (typeof window.tmsConversion === 'function') window.tmsConversion('quiz', { score: computeScores(answers).score }); } catch(e) {}
+    try { if (typeof window.tmsConversion === 'function') window.tmsConversion('quiz', { score: computeScores(answers).score, plan_recommended: PLANS[recommendPlan(answers)].key }); } catch(e) {}
     finishAndRender(true);
   }
 
@@ -781,7 +793,7 @@ if (typeof document !== 'undefined'){ (function(){
     } else { $('goalMirror').style.display = 'none'; }
 
     $('profileHook').innerHTML = profile.hook;
-    if (!fromGateHasPhone()){ $('bonusNext').innerHTML = 'Want it faster? <a href="' + CONFIG.CHECKOUT_TEACHING.replace("teaching",["teaching","club","allin"][rec]) + '" style="color:var(--go-dark);font-weight:600">Send us your number and we\'ll text you to set it up →</a>'; }
+    if (!fromGateHasPhone()){ $('bonusNext').innerHTML = 'Want it faster? <a href="' + CONFIG[PLANS[rec].ctaKey] + '" style="color:var(--go-dark);font-weight:600">Send us your number and we\'ll text you to set it up →</a>'; }
 
     var weakKey = computed.weakestPillar;
     var weakName = PILLAR_NAMES[weakKey] || '';
@@ -818,18 +830,19 @@ if (typeof document !== 'undefined'){ (function(){
     var ctaUrl = CONFIG[plan.ctaKey];
     $('planCta').textContent = plan.cta + ' — talk to us first';
     $('planCta').href = ctaUrl;
-    $('planCta').addEventListener('click', function(){ track('plan_cta_click', { plan: plan.name }); });
+    $('planCta').addEventListener('click', function(){ track('package_cta_click', { plan: plan.key, location: 'quiz_result' }); });
     $('stickyBtn').textContent = plan.cta;
     $('stickyBtn').href = ctaUrl;
+    $('stickyBtn').addEventListener('click', function(){ track('package_cta_click', { plan: plan.key, location: 'quiz_result' }); });
     $('stickyTxt').textContent = 'Recommended: ' + plan.name;
 
     var alt = $('altStrip');
     if (rec === 3){
-      alt.innerHTML = '<strong>Want us to run it too?</strong> Teaching ($997/mo) manages one ad channel for you and includes AI Ads Training. <a href="' + CONFIG.CHECKOUT_TEACHING + '">Talk to us about Teaching →</a>';
+      alt.innerHTML = '<strong>Want us to run it too?</strong> The Marketing School ($997/mo) manages one ad channel for you and includes AI Ads Training. <a href="' + CONFIG.CHECKOUT_TEACHING + '">Talk to us about The Marketing School →</a>';
     } else if (rec === 0){
-      alt.innerHTML = '<strong>Want both platforms handled?</strong> The Growth Club ($3,000/mo) manages all your ad channels weekly and adds a custom dashboard and creative. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
+      alt.innerHTML = '<strong>Want every channel handled?</strong> The Growth Club ($3,000/mo) manages all your ad channels weekly and adds a custom dashboard and creative. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
     } else if (rec === 1){
-      alt.innerHTML = '<strong>Want it fully handled?</strong> Full Agency ($15,000/mo + 10% of spend) is our all-in tier for $30k+/mo accounts. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for All-In →</a>';
+      alt.innerHTML = '<strong>Want it fully handled?</strong> Full Agency ($15,000/mo + 10% of spend) is our all-in tier for $30k+/mo accounts. <a href="' + CONFIG.APPLY_ALLIN + '">Book a Full Agency call →</a>';
     } else {
       alt.innerHTML = '<strong>Prefer to keep a hand on the wheel?</strong> The Growth Club ($3,000/mo) runs your ads with you. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
     }
