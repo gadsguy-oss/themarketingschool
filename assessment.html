@@ -314,7 +314,7 @@ footer a{display:inline-block;padding:12px 6px}
       <ul class="plan-feats" id="planFeats"></ul>
       <div class="plan-cta-row">
         <a class="btn btn-go" id="planCta" href="#">Talk to us</a>
-        <a class="btn btn-ink" href="/#compare">Compare all packages</a>
+        <a class="btn btn-ink" href="/#pricing">See both offers</a>
       </div>
     </div>
     <div class="alt-strip" id="altStrip"></div>
@@ -329,16 +329,17 @@ footer a{display:inline-block;padding:12px 6px}
   <a class="btn btn-go" id="stickyBtn" href="#">Talk to us</a>
 </div>
 
-<footer>© 2026 The Marketing School · <a href="/privacy" style="color:inherit">Privacy</a> · <a href="/terms" style="color:inherit">Terms</a> · <a href="/contact" style="color:inherit">Contact</a> · This diagnosis is educational and based on your answers; results depend on your business, offer, and execution.</footer>
+<footer><span style="display:block;margin-bottom:6px">Ads courses: <a href="/ai-ads-course" style="color:inherit">AI ads</a> · <a href="/google-ads-course" style="color:inherit">Google</a> · <a href="/meta-ads-course" style="color:inherit">Meta</a> · <a href="/tiktok-ads-course" style="color:inherit">TikTok</a> · <a href="/linkedin-ads-course" style="color:inherit">LinkedIn</a> — Guides: <a href="/done-for-you-ads" style="color:inherit">Done-for-you ads</a> · <a href="/should-i-hire-an-ad-agency-or-learn-ads-myself" style="color:inherit">Agency or learn?</a> · <a href="/how-much-does-an-ad-agency-cost" style="color:inherit">Agency cost</a> · <a href="/can-ai-run-my-google-ads" style="color:inherit">Can AI run Google Ads?</a> — <a href="/dual-agent-build-pack" style="color:inherit">Build Pack</a></span>© 2026 The Marketing School · <a href="/privacy" style="color:inherit">Privacy</a> · <a href="/terms" style="color:inherit">Terms</a> · <a href="/contact" style="color:inherit">Contact</a> · This diagnosis is educational and based on your answers; results depend on your business, offer, and execution.</footer>
 
 <script>
 /* ============ CONFIG — the only block a non-developer edits ============ */
 var CONFIG = {
   /* leads are sent via window.tmsSubmitLead() in lead-config.js (Google Form -> TMS Leads (Responses) sheet) */
-  CHECKOUT_AI: "/?plan=ai#apply",
-  CHECKOUT_TEACHING: "/?plan=teaching#apply",        /* opens the homepage lead form (no online checkout) */
-  CHECKOUT_CLUB: "/?plan=club#apply",
-  APPLY_ALLIN: "/?plan=allin#apply",
+  /* every CTA opens the homepage lead form with the plan prefilled (no online checkout) */
+  CHECKOUT_SCHOOL: "/?plan=monthly#apply",                  /* The Marketing School ads course, $297/mo for 12 months */
+  CHECKOUT_UPFRONT: "/?plan=upfront#apply",                 /* The Marketing School ads course, $2,497 paid up front */
+  APPLY_ALLIN: "/?plan=allin#apply",                       /* Full Agency (apply only) */
+  BUILD_PACK_URL: "/dual-agent-build-pack",        /* separate offer, "Also available" line only */
   HOMEPAGE_URL: "/",
   NEXT_QA_DATE: ""                                    /* e.g. "Thursday, June 18" — when set, urgency line invites to the next live call */
 };
@@ -468,28 +469,23 @@ var PILLAR_DETAILS = {
   pages:"Your ads can only be as good as where they land. An untested landing experience caps every campaign upstream of it."
 };
 
-/* Prices here must match the homepage pricing section */
+/* Offers here must match the homepage #pricing section */
 var PLANS = [
-  {key:"teaching", name:"The Marketing School", price:"$997", period:"/mo", note:"Cancel anytime",
-   cta:"Join The Marketing School", ctaKey:"CHECKOUT_TEACHING",
-   features:["AI Ads Training included ($297/mo value)","Ads management on one channel of your choice","Monthly account audit","Creative direction + briefs","Community + live calls","Full curriculum library"],
-   why:"At your spend, you need your ads running right on the channel that matters most — and the know-how to grow from there. <strong>The Marketing School</strong> puts us in charge of one channel of your choice while the audit, curriculum, and live calls teach you the rest — starting with your weakest link."},
-  {key:"club", name:"The Growth Club", price:"$3,000", period:"/mo", note:"90-day start, then month to month",
-   cta:"Apply for the Growth Club", ctaKey:"CHECKOUT_CLUB",
-   features:["AI Ads Training included ($297/mo value)","Everything in The Marketing School","Ads management on all channels (Google, Meta, YouTube, LinkedIn, TikTok), optimized weekly","Custom performance dashboard","Static ad creative (video is an add-on)","One funnel or landing page build","Weekly group strategy session"],
-   why:"At your spend, you shouldn't be doing this alone — and you don't need a full agency yet. <strong>The Growth Club</strong> runs your ads with you: we manage the account, keep fresh creative flowing, build a dashboard so you see every number, and work on your weakest link in the weekly sessions."},
-  {key:"allin", name:"Full Agency", price:"$15,000", period:"/mo", note:"+ 10% of ad spend · 90-day minimum",
-   cta:"Book a Full Agency call", ctaKey:"APPLY_ALLIN",
-   features:["AI Ads Training included ($297/mo value)","Everything in The Growth Club","Full media buying on all channels","8–12 fresh creatives per month (static + video)","Dedicated strategist","Weekly 1:1 reporting + strategy calls","Full landing page + funnel builds","White glove support"],
-   why:"At your spend, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."},
-  {key:"ai", name:"AI Ads Training", price:"$297", period:"/mo", note:"Cancel anytime",
-   cta:"Start AI Ads Training", ctaKey:"CHECKOUT_AI",
-   features:["Step-by-step AI ad lessons","Prompt + template library","Write ad copy and briefs with AI","Audit your own campaigns with AI","Monthly live Q&A"],
-   why:"You said you want to learn this yourself. <strong>AI Ads Training</strong> teaches you to write, build, and audit your ads with AI — the same workflows we use on live accounts — so you can fix your weakest link on your own."}
+  {key:"school", name:"The Marketing School ads course", price:"$297", period:"/mo",
+   note:"Locked in for 12 months. Or $2,497 paid up front, which saves $1,067 (only 2 spots at that price).",
+   leadLabel:"The Marketing School — $297/mo for 12 months",
+   cta:"Lock in my spot", ctaKey:"CHECKOUT_SCHOOL",
+   features:["The full ads course: Google, Meta, TikTok and LinkedIn, step by step, from setup to scaling","Done-for-you AI install: we connect AI to your ad accounts to find wasted spend, write ads, and report results","AI ad prompt pack: better ads in minutes","Weekly live classes: Tuesday lead gen and Friday ads traffic, members only","Monthly account review: we check your numbers and tell you what to change"],
+   why:"You don't need to hand the whole account to an agency to stop the leak. <strong>The Marketing School ads course</strong> teaches you to run Google, Meta, TikTok and LinkedIn ads step by step, installs AI in your ad accounts to help find wasted spend, write ads, and report results, and reviews your numbers every month — starting with your weakest link."},
+  {key:"allin", name:"Full Agency", price:"$15,000", period:"/mo", note:"+ 10% of ad spend · 90-day minimum · apply only",
+   leadLabel:"Full Agency — apply",
+   cta:"Apply for Full Agency", ctaKey:"APPLY_ALLIN",
+   features:["Media buying on your channels, including Google, Meta, TikTok, and LinkedIn","Creative produced for you, static and video","Dedicated strategist","Weekly 1:1 reporting + strategy","Landing page + funnel builds","White glove support"],
+   why:"At your spend, or with how fully you want it handled, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."}
 ];
 
-/* Recommendation is driven by ad spend (matches homepage FAQ) */
-var SPEND_TO_PLAN = { under5k:0, "5to30k":1, "30to100k":2, "100kplus":2 };
+/* Recommendation: the ads course by default; Full Agency at $30k+/mo spend or "I want it handled" */
+var SPEND_TO_PLAN = { none:0, under5k:0, "5to30k":0, "30to100k":1, "100kplus":1 };
 
 var PROFILES = [
   {min:0, max:29, name:"No Machine Yet", title:"You're buying clicks, not customers.",
@@ -597,16 +593,9 @@ function pickProfile(score, answers){
 function recommendPlan(answers){
   var q = QUESTIONS[QIDX.spend], a = answers[QIDX.spend];
   var v = (a == null) ? null : q.values[a];
-  /* Small spenders who only want to learn -> AI Ads Training */
-  var app = answers[QIDX.appetite];
-  if (v === 'none'){
-    var bq = QUESTIONS[QIDX.budget], b = answers[QIDX.budget];
-    var bv = (b == null) ? null : bq.values[b];
-    if (bv === '5kplus') return 1;
-    if (app === 0 || bv === 'lt1k') return 3;
-    return 0;
-  }
-  if (v === 'under5k' && app === 0) return 3;
+  /* "Whatever it takes — I want it handled" (last appetite option) -> Full Agency */
+  var aq = QUESTIONS[QIDX.appetite], app = answers[QIDX.appetite];
+  if (app != null && aq && app === aq.options.length - 1) return 1;
   return (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
 }
 
@@ -769,7 +758,7 @@ if (typeof document !== 'undefined'){ (function(){
             phone: ($('gPhone').value || '').trim(),
             contact_pref: pr ? pr.value : 'Email',
             ad_spend: answerText(answers, QIDX.spend),
-            package: 'Recommended: ' + PLANS[rec].name + ' (' + PLANS[rec].price + '/mo)',
+            package: 'Recommended: ' + PLANS[rec].leadLabel,
             quiz_score: computed.score,
             details: 'Profile: ' + profile.name + ' | Weakest link: ' + (PILLAR_NAMES[computed.weakestPillar] || '') + ' | Business: ' + answerText(answers, 0) + ' | Runs ads: ' + answerText(answers, 2) + ' | Goal: ' + answerText(answers, QIDX.goal) + ' | Free audit: claimed | Path: ' + quizPath(answers) + (quizPath(answers)==='new' ? ' | Launch budget: ' + answerText(answers, QIDX.budget) : '') + ' | Appetite: ' + answerText(answers, QIDX.appetite) + ' | Results: ' + resultsUrl,
             tracking: trk.join(' | ')
@@ -833,7 +822,7 @@ if (typeof document !== 'undefined'){ (function(){
       var li = document.createElement('li'); li.textContent = f; pf.appendChild(li);
     });
     var ctaUrl = CONFIG[plan.ctaKey];
-    $('planCta').textContent = plan.cta + ' — talk to us first';
+    $('planCta').textContent = plan.cta;
     $('planCta').href = ctaUrl;
     $('planCta').addEventListener('click', function(){ track('package_cta_click', { plan: plan.key, location: 'quiz_result' }); });
     $('stickyBtn').textContent = plan.cta;
@@ -842,15 +831,12 @@ if (typeof document !== 'undefined'){ (function(){
     $('stickyTxt').textContent = 'Recommended: ' + plan.name;
 
     var alt = $('altStrip');
-    if (rec === 3){
-      alt.innerHTML = '<strong>Want us to run it too?</strong> The Marketing School ($997/mo) manages one ad channel for you and includes AI Ads Training. <a href="' + CONFIG.CHECKOUT_TEACHING + '">Talk to us about The Marketing School →</a>';
-    } else if (rec === 0){
-      alt.innerHTML = '<strong>Want every channel handled?</strong> The Growth Club ($3,000/mo) manages all your ad channels weekly and adds a custom dashboard and creative. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
-    } else if (rec === 1){
-      alt.innerHTML = '<strong>Want it fully handled?</strong> Full Agency ($15,000/mo + 10% of spend) is our all-in tier for $30k+/mo accounts. <a href="' + CONFIG.APPLY_ALLIN + '">Book a Full Agency call →</a>';
+    if (rec === 1){
+      alt.innerHTML = '<strong>Prefer to learn it yourself?</strong> The Marketing School ads course is $297/mo, locked in for 12 months (or $2,497 paid up front), and we install AI in your ad accounts. <a href="' + CONFIG.CHECKOUT_SCHOOL + '">Lock in my spot →</a>';
     } else {
-      alt.innerHTML = '<strong>Prefer to keep a hand on the wheel?</strong> The Growth Club ($3,000/mo) runs your ads with you. <a href="' + CONFIG.CHECKOUT_CLUB + '">Talk to us about the Club →</a>';
+      alt.innerHTML = '<strong>Want us to do it all for you?</strong> Full Agency ($15,000/mo + 10% of ad spend, 90-day minimum) is our done-for-you option, generally for $30k+/mo accounts. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for Full Agency →</a>';
     }
+    alt.innerHTML += '<br><span style="display:inline-block;margin-top:8px;font-size:14px">Also available, separate from the ads course: need a website or app? <a href="' + CONFIG.BUILD_PACK_URL + '">The Dual Agent Build Pack</a> is 12 live 1-on-1 build sessions.</span>';
     alt.style.display = 'block';
 
     if ('IntersectionObserver' in window){

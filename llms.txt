@@ -1,19 +1,53 @@
 # The Marketing School
-> AI ads training plus Google and Meta ads management from an operator with $200M+ in ad spend managed over 20+ years.
+> The Marketing School teaches businesses to run profitable ads on Google, Meta, TikTok and LinkedIn, and installs AI in their ad accounts. It also offers the Dual Agent Build Pack: 12 live 1-on-1 build sessions to build a website, app, landing page, or project with AI (not a course). Done-for-you ads are available through Full Agency, by application.
 
-## Packages
-- AI Ads Training, $297/mo: learn to write, build and audit ads with AI. For anyone running their own ads, at any spend.
-- The Marketing School, $997/mo: AI Ads Training plus management of one ad channel. For spend under $5k/mo.
-- The Growth Club, $3,000/mo: all-channel management, static creative, custom dashboard, weekly strategy session. For $5k-$30k/mo.
-- Full Agency, $15,000/mo + 10% of ad spend: full media buying, creative, dedicated strategist. For $30k+/mo.
-- Every management package includes AI Ads Training and a free Ad Account Audit.
+## Offer 1: The Marketing School ads course ("Learn Ads. We Install the AI for You.")
+- Price: $297/mo, locked in for 12 months. Or $2,497 paid up front, which saves $1,067. Only 2 spots at the $2,497 upfront price.
+- Includes: the full ads course (Google, Meta, TikTok and LinkedIn, step by step, from setup to scaling); a done-for-you AI install (we connect AI to your ad accounts to find wasted spend, write ads, and report results); an AI ad prompt pack; weekly live classes (Tuesday lead gen and Friday ads traffic, members only, not free); and a monthly account review.
+- Optional add-ons (ask about pricing): ad creative (we make the images and videos for your ads) and CRM setup (so every lead gets followed up automatically).
+- Who it is for: business owners and marketers who want to learn to run their own ads, with AI installed in their ad accounts, instead of hiring an agency.
+- How to start: the "Lock in my spot" button opens a short lead form. There is no online checkout.
+- Details: https://www.themarketingschool.com/#pricing and https://www.themarketingschool.com/ai-ads-course
 
-## Free tools
-- Free Ad Account Score + Ad Account Health Report: https://www.themarketingschool.com/assessment
+## Offer 2: The Dual Agent Build Pack (not a course)
+- What it is: 12 live 1-on-1 build sessions to build your site, app, landing page, or project with AI. It is not a course and not a training program.
+- The dual agent method: one AI plans, writes, and reviews; a second AI builds; you approve each step.
+- Who it is for: small business owners, or anyone starting a business. No developer or coding needed.
+- Price: $297/mo, locked in for 12 months, with one live 1-on-1 session a month. Or $2,497 paid up front, which saves $1,067; upfront buyers can book the 12 sessions at their own pace, even weekly, and finish in about 3 months.
+- How to start: the "Book my build pack" button opens a short lead form. There is no online checkout.
+- Details: https://www.themarketingschool.com/dual-agent-build-pack
 
-## Proof
-- $200M+ in ad spend managed over 20+ years; 150+ businesses served.
-- One client: Google Ads, $0 to $30k in profitable revenue.
+## Full Agency (done-for-you, apply only)
+- We make the ads and run them: media buying on Google, Meta, TikTok, and LinkedIn, creative (static and video), a dedicated strategist, weekly 1:1 reporting, landing page and funnel builds.
+- Price: $15,000/mo plus 10% of ad spend, 90-day minimum. Generally for accounts spending $30k+/mo.
+- Details: https://www.themarketingschool.com/done-for-you-ads
+
+## Free
+- Free 15-minute video teardown of your ad account, via the free 3-minute Ad Account Score quiz: https://www.themarketingschool.com/assessment
+
+## Proof (the only claims we make)
+- $200M+ in ad spend managed over 20+ years.
+- 150+ businesses served.
+- One anonymous client went from $0 to $30k in profitable revenue with Google Ads.
+- Results are not guaranteed.
+
+## Pages
+- Home: https://www.themarketingschool.com/
+- Free Ad Account Score: https://www.themarketingschool.com/assessment
+- Contact: https://www.themarketingschool.com/contact
+- AI ads course: https://www.themarketingschool.com/ai-ads-course
+- Google Ads course: https://www.themarketingschool.com/google-ads-course
+- Meta ads course: https://www.themarketingschool.com/meta-ads-course
+- TikTok ads course: https://www.themarketingschool.com/tiktok-ads-course
+- LinkedIn ads course: https://www.themarketingschool.com/linkedin-ads-course
+- Done-for-you ads (Full Agency): https://www.themarketingschool.com/done-for-you-ads
+- Should I hire an ad agency or learn ads myself?: https://www.themarketingschool.com/should-i-hire-an-ad-agency-or-learn-ads-myself
+- How much does an ad agency cost?: https://www.themarketingschool.com/how-much-does-an-ad-agency-cost
+- Can AI run my Google Ads?: https://www.themarketingschool.com/can-ai-run-my-google-ads
+- The Dual Agent Build Pack: https://www.themarketingschool.com/dual-agent-build-pack
+- Privacy: https://www.themarketingschool.com/privacy
+- Terms: https://www.themarketingschool.com/terms
 
 ## Contact
+- evan@themarketingschool.com
 - https://www.themarketingschool.com/contact

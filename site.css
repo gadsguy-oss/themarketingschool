@@ -113,3 +113,49 @@ footer{padding:40px;background:var(--night);border-top:1px solid rgba(255,255,25
   .legal p,.legal li{font-size:16px}
 }
 @media (max-width:520px){.row{grid-template-columns:1fr;gap:0}.card{padding:28px 20px}}
+
+/* LANDING PAGES + GUIDES (Nov 2026) */
+.page-hero .crumbs{font-size:14px;color:#8392A7;margin-bottom:14px}
+.page-hero .crumbs a{color:#AEBBCC;text-decoration:none;display:inline-block;padding:6px 0}
+.page-hero .crumbs a:hover{color:#fff}
+.page-hero .lede{max-width:760px}
+.page-hero .lede a{color:#fff;text-underline-offset:3px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}
+.btn-ghost:hover{background:transparent;border-color:#fff;color:#fff}
+.btn-outline{background:#fff;color:var(--ink);border-color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:#fff}
+.article h2{font-size:clamp(1.6rem,3vw,2.1rem);line-height:1.05;margin:44px 0 12px}
+.article section:first-child h2{margin-top:0}
+.article p{margin-bottom:14px}
+.article a{color:var(--ink);font-weight:600;text-underline-offset:3px}
+.offer-box{background:#fff;border:2px solid var(--gold);border-radius:10px;padding:28px 28px 20px;margin:48px 0;box-shadow:0 24px 50px -34px rgba(6,18,31,.35)}
+.offer-box.offer-build{border-color:var(--ink)}
+.offer-box h2{margin-top:0}
+.offer-kicker{font-weight:700;font-size:14px;color:var(--muted);margin-bottom:6px}
+.price-opt{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding:16px 0}
+.price-opt strong{display:block;font-weight:800;font-stretch:85%;font-size:1.7rem;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
+.price-opt span{display:block;font-size:15px;color:var(--slate)}
+.price-opt > div{flex:1 1 260px}
+.offer-small{font-size:15px;border-top:1px solid var(--line);padding-top:14px;margin-bottom:6px}
+.offer-small a{display:inline-block;padding:6px 0}
+.faq-block{margin-top:48px}
+.faq-d{border-bottom:1px solid var(--line)}
+.faq-d:first-of-type{border-top:2px solid var(--ink)}
+.faq-d summary{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:56px;padding:14px 0;font-weight:700;font-size:17px;color:var(--ink);cursor:pointer;list-style:none}
+.faq-d summary::-webkit-details-marker{display:none}
+.faq-d summary::after{content:"+";font-size:1.4rem;font-weight:400;flex-shrink:0}
+.faq-d[open] summary::after{content:"−"}
+.faq-d p{padding-bottom:16px;margin:0}
+.related{background:var(--mist);border-radius:10px;padding:22px 24px;margin-top:48px}
+.related h2{font-size:1.3rem;margin:0 0 6px}
+.related ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.related a{display:inline-block;padding:10px 0}
+@media (max-width:620px){.related ul{grid-template-columns:1fr}.hero-ctas .btn{width:100%}.price-opt .btn{width:100%}}
+
+/* FOOTER GROUPS (all pages) */
+.footer-groups{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px 56px;border-top:1px solid rgba(255,255,255,.08);padding-top:18px}
+.footer-group h4{font-size:13px;font-weight:700;letter-spacing:0;color:#9AA6B8;margin:0 0 2px}
+.footer-group ul{list-style:none;display:flex;flex-wrap:wrap;gap:0 12px}
+.footer-group a{display:inline-block;padding:10px 8px 10px 0;font-weight:600;font-size:14px;color:#AEBBCC;text-decoration:none}
+.footer-group a:hover{color:#fff}
