@@ -339,6 +339,7 @@ var CONFIG = {
   CHECKOUT_SCHOOL: "/?plan=monthly#apply",                  /* The Marketing School ads course, $297/mo for 12 months */
   CHECKOUT_UPFRONT: "/?plan=upfront#apply",                 /* The Marketing School ads course, $2,497 paid up front */
   APPLY_ALLIN: "/?plan=allin#apply",                       /* Full Agency (apply only) */
+  STRATEGY_CALL: "/?plan=strategy#apply",                 /* free strategy call (low score + real spend) */
   BUILD_PACK_URL: "/dual-agent-build-pack",        /* separate offer, "Also available" line only */
   HOMEPAGE_URL: "/",
   NEXT_QA_DATE: ""                                    /* e.g. "Thursday, June 18" — when set, urgency line invites to the next live call */
@@ -474,17 +475,22 @@ var PLANS = [
   {key:"school", name:"The Marketing School ads course", price:"$297", period:"/mo",
    note:"Locked in for 12 months. Or $2,497 paid up front, which saves $1,067.",
    leadLabel:"The Marketing School — $297/mo for 12 months",
-   cta:"Lock in my spot", ctaKey:"CHECKOUT_SCHOOL",
+   cta:"Get started", ctaKey:"CHECKOUT_SCHOOL",
    features:["The full ads course: Google, Meta, TikTok and LinkedIn, step by step, from setup to scaling","Done-for-you AI install: we connect AI to your ad accounts to find wasted spend, write ads, and report results","AI ad prompt pack: better ads in minutes","Weekly live classes: Tuesday lead gen and Friday ads traffic, members only","Monthly account review: we check your numbers and tell you what to change"],
    why:"You don't need to hand the whole account to an agency to stop the leak. <strong>The Marketing School ads course</strong> teaches you to run Google, Meta, TikTok and LinkedIn ads step by step, installs AI in your ad accounts to help find wasted spend, write ads, and report results, and reviews your numbers every month — starting with your weakest link."},
-  {key:"allin", name:"Full Agency", price:"$15,000", period:"/mo", note:"+ 10% of ad spend · 90-day minimum · apply only",
+  {key:"allin", name:"Full Agency", price:"Custom", period:"", note:"For accounts spending $30k+/mo · scoped on a call · apply only",
    leadLabel:"Full Agency — apply",
    cta:"Apply for Full Agency", ctaKey:"APPLY_ALLIN",
    features:["Media buying on your channels, including Google, Meta, TikTok, and LinkedIn","Creative produced for you, static and video","Dedicated strategist","Weekly 1:1 reporting + strategy","Landing page + funnel builds","White glove support"],
-   why:"At your spend, or with how fully you want it handled, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."}
+   why:"At your spend, or with how fully you want it handled, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."},
+  {key:"strategy", name:"Free strategy call", price:"Free", period:"", note:"With Evan · we look at your account together · no obligation",
+   leadLabel:"Free strategy call",
+   cta:"Book my strategy call", ctaKey:"STRATEGY_CALL",
+   features:["Walk through your live account with Evan","Pinpoint where your spend is leaking first","A clear fix list you can act on right away","Honest advice on whether to learn it, get help, or hand it off"],
+   why:"You're spending real money and your score says a lot of it is leaking. A course alone is slow when money is going out the door every day. <strong>Start with a free strategy call</strong> so we can look at the account together and decide the fastest fix"}
 ];
 
-/* Recommendation: the ads course by default; Full Agency at $30k+/mo spend or "I want it handled" */
+/* Recommendation: the ads course by default; Full Agency at $30k+/mo spend or "I want it handled"; free strategy call for $5k-$30k spend with a score under 50 */
 var SPEND_TO_PLAN = { none:0, under5k:0, "5to30k":0, "30to100k":1, "100kplus":1 };
 
 var PROFILES = [
@@ -596,7 +602,10 @@ function recommendPlan(answers){
   /* "Whatever it takes — I want it handled" (last appetite option) -> Full Agency */
   var aq = QUESTIONS[QIDX.appetite], app = answers[QIDX.appetite];
   if (app != null && aq && app === aq.options.length - 1) return 1;
-  return (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
+  var base = (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
+  /* low score + real spend ($5k-$30k/mo) -> free strategy call */
+  if (base === 0 && v === "5to30k" && computeScores(answers).score < 50) return 2;
+  return base;
 }
 
 function estimateLeak(spendValue){
@@ -831,10 +840,12 @@ if (typeof document !== 'undefined'){ (function(){
     $('stickyTxt').textContent = 'Recommended: ' + plan.name;
 
     var alt = $('altStrip');
-    if (rec === 1){
-      alt.innerHTML = '<strong>Prefer to learn it yourself?</strong> The Marketing School ads course is $297/mo, locked in for 12 months (or $2,497 paid up front), and we install AI in your ad accounts. <a href="' + CONFIG.CHECKOUT_SCHOOL + '">Lock in my spot →</a>';
+    if (rec === 2){
+      alt.innerHTML = '<strong>Rather learn it yourself?</strong> The Marketing School ads course is $297/mo, locked in for 12 months, and we install AI in your ad accounts. <a href="' + CONFIG.CHECKOUT_SCHOOL + '">Get started →</a>';
+    } else if (rec === 1){
+      alt.innerHTML = '<strong>Prefer to learn it yourself?</strong> The Marketing School ads course is $297/mo, locked in for 12 months (or $2,497 paid up front), and we install AI in your ad accounts. <a href="' + CONFIG.CHECKOUT_SCHOOL + '">Get started →</a>';
     } else {
-      alt.innerHTML = '<strong>Want us to do it all for you?</strong> Full Agency ($15,000/mo + 10% of ad spend, 90-day minimum) is our done-for-you option, generally for $30k+/mo accounts. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for Full Agency →</a>';
+      alt.innerHTML = '<strong>Want us to do it all for you?</strong> Full Agency is our done-for-you option, with custom pricing for accounts spending $30k+/mo. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for Full Agency →</a>';
     }
     alt.innerHTML += '<br><span style="display:inline-block;margin-top:8px;font-size:14px">Also available, separate from the ads course: need a website or app? <a href="' + CONFIG.BUILD_PACK_URL + '">The Dual Agent Build Pack</a> is 12 live 1-on-1 build sessions.</span>';
     alt.style.display = 'block';

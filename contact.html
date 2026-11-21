@@ -79,7 +79,7 @@
         <div class="row">
           <div class="field"><label for="cTopic">What's this about?</label>
             <select id="cTopic" name="topic">
-              <option>General question</option><option>The Marketing School — $297/mo for 12 months</option><option>The Marketing School — $2,497 paid up front</option><option>The Dual Agent Build Pack — $297/mo for 12 months</option><option>The Dual Agent Build Pack — $2,497 paid up front</option><option>Full Agency — apply</option><option>Free Ad Account Audit</option><option>My diagnosis results</option><option>Partnership / press</option><option>Existing member support</option>
+              <option>General question</option><option>The Marketing School — $297/mo for 12 months</option><option>The Marketing School — $2,497 paid up front</option><option>The Dual Agent Build Pack — $297/mo for 12 months</option><option>The Dual Agent Build Pack — $2,497 paid up front</option><option>Full Agency — apply</option><option>Free strategy call</option><option>Free Ad Account Audit</option><option>My diagnosis results</option><option>Partnership / press</option><option>Existing member support</option>
             </select></div>
           <div class="field"><label for="cSpend">Monthly ad spend <span>(optional)</span></label>
             <select id="cSpend" name="ad_spend">
@@ -140,7 +140,7 @@
   var form=document.getElementById('cForm'), err=document.getElementById('cErr'), btn=document.getElementById('cSubmit');
   var qs=new URLSearchParams(location.search);
   var M='The Marketing School — $297/mo for 12 months', BM='The Dual Agent Build Pack — $297/mo for 12 months', FA='Full Agency — apply';
-  var PLAN_KEYS={monthly:M,school:M,upfront:'The Marketing School — $2,497 paid up front',build:BM,'build-monthly':BM,'build-upfront':'The Dual Agent Build Pack — $2,497 paid up front',allin:FA,agency:FA,teardown:'Free Ad Account Audit',ai:M,teaching:M,club:M,creative:M};
+  var PLAN_KEYS={monthly:M,school:M,upfront:'The Marketing School — $2,497 paid up front',build:BM,'build-monthly':BM,'build-upfront':'The Dual Agent Build Pack — $2,497 paid up front',allin:FA,agency:FA,strategy:'Free strategy call',teardown:'Free Ad Account Audit',ai:M,teaching:M,club:M,creative:M};
   var pk=PLAN_KEYS[qs.get('plan')], topic=document.getElementById('cTopic');
   if(pk){ for(var i=0;i<topic.options.length;i++){ if(topic.options[i].text===pk) topic.selectedIndex=i; } }
   form.addEventListener('submit',function(e){
