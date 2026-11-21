@@ -1,3 +1,13 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/themarketingschool", "destination": "/", "permanent": true },
+    { "source": "/themarketingschool.html", "destination": "/", "permanent": true },
+    { "source": "/bd", "destination": "/", "permanent": true },
+    { "source": "/bd.html", "destination": "/", "permanent": true },
+    { "source": "/enzymedica", "destination": "/", "permanent": true },
+    { "source": "/enzymedica.html", "destination": "/", "permanent": true },
+    { "source": "/mln", "destination": "/", "permanent": true },
+    { "source": "/mln.html", "destination": "/", "permanent": true }
+  ]
 }
