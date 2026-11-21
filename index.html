@@ -640,6 +640,17 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
 .svc .ch span{font-size:14px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px 10px}
 @media (max-width:880px){.svc-grid{grid-template-columns:1fr 1fr}.svc,.svc:not(:nth-child(3n+1)){padding:22px 20px 22px 0;border-left:0}.svc:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}}
 @media (max-width:560px){.svc-grid{grid-template-columns:1fr}.svc,.svc:nth-child(even){padding:20px 0;border-left:0}}
+/* process */
+.process{background:var(--paper)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:2px solid var(--ink);counter-reset:step}
+.proc{padding:26px 24px 28px 0;border-bottom:1px solid var(--line)}
+.proc:not(:first-child){padding-left:24px;border-left:1px solid var(--line)}
+.proc .num{display:block;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.proc h3{font-size:1.25rem;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
+.proc p{font-size:15px}
+.proc-note{margin-top:28px;font-size:15.5px;max-width:760px}
+@media (max-width:980px){.proc-grid{grid-template-columns:1fr 1fr}.proc,.proc:not(:first-child){padding:22px 20px 22px 0;border-left:0}.proc:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}}
+@media (max-width:560px){.proc-grid{grid-template-columns:1fr}.proc,.proc:nth-child(even){padding:20px 0;border-left:0}}
 
 .tier-grid .tier{padding:32px 24px}.tier-grid .tier-name{font-size:1.65rem}.tier-grid .tier-price{font-size:3rem}
 
@@ -886,6 +897,21 @@ footer{background:var(--night);border-top:1px solid rgba(255,255,255,.08)}
       <div class="svc"><h3>Account audits</h3><p>An Ad Account Health Report showing where the money is leaking and what to fix first.</p></div>
       <div class="svc"><h3>AI marketing training</h3><p>Teach your team to use AI to write ads, build creative, and audit campaigns.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <h2 class="section-title">How we find the leaks and fix them fast</h2>
+    <p class="section-sub">AI does the digging. Twenty years of running ads decides what to do about it.</p>
+    <div class="proc-grid">
+      <div class="proc"><span class="num">Step 1</span><h3>Spy on what's winning</h3><p>Our Grok Bot scans the Meta Ad Library for competitor ads that have run for months, the ones that are actually paying for themselves. You start from proven angles, not guesses.</p></div>
+      <div class="proc"><span class="num">Step 2</span><h3>Audit every account</h3><p>Claude connects to your Google and Meta accounts and reads the search terms, placements, budgets, and tracking. Wasted spend and broken conversions get flagged in hours, not weeks.</p></div>
+      <div class="proc"><span class="num">Step 3</span><h3>Fix what matters first</h3><p>Evan reviews every finding and decides what's worth changing. Then the fixes go live: negative keywords, budget shifts, new ads, landing page changes.</p></div>
+      <div class="proc"><span class="num">Step 4</span><h3>Keep watching</h3><p>The AI keeps checking your accounts after launch, so new leaks get caught early instead of showing up on next month's bill.</p></div>
+    </div>
+    <p class="proc-note">AI finds problems fast, but it doesn't know which ones matter. That's the part experience handles. Every recommendation is checked by someone who has managed $200M+ in ad spend.</p>
   </div>
 </section>
 

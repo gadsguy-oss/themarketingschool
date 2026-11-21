@@ -25,10 +25,18 @@
 ## Free
 - Free Ad Account Audit, via the free 3-minute Ad Account Score quiz: https://www.themarketingschool.com/assessment
 
-## Proof (the only claims we make)
+## Founder
+- Evan Baker, founder and instructor. Certified Google Ads expert with 20+ years running paid media on Google, Meta, YouTube, TikTok, and LinkedIn. Founded Crowdfunnel (raised $3M, grew to $20M in revenue); former President of Shipways; led strategy at DOE Media.
+
+## How we work
+- Grok Bot scans the Meta Ad Library for long-running competitor ads to find proven angles.
+- Claude connects to Google and Meta ad accounts to audit search terms, placements, budgets, and tracking, and flags wasted spend fast.
+- Evan reviews every finding and decides what to fix first; fixes go live quickly, and accounts keep being monitored.
+
+## Proof
 - $200M+ in ad spend managed over 20+ years.
 - 150+ businesses served.
-- One anonymous client went from $0 to $30k in profitable revenue with Google Ads.
+- One client went from $0 to $30k in profitable revenue with Google Ads.
 - Results are not guaranteed.
 
 ## Pages
