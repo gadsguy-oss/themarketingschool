@@ -159,3 +159,6 @@ footer{padding:40px;background:var(--night);border-top:1px solid rgba(255,255,25
 .footer-group ul{list-style:none;display:flex;flex-wrap:wrap;gap:0 12px}
 .footer-group a{display:inline-block;padding:10px 8px 10px 0;font-weight:600;font-size:14px;color:#AEBBCC;text-decoration:none}
 .footer-group a:hover{color:#fff}
+
+.offer-guarantee{margin:16px 0 6px;padding:12px 14px;border:1px solid var(--line,#DCE1E8);border-radius:8px;font-size:15px;line-height:1.5}
+.offer-guarantee span{display:block;margin-top:4px;font-size:13px;opacity:.8}

@@ -329,18 +329,17 @@ footer a{display:inline-block;padding:12px 6px}
   <a class="btn btn-go" id="stickyBtn" href="#">Talk to us</a>
 </div>
 
-<footer><span style="display:block;margin-bottom:6px">Ads courses: <a href="/ai-ads-course" style="color:inherit">AI ads</a> · <a href="/google-ads-course" style="color:inherit">Google</a> · <a href="/meta-ads-course" style="color:inherit">Meta</a> · <a href="/tiktok-ads-course" style="color:inherit">TikTok</a> · <a href="/linkedin-ads-course" style="color:inherit">LinkedIn</a> — Guides: <a href="/done-for-you-ads" style="color:inherit">Done-for-you ads</a> · <a href="/should-i-hire-an-ad-agency-or-learn-ads-myself" style="color:inherit">Agency or learn?</a> · <a href="/how-much-does-an-ad-agency-cost" style="color:inherit">Agency cost</a> · <a href="/can-ai-run-my-google-ads" style="color:inherit">Can AI run Google Ads?</a> — <a href="/dual-agent-build-pack" style="color:inherit">Build Pack</a></span>© 2026 The Marketing School · <a href="/privacy" style="color:inherit">Privacy</a> · <a href="/terms" style="color:inherit">Terms</a> · <a href="/contact" style="color:inherit">Contact</a> · This diagnosis is educational and based on your answers; results depend on your business, offer, and execution.</footer>
+<footer><span style="display:block;margin-bottom:6px">Done-for-you ads: <a href="/ai-ads-course" style="color:inherit">AI-powered</a> · <a href="/google-ads-course" style="color:inherit">Google</a> · <a href="/meta-ads-course" style="color:inherit">Meta</a> · <a href="/tiktok-ads-course" style="color:inherit">TikTok</a> · <a href="/linkedin-ads-course" style="color:inherit">LinkedIn</a> · Guides: <a href="/done-for-you-ads" style="color:inherit">Do my ads for me</a> · <a href="/should-i-hire-an-ad-agency-or-learn-ads-myself" style="color:inherit">Agency or DIY?</a> · <a href="/how-much-does-an-ad-agency-cost" style="color:inherit">Agency cost</a> · <a href="/can-ai-run-my-google-ads" style="color:inherit">Can AI run Google Ads?</a></span>© 2026 The Marketing School · <a href="/privacy" style="color:inherit">Privacy</a> · <a href="/terms" style="color:inherit">Terms</a> · <a href="/contact" style="color:inherit">Contact</a> · This diagnosis is educational and based on your answers; results depend on your business, offer, and execution.</footer>
 
 <script>
 /* ============ CONFIG — the only block a non-developer edits ============ */
 var CONFIG = {
   /* leads are sent via window.tmsSubmitLead() in lead-config.js (Google Form -> TMS Leads (Responses) sheet) */
   /* every CTA opens the homepage lead form with the plan prefilled (no online checkout) */
-  CHECKOUT_SCHOOL: "/?plan=monthly#apply",                  /* The Marketing School ads course, $297/mo for 12 months */
-  CHECKOUT_UPFRONT: "/?plan=upfront#apply",                 /* The Marketing School ads course, $2,497 paid up front */
+  CHECKOUT_SCHOOL: "/?plan=monthly#apply",                  /* Done-For-You Ads, $297/mo for 12 months */
+  CHECKOUT_UPFRONT: "/?plan=upfront#apply",                 /* Done-For-You Ads, $2,497 paid up front */
   APPLY_ALLIN: "/?plan=allin#apply",                       /* Full Agency (apply only) */
-  STRATEGY_CALL: "/?plan=strategy#apply",                 /* free strategy call (low score + real spend) */
-  BUILD_PACK_URL: "/dual-agent-build-pack",        /* separate offer, "Also available" line only */
+  AI_IMPL: "/?plan=ai-implementation#apply",              /* AI Implementation (book a call) */
   HOMEPAGE_URL: "/",
   NEXT_QA_DATE: ""                                    /* e.g. "Thursday, June 18" — when set, urgency line invites to the next live call */
 };
@@ -443,7 +442,7 @@ var QUESTIONS = [
   {section:"Are you ready?", kind:"intent",
    key:"appetite",
    text:"If the diagnosis shows a clear fix, what's your appetite?",
-   options:["Just want the free roadmap","Around $1k/mo to learn it right","A few thousand/mo to have it run with me","Whatever it takes — I want it handled"],
+   options:["Just want the free roadmap","Around $300/mo to have it run for me","A few thousand/mo for more help","Whatever it takes. I want it handled"],
    scores:[1,2,3,5]}
 ];
 
@@ -461,7 +460,7 @@ var PILLAR_NAMES = {
 var PILLAR_DETAILS = {
   site:"Ads can only be as good as where they land. Before you spend, you need one page built to turn a click into a lead or a sale.",
   offer:"The fastest way to waste a first ad budget is an unclear offer. Nail who it's for and why they should act now, and every dollar works harder.",
-  setup:"Without the pixel and conversion tracking in place from day one, the platforms can't learn who your buyers are — and you can't tell what's working.",
+  setup:"Without the pixel and conversion tracking in place from day one, the platforms can't figure out who your buyers are, and you can't tell what's working.",
   creative:"You're not feeding the machine enough new ads. Winners fatigue, CPMs creep, and every tired creative quietly raises your cost per customer.",
   tracking:"You can't lower a number you can't see. Without ground-truth CAC, every scale and kill decision is a coin flip made with real money.",
   followup:"Most clicks don't buy on day one. Without retargeting and follow-up working together, you're paying full price for traffic and keeping a fraction of its value.",
@@ -472,26 +471,26 @@ var PILLAR_DETAILS = {
 
 /* Offers here must match the homepage #pricing section */
 var PLANS = [
-  {key:"school", name:"The Marketing School ads course", price:"$297", period:"/mo",
-   note:"Locked in for 12 months. Or $2,497 paid up front, which saves $1,067.",
-   leadLabel:"The Marketing School — $297/mo for 12 months",
+  {key:"school", name:"Done-For-You Ads", price:"$297", period:"/mo",
+   note:"Locked in for 12 months, or $2,497 up front (save $1,067). If you're not getting better results in 90 days, we'll refund our fee.",
+   leadLabel:"Done-For-You Ads — $297/mo for 12 months",
    cta:"Get started", ctaKey:"CHECKOUT_SCHOOL",
-   features:["The full ads course: Google, Meta, TikTok and LinkedIn, step by step, from setup to scaling","Done-for-you AI install: we connect AI to your ad accounts to find wasted spend, write ads, and report results","AI ad prompt pack: better ads in minutes","Weekly live classes: Tuesday lead gen and Friday ads traffic, members only","Monthly account review: we check your numbers and tell you what to change"],
-   why:"You don't need to hand the whole account to an agency to stop the leak. <strong>The Marketing School ads course</strong> teaches you to run Google, Meta, TikTok and LinkedIn ads step by step, installs AI in your ad accounts to help find wasted spend, write ads, and report results, and reviews your numbers every month — starting with your weakest link."},
+   features:["We run your ads on 1 or 2 platforms: Google, Meta, TikTok, or LinkedIn","Done-for-you AI install: we connect AI to your ad accounts to find wasted spend, write ads, and report results","A monthly results report in plain English","Built for businesses spending under $10k a month on ads","If you're not getting better results in 90 days, we'll refund our fee. Refund covers our fee only. Ad spend paid to Google, Meta, and other platforms isn't refundable."],
+   why:"You don't need a big agency to stop the leak. <strong>Done-For-You Ads</strong> puts your ads in experienced hands, with AI installed in your accounts to find wasted spend, write ads, and report results, starting with your weakest link"},
   {key:"allin", name:"Full Agency", price:"Custom", period:"", note:"For accounts spending $30k+/mo · scoped on a call · apply only",
    leadLabel:"Full Agency — apply",
    cta:"Apply for Full Agency", ctaKey:"APPLY_ALLIN",
    features:["Media buying on your channels, including Google, Meta, TikTok, and LinkedIn","Creative produced for you, static and video","Dedicated strategist","Weekly 1:1 reporting + strategy","Landing page + funnel builds","White glove support"],
-   why:"At your spend, or with how fully you want it handled, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist — media buying, creative production, funnels, and weekly reporting — starting with your weakest link."},
-  {key:"strategy", name:"Free strategy call", price:"Free", period:"", note:"With Evan · we look at your account together · no obligation",
-   leadLabel:"Free strategy call",
-   cta:"Book my strategy call", ctaKey:"STRATEGY_CALL",
-   features:["Walk through your live account with Evan","Pinpoint where your spend is leaking first","A clear fix list you can act on right away","Honest advice on whether to learn it, get help, or hand it off"],
-   why:"You're spending real money and your score says a lot of it is leaking. A course alone is slow when money is going out the door every day. <strong>Start with a free strategy call</strong> so we can look at the account together and decide the fastest fix"}
+   why:"At your spend, every point of efficiency is real money. <strong>Full Agency</strong> hands the whole operation to a dedicated strategist: media buying, creative production, funnels, and weekly reporting, starting with your weakest link"},
+  {key:"aiimpl", name:"AI Implementation", price:"Custom", period:"", note:"Scoped on a call, based on your accounts and tools",
+   leadLabel:"AI Implementation",
+   cta:"Book a call", ctaKey:"AI_IMPL",
+   features:["AI set up in your marketing and ad accounts","Ad writing","Wasted spend checks","Reporting","Lead follow-up"],
+   why:"You're spending real money, and the fastest win is putting AI to work across your accounts. <strong>AI Implementation</strong> sets it up for ad writing, wasted spend checks, reporting, and lead follow-up, starting with your weakest link"}
 ];
 
-/* Recommendation: the ads course by default; Full Agency at $30k+/mo spend or "I want it handled"; free strategy call for $5k-$30k spend with a score under 50 */
-var SPEND_TO_PLAN = { none:0, under5k:0, "5to30k":0, "30to100k":1, "100kplus":1 };
+/* Recommendation: Done-For-You Ads under $5k/mo (or not spending yet); AI Implementation at $5k-$30k/mo; Full Agency at $30k+/mo */
+var SPEND_TO_PLAN = { none:0, under5k:0, "5to30k":2, "30to100k":1, "100kplus":1 };
 
 var PROFILES = [
   {min:0, max:29, name:"No Machine Yet", title:"You're buying clicks, not customers.",
@@ -537,10 +536,10 @@ var PROFILES = [
 
 var NEW_PROFILES = [
   {name:"Pre-Launch", title:"Get the foundation right before you spend a dollar.",
-   hook:"<strong>Smart move checking first.</strong> Most new businesses burn their first ad budget learning lessons that cost nothing to avoid: no page built to convert, no tracking, an offer that isn't sharp yet. <strong>You get to skip that.</strong>",
+   hook:"<strong>Smart move checking first.</strong> Most new businesses burn their first ad budget on mistakes that cost nothing to avoid: no page built to convert, no tracking, an offer that isn't sharp yet. <strong>You get to skip that.</strong>",
    gaps:[
      {title:"Build the landing page first", detail:"One page, one offer, one action — built before the first ad goes live."},
-     {title:"Install tracking on day one", detail:"Pixel and conversion events in place so the platforms learn from your first dollar."},
+     {title:"Install tracking on day one", detail:"Pixel and conversion events in place so the platforms start optimizing from your first dollar."},
      {title:"Start small on one channel", detail:"Prove the offer on the channel where your buyers already are, then expand."}
    ]},
   {name:"Launch-Ready", title:"You're ready to run your first ads — the right way.",
@@ -599,13 +598,7 @@ function pickProfile(score, answers){
 function recommendPlan(answers){
   var q = QUESTIONS[QIDX.spend], a = answers[QIDX.spend];
   var v = (a == null) ? null : q.values[a];
-  /* "Whatever it takes — I want it handled" (last appetite option) -> Full Agency */
-  var aq = QUESTIONS[QIDX.appetite], app = answers[QIDX.appetite];
-  if (app != null && aq && app === aq.options.length - 1) return 1;
-  var base = (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
-  /* low score + real spend ($5k-$30k/mo) -> free strategy call */
-  if (base === 0 && v === "5to30k" && computeScores(answers).score < 50) return 2;
-  return base;
+  return (v && v in SPEND_TO_PLAN) ? SPEND_TO_PLAN[v] : 0;
 }
 
 function estimateLeak(spendValue){
@@ -840,14 +833,11 @@ if (typeof document !== 'undefined'){ (function(){
     $('stickyTxt').textContent = 'Recommended: ' + plan.name;
 
     var alt = $('altStrip');
-    if (rec === 2){
-      alt.innerHTML = '<strong>Rather learn it yourself?</strong> The Marketing School ads course is $297/mo, locked in for 12 months, and we install AI in your ad accounts. <a href="' + CONFIG.CHECKOUT_SCHOOL + '">Get started →</a>';
-    } else if (rec === 1){
-      alt.innerHTML = '<strong>Prefer to learn it yourself?</strong> The Marketing School ads course is $297/mo, locked in for 12 months (or $2,497 paid up front), and we install AI in your ad accounts. <a href="' + CONFIG.CHECKOUT_SCHOOL + '">Get started →</a>';
+    if (rec === 0 || rec === 1){
+      alt.innerHTML = '<strong>Want AI set up across your marketing?</strong> AI Implementation sets up AI for ad writing, wasted spend checks, reporting, and lead follow-up. <a href="' + CONFIG.AI_IMPL + '">Book a call →</a>';
     } else {
-      alt.innerHTML = '<strong>Want us to do it all for you?</strong> Full Agency is our done-for-you option, with custom pricing for accounts spending $30k+/mo. <a href="' + CONFIG.APPLY_ALLIN + '">Apply for Full Agency →</a>';
+      alt.innerHTML = '<strong>Rather have us run your ads?</strong> Done-For-You Ads is $297/mo for accounts spending under $10k a month, with AI built in. <a href="' + CONFIG.CHECKOUT_SCHOOL + '">Get started →</a>';
     }
-    alt.innerHTML += '<br><span style="display:inline-block;margin-top:8px;font-size:14px">Also available, separate from the ads course: need a website or app? <a href="' + CONFIG.BUILD_PACK_URL + '">The Dual Agent Build Pack</a> is 12 live 1-on-1 build sessions.</span>';
     alt.style.display = 'block';
 
     if ('IntersectionObserver' in window){
