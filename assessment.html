@@ -431,8 +431,8 @@ var PLANS = [
   {key:"aiimpl", name:"AI Implementation", price:"Custom", period:"", note:"Scoped on a call, based on your accounts and tools",
    leadLabel:"AI Implementation",
    cta:"Book a call", ctaKey:"AI_IMPL",
-   features:["AI set up in your marketing and ad accounts","Ad writing","Wasted spend checks","Reporting","Lead follow-up"],
-   why:"You're spending real money, and the fastest win is putting AI to work across your accounts. <strong>AI Implementation</strong> sets it up for ad writing, wasted spend checks, reporting, and lead follow-up, starting with your weakest link"}
+   features:["AI set up in your marketing and ad accounts","Ad writing","Wasted spend checks","Reporting"],
+   why:"You're spending real money, and the fastest win is putting AI to work across your accounts. <strong>AI Implementation</strong> sets it up for ad writing, wasted spend checks, and reporting, starting with your weakest link"}
 ];
 
 /* Recommendation: Done-For-You Ads under $10k/mo (or not spending yet); $10k-$30k/mo book a call (AI Implementation); Full Agency at $30k+/mo */
@@ -444,7 +444,7 @@ var PROFILES = [
    gaps:[
      {title:"No creative pipeline", detail:"Ads get made when someone has time, which means they mostly don't get made."},
      {title:"No ground truth", detail:"Without a trusted cost-per-customer number, you can't tell working from wasting."},
-     {title:"No safety net", detail:"Clicks that don't convert vanish — no retargeting, no follow-up, no second chance."}
+     {title:"No safety net", detail:"Clicks that don't convert vanish — no retargeting, no second chance."}
    ]},
 
   {min:30, max:49, name:"Duct-Taped Machine", title:"The pieces exist. Nothing connects.",
@@ -468,7 +468,7 @@ var PROFILES = [
    gaps:[
      {title:"Volume ceiling", detail:"Your testing cadence is built for current spend, not for the spend you want."},
      {title:"Concentration risk", detail:"Scale will magnify your dependence on your strongest channel."},
-     {title:"Follow-up depth", detail:"At higher volume, every un-nurtured click is a bigger absolute loss."}
+     {title:"Retargeting depth", detail:"At higher volume, every click you don't win back is a bigger absolute loss."}
    ]},
 
   {min:86, max:100, name:"Operator", title:"The machine works. Now compound it.",
@@ -779,7 +779,7 @@ if (typeof document !== 'undefined'){ (function(){
 
     var alt = $('altStrip');
     if (rec === 0 || rec === 1){
-      alt.innerHTML = '<strong>Want AI set up across your marketing?</strong> AI Implementation sets up AI for ad writing, wasted spend checks, reporting, and lead follow-up. <a href="' + CONFIG.AI_IMPL + '">Book a call →</a>';
+      alt.innerHTML = '<strong>Want AI set up across your marketing?</strong> AI Implementation sets up AI for ad writing, wasted spend checks, and reporting. <a href="' + CONFIG.AI_IMPL + '">Book a call →</a>';
       alt.style.display = 'block';
     }
 
