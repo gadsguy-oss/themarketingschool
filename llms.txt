@@ -25,7 +25,7 @@
 - Free Ad Account Audit, via the free 3-minute Ad Account Score quiz: https://www.themarketingschool.com/assessment
 
 ## Founder
-- Evan Baker, founder. Certified Google Ads expert with 20+ years running paid media on Google, Meta, YouTube, TikTok, and LinkedIn. Founded Crowdfunnel (raised $3M, grew to $20M in revenue); led strategy at DOE Media. Actively manages 100+ ad accounts and teaches the AI for Ads and AI for Lead Generation classes at BotBuilders (founded by Matt Leitz).
+- Evan Baker, founder. 20+ years running paid media on Google, Meta, YouTube, TikTok, and LinkedIn. Founded Crowdfunnel (raised $3M, grew to $20M in revenue); led strategy at DOE Media. Actively manages 100+ ad accounts and teaches the AI for Ads and AI for Lead Generation classes at BotBuilders (founded by Matt Leitz).
 
 ## How we work
 - Grok Bot scans the Meta Ad Library for long-running competitor ads to find proven angles.
@@ -43,11 +43,11 @@
 - Free Ad Account Score: https://www.themarketingschool.com/assessment
 - Contact: https://www.themarketingschool.com/contact
 - Done-For-You Ads and Full Agency: https://www.themarketingschool.com/done-for-you-ads
-- AI-powered ads management: https://www.themarketingschool.com/ai-ads-course
-- Google Ads management: https://www.themarketingschool.com/google-ads-course
-- Meta ads management: https://www.themarketingschool.com/meta-ads-course
-- TikTok ads management: https://www.themarketingschool.com/tiktok-ads-course
-- LinkedIn ads management: https://www.themarketingschool.com/linkedin-ads-course
+- AI-powered ads management: https://www.themarketingschool.com/ai-ads-management
+- Google Ads management: https://www.themarketingschool.com/google-ads-management
+- Meta ads management: https://www.themarketingschool.com/meta-ads-management
+- TikTok ads management: https://www.themarketingschool.com/tiktok-ads-management
+- LinkedIn ads management: https://www.themarketingschool.com/linkedin-ads-management
 - Should I hire an ad agency or run ads myself?: https://www.themarketingschool.com/should-i-hire-an-ad-agency-or-learn-ads-myself
 - How much does an ad agency cost?: https://www.themarketingschool.com/how-much-does-an-ad-agency-cost
 - Can AI run my Google Ads?: https://www.themarketingschool.com/can-ai-run-my-google-ads

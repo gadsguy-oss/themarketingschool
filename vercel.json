@@ -50,6 +50,56 @@
       "source": "/dual-agent-build-pack.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/ai-ads-course",
+      "destination": "/ai-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/ai-ads-course.html",
+      "destination": "/ai-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/google-ads-course",
+      "destination": "/google-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/google-ads-course.html",
+      "destination": "/google-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/meta-ads-course",
+      "destination": "/meta-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/meta-ads-course.html",
+      "destination": "/meta-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/tiktok-ads-course",
+      "destination": "/tiktok-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/tiktok-ads-course.html",
+      "destination": "/tiktok-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/linkedin-ads-course",
+      "destination": "/linkedin-ads-management",
+      "permanent": true
+    },
+    {
+      "source": "/linkedin-ads-course.html",
+      "destination": "/linkedin-ads-management",
+      "permanent": true
     }
   ]
 }
