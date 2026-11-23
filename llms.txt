@@ -26,7 +26,7 @@
 - Free Wasted Spend Report (Evan reviews a real account): https://www.themarketingschool.com/contact
 
 ## Founder
-- Evan Baker, founder. 20+ years running paid media on Google, Meta, YouTube, TikTok, and LinkedIn. Founded Crowdfunnel (raised $3M, grew to $20M in revenue); led strategy at DOE Media. Actively manages 100+ ad accounts and teaches the AI for Ads and AI for Lead Generation classes at BotBuilders (founded by Matt Leitz).
+- Evan Baker, founder. 20+ years running paid media on Google, Meta, YouTube, TikTok, and LinkedIn. Founded Crowdfunnel (raised $3M, grew to $20M in revenue); led strategy at DOE Media. Actively manages 100+ ad accounts and teaches the AI for Ads and AI for Lead Generation classes.
 
 ## How we work
 - Grok Bot scans the Meta Ad Library for long-running competitor ads to find proven angles.
