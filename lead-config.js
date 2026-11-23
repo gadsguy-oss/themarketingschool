@@ -1,6 +1,6 @@
 /* The Marketing School — lead capture.
    Leads go to the "TMS Leads" Google Form, which feeds the "TMS Leads (Responses)" Google Sheet.
-   The homepage package form, the quiz, and the contact page all use window.tmsSubmitLead(). */
+   The homepage form and the contact page both use window.tmsSubmitLead(). */
 window.TMS_LEAD_FORM = {
   action: "https://docs.google.com/forms/d/e/1FAIpQLSfPG5OeweXCB8mbxcgnWfqCv4C688Kq19rUXihiZaW5TPD1nA/formResponse",
   fields: {
@@ -21,11 +21,11 @@ window.tmsSubmitLead = function (lead) {
 /* ============ Conversion tracking ============
    Vercel Web Analytics is the main analytics (custom events need a Vercel Pro plan).
    Ad platform slots stay blank until ads launch. Blank = nothing loads or fires.
-   Main goal = quiz sign-up (the score gate). */
+   Main goal = account review form submit on /contact. */
 window.TMS_TRACKING = {
   GOOGLE_ADS_ID: "",     // e.g. "AW-123456789"  (fill in on ad launch day)
-  ADS_QUIZ_LABEL: "",    // conversion label for "Quiz sign-up" (primary)
-  ADS_CONTACT_LABEL: "", // conversion label for package form / contact form (secondary)
+  ADS_QUIZ_LABEL: "",    // unused (quiz removed Nov 2026)
+  ADS_CONTACT_LABEL: "", // conversion label for the account review form (primary)
   META_PIXEL_ID: ""      // e.g. "1234567890"
 };
 (function () {
@@ -46,7 +46,7 @@ window.TMS_TRACKING = {
 })();
 
 /* One place every conversion fires from.
-   kind: "quiz" (primary goal), "lead" (homepage package form), or "contact" (contact page). */
+   kind: "contact" (account review form, primary goal) or "lead" (homepage form). */
 window.tmsConversion = function (kind, data) {
   var t = window.TMS_TRACKING || {}, d = data || {};
   var NAMES = { quiz: "quiz_signup", lead: "lead_form_submit", contact: "contact_form_submit" };
@@ -69,7 +69,7 @@ window.tmsConversion = function (kind, data) {
     if (typeof fbq === "function") {
       if (kind === "quiz") fbq("track", "Lead", { content_name: "Ad Account Score quiz" });
       else if (kind === "lead") fbq("track", "Lead", { content_name: "Package form" });
-      else fbq("track", "Contact");
+      else fbq("track", "Lead", { content_name: "Account review form" });
     }
   } catch (e) {}
 };

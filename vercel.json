@@ -100,6 +100,26 @@
       "source": "/linkedin-ads-course.html",
       "destination": "/linkedin-ads-management",
       "permanent": true
+    },
+    {
+      "source": "/assessment",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
+      "source": "/assessment.html",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
+      "source": "/90-day-playbook",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
+      "source": "/90-day-playbook.html",
+      "destination": "/contact",
+      "permanent": false
     }
   ]
 }
