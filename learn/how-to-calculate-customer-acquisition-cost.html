@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Calculate Customer Acquisition Cost (CAC Formula) | The Marketing School</title>
+<meta name="description" content="Learn how to calculate customer acquisition cost with worked examples, blended vs paid CAC, CAC vs CPA vs CPL, payback period, LTV, and setting a target CAC.">
+<link rel="canonical" href="https://www.themarketingschool.com/learn/how-to-calculate-customer-acquisition-cost">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Marketing School">
+<meta property="og:title" content="How to Calculate Customer Acquisition Cost (CAC Formula) | The Marketing School">
+<meta property="og:description" content="Learn how to calculate customer acquisition cost with worked examples, blended vs paid CAC, CAC vs CPA vs CPL, payback period, LTV, and setting a target CAC.">
+<meta property="og:url" content="https://www.themarketingschool.com/learn/how-to-calculate-customer-acquisition-cost">
+<meta property="og:image" content="https://www.themarketingschool.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A2342">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/lead-config.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.themarketingschool.com/learn/how-to-calculate-customer-acquisition-cost#article",
+      "headline": "How to calculate customer acquisition cost (with examples)",
+      "description": "Learn how to calculate customer acquisition cost with worked examples, blended vs paid CAC, CAC vs CPA vs CPL, payback period, LTV, and setting a target CAC.",
+      "url": "https://www.themarketingschool.com/learn/how-to-calculate-customer-acquisition-cost",
+      "datePublished": "2026-11-28",
+      "dateModified": "2026-11-28",
+      "author": {
+        "@type": "Person",
+        "name": "Evan Baker",
+        "url": "https://www.linkedin.com/in/evanabaker/"
+      },
+      "publisher": {
+        "@id": "https://www.themarketingschool.com/#org"
+      },
+      "image": "https://www.themarketingschool.com/og-image.png",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.themarketingschool.com/#website",
+        "name": "The Marketing School",
+        "url": "https://www.themarketingschool.com/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.themarketingschool.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Learn",
+          "item": "https://www.themarketingschool.com/learn"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to calculate CAC",
+          "item": "https://www.themarketingschool.com/learn/how-to-calculate-customer-acquisition-cost"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a good customer acquisition cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on what a customer is worth to you. A good CAC is comfortably below the gross profit a customer brings in, with a payback period your cash flow can handle. A commonly used rule of thumb is an LTV to CAC ratio of about 3 to 1. Benchmarks vary widely by industry, so your own margins matter more than anyone else's average."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I include agency fees in CAC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you want to know whether acquisition is profitable, yes. Many businesses track two versions: paid CAC (ad spend only) for comparing campaigns and channels, and a fuller CAC that includes agency fees, creative and tools for judging overall profitability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate CAC when sales take months to close?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use longer windows or cohorts. Group leads by the month they came in, then track how many became customers over the following months. Divide that month's spend by the customers it eventually produced. Rolling 3-month totals also smooth out timing gaps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is CPA the same as CAC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if the conversion you track in the ad platform is a new paying customer. Often CPA is based on a lead or sign-up, which makes it closer to cost per lead. CAC always means the cost of an actual new customer."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.themarketingschool.com/#org",
+      "name": "The Marketing School",
+      "url": "https://www.themarketingschool.com/",
+      "logo": "https://www.themarketingschool.com/apple-touch-icon.png"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+<meta name="tms:card" content="The CAC formula, worked examples, payback, LTV, and how to set a target CAC.">
+<meta name="tms:date" content="2026-11-28">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">The Marketing School</a>
+  <ul class="nav-links">
+    <li><a href="/#process">How it works</a></li>
+    <li><a href="/#pricing">Services</a></li>
+    <li><a href="/learn">Learn</a></li>
+    <li><a href="/guides">Guides</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-cta-wrap"><a href="/contact" class="nav-cta"><span class="lg">Free Account Review</span><span class="sm">Book a Review</span></a></li>
+    <li class="nav-cta-wrap nav-toggle-wrap"><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></li>
+  </ul>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#process">How it works</a>
+  <a href="/#pricing">Services</a>
+  <a href="/done-for-you-ads">Done-for-you ads</a>
+  <a href="/learn">Learn ads (free)</a>
+  <a href="/guides">Guides</a>
+  <a href="/#about">About</a>
+  <a href="/contact">Contact</a>
+</div>
+<div class="menu-backdrop"></div>
+
+<header class="page-hero"><div class="page-hero-inner">
+  <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/learn">Learn</a> <span aria-hidden="true">/</span> <span>How to calculate CAC</span></div>
+  <div class="eyebrow">Learn · Metrics</div>
+  <h1>How to calculate customer acquisition cost (with examples)</h1>
+  <p class="lede">CAC is the number that tells you whether your ads make money. Here's the formula, worked examples, how it differs from CPA and CPL, and how to set a target you can manage your ads against.</p>
+  <div class="hero-ctas"><a class="btn" href="#signup">Get free guides by email</a></div>
+</div></header>
+<main class="wrap article">
+<p class="byline">By Evan Baker · Updated Nov 28, 2026</p>
+<div class="tldr"><p><strong>Short answer:</strong> Customer acquisition cost (CAC) is what you spent to win new customers divided by how many new customers you won. If you spent $5,000 on ads and won 50 new customers, your paid CAC is $100. Compare it to how much gross profit a customer brings you: if a customer is worth three times what they cost to acquire and pays you back within a few months, you can usually afford to spend more.</p></div>
+
+<section>
+<h2>What is the customer acquisition cost formula?</h2>
+<p>The basic formula is simple:</p>
+<p><strong>CAC = total acquisition costs ÷ number of new customers acquired</strong></p>
+<p>Both numbers must cover the same time period, and "new customers" means first-time buyers, not repeat orders.</p>
+<p>The hard part is deciding what goes into "acquisition costs." The common choices:</p>
+<ul>
+<li><strong>Ad spend only.</strong> The money paid to Google, Meta and other platforms.</li>
+<li><strong>Ad spend plus marketing costs.</strong> Agency or freelancer fees, ad creative, tools and software used for acquisition.</li>
+<li><strong>Fully loaded.</strong> All of the above plus the cost of salespeople and marketing staff involved in winning new customers.</li>
+</ul>
+<p>There's no single right answer. Pick a definition, write it down, and use it the same way every month. A CAC that changes definitions is worse than no CAC at all.</p>
+</section>
+
+<section>
+<h2>How do you calculate CAC? Worked examples</h2>
+<h3>Example: an online course</h3>
+<p>Example: in October, a course creator spent $6,000 on Meta ads and $1,500 on Google Ads. They also paid $1,000 for video editing used in the ads. They got 125 new students.</p>
+<ul>
+<li>Paid CAC (ad spend only) = ($6,000 + $1,500) ÷ 125 = <strong>$60</strong></li>
+<li>CAC including creative = ($7,500 + $1,000) ÷ 125 = <strong>$68</strong></li>
+</ul>
+<h3>Example: a local service business</h3>
+<p>Example: a home cleaning company spent $3,000 on Google Ads in a month. The ads produced 100 leads, 40 of those booked a first clean, and the company also paid a freelancer $800 to manage the ads.</p>
+<ul>
+<li>Cost per lead = $3,000 ÷ 100 = <strong>$30</strong></li>
+<li>Paid CAC = $3,000 ÷ 40 = <strong>$75</strong></li>
+<li>CAC including management = $3,800 ÷ 40 = <strong>$95</strong></li>
+</ul>
+<p>Notice how the cleaning company's cost per lead looks great at $30, but each actual customer costs $75 to $95. That gap is why you track all the way to customers, not just leads.</p>
+</section>
+
+<section>
+<h2>What's the difference between blended CAC and paid CAC?</h2>
+<p><strong>Paid CAC</strong> only counts customers who came from paid ads, divided by paid ad spend. It depends on the ad platforms or your analytics to tell you which customers came from ads.</p>
+<p><strong>Blended CAC</strong> divides total marketing spend by <em>all</em> new customers, from every source: ads, organic search, referrals, word of mouth, email.</p>
+<p>Example: a business spends $10,000 on ads in a month. The ad platforms report 80 customers from ads. In total the business gets 200 new customers.</p>
+<ul>
+<li>Paid CAC = $10,000 ÷ 80 = <strong>$125</strong></li>
+<li>Blended CAC = $10,000 ÷ 200 = <strong>$50</strong></li>
+</ul>
+<p>Both are useful. Paid CAC tells you whether a specific campaign works. Blended CAC is harder to fool, because it doesn't depend on attribution. Platforms can over-report (taking credit for people who would have bought anyway) or under-report (missing conversions because of privacy limits). If paid CAC looks great but blended CAC is getting worse month after month, something in the reporting is off. That's also why clean <a href="/learn/conversion-tracking-basics">conversion tracking</a> matters so much.</p>
+</section>
+
+<section>
+<h2>CAC vs CPA vs CPL: what's the difference?</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Formula</th><th>What it tells you</th></tr></thead>
+<tbody>
+<tr><td><strong>CPL</strong> (cost per lead)</td><td>Spend ÷ leads</td><td>How cheaply you generate inquiries. Says nothing about lead quality.</td></tr>
+<tr><td><strong>CPA</strong> (cost per acquisition or action)</td><td>Spend ÷ conversions</td><td>Cost of whatever you counted as a conversion in the ad platform. Could be a lead, a sign-up or a sale.</td></tr>
+<tr><td><strong>CAC</strong> (customer acquisition cost)</td><td>Acquisition costs ÷ new paying customers</td><td>What it really costs to win a customer. The number that ties to profit.</td></tr>
+</tbody>
+</table></div>
+<p>CPA in Google Ads or Meta is only as meaningful as the conversion you're tracking. If your conversion is "form submitted," your CPA is really a CPL. Use CPL and CPA to manage campaigns day to day, and CAC to decide if the whole thing is profitable.</p>
+<p>To connect them, use your close rate: <strong>CAC ≈ CPL ÷ lead-to-customer rate</strong>. Example: a $40 CPL with 20% of leads becoming customers gives a CAC of about $200.</p>
+</section>
+
+<section>
+<h2>How do CAC payback and lifetime value work?</h2>
+<p>CAC on its own doesn't tell you if it's good or bad. A $300 CAC is terrible for a $50 product bought once and fine for a $200-a-month service that customers keep for two years. You need two more numbers.</p>
+<h3>Lifetime value (LTV)</h3>
+<p>Lifetime value is the gross profit a customer brings in over the whole relationship. Use gross profit, not revenue, because you have to pay for the product or service before you can pay for ads.</p>
+<p><strong>LTV ≈ average order value × purchases per customer × gross margin</strong></p>
+<p>Example: a skincare brand's average order is $60, customers buy 4 times on average, and gross margin is 60%. LTV ≈ $60 × 4 × 0.6 = <strong>$144</strong>.</p>
+<h3>LTV to CAC ratio</h3>
+<p>Divide LTV by CAC. A commonly cited rule of thumb, especially in subscription businesses, is to aim for about 3 to 1. Below 1 to 1 you lose money on every customer. Way above 3 to 1 can mean you're underspending and leaving growth on the table.</p>
+<h3>CAC payback period</h3>
+<p>Payback is how long it takes to earn back the CAC from a customer's gross profit.</p>
+<p><strong>Payback (months) = CAC ÷ monthly gross profit per customer</strong></p>
+<p>Example: a software tool costs $50 a month with 80% gross margin, so $40 of monthly gross profit. With a CAC of $200, payback is $200 ÷ $40 = <strong>5 months</strong>.</p>
+<p>Payback matters for cash flow. Even a great LTV doesn't help if you run out of money before customers pay you back. Small businesses usually want short payback periods, often a few months, because they can't wait years.</p>
+</section>
+
+<section>
+<h2>How do you set a target CAC?</h2>
+<p>Work backwards from what a customer is worth and how fast you need your money back.</p>
+<ol>
+<li><strong>Calculate gross profit per customer.</strong> First purchase only, and over the lifetime.</li>
+<li><strong>Decide your payback window.</strong> Do you need to break even on the first purchase, or can you wait 3, 6 or 12 months?</li>
+<li><strong>Set the ceiling.</strong> Your maximum CAC is the gross profit you'll earn within that window.</li>
+<li><strong>Set the target below the ceiling.</strong> Leave room for profit and for reporting errors. A rule of thumb we use is to aim for a target CAC around one third of LTV, and never above first-window gross profit unless you can fund the gap.</li>
+<li><strong>Convert it to platform targets.</strong> If your close rate from lead to customer is 25% and your target CAC is $200, your target CPL is about $50. That's the number you manage to in the ad account.</li>
+</ol>
+<p>Example: a coaching program sells for $1,500 with $1,200 of gross profit. LTV, including some repeat programs, is about $1,800. One third of LTV is $600. First-sale gross profit is $1,200, so a $600 target leaves plenty of margin. With a 10% lead-to-sale rate, the target CPL is about $60.</p>
+<p>Once you have a target, budgeting gets much easier. See <a href="/how-much-should-i-spend-on-ads">how much should I spend on ads</a> for turning a CAC target into a monthly budget.</p>
+</section>
+
+<section>
+<h2>Common CAC mistakes to avoid</h2>
+<ul>
+<li><strong>Counting repeat buyers as new.</strong> This makes CAC look lower than it is. Only count first-time customers.</li>
+<li><strong>Mixing time periods.</strong> If your sales cycle is long, spend in March may produce customers in May. Look at rolling 3-month numbers or cohorts when sales take time.</li>
+<li><strong>Using revenue instead of gross profit for LTV.</strong> It inflates your ratio and leads to overspending.</li>
+<li><strong>Trusting platform-reported CAC alone.</strong> Check it against blended CAC and your actual sales records.</li>
+<li><strong>Stopping at cost per lead.</strong> Cheap leads that never buy are expensive. Track to customers.</li>
+<li><strong>Not segmenting.</strong> CAC by channel, campaign and offer will tell you where to move money. One blended average hides it.</li>
+</ul>
+</section>
+<div class="learn-signup" id="signup">
+  <h2>Get the next guide by email</h2>
+  <p>New ads tutorials every week, written by Evan Baker (20+ years running paid media). Free. Unsubscribe any time.</p>
+  <form class="ls-form" novalidate>
+    <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Send me guides</button>
+  </form>
+  <p class="ls-fine">See our <a href="/privacy" style="color:#C9D3E0">privacy policy</a>.</p>
+</div>
+<p class="offer-small">Running ads for a business and want a second set of eyes? <a href="/contact" data-cta-plan="review">Book a free account review</a>.</p>
+  <section class="faq-block" id="faq">
+    <h2>Questions, answered</h2>
+    <details class="faq-d"><summary>What is a good customer acquisition cost?</summary><p>It depends on what a customer is worth to you. A good CAC is comfortably below the gross profit a customer brings in, with a payback period your cash flow can handle. A commonly used rule of thumb is an LTV to CAC ratio of about 3 to 1. Benchmarks vary widely by industry, so your own margins matter more than anyone else's average.</p></details>
+    <details class="faq-d"><summary>Should I include agency fees in CAC?</summary><p>If you want to know whether acquisition is profitable, yes. Many businesses track two versions: paid CAC (ad spend only) for comparing campaigns and channels, and a fuller CAC that includes agency fees, creative and tools for judging overall profitability.</p></details>
+    <details class="faq-d"><summary>How do I calculate CAC when sales take months to close?</summary><p>Use longer windows or cohorts. Group leads by the month they came in, then track how many became customers over the following months. Divide that month's spend by the customers it eventually produced. Rolling 3-month totals also smooth out timing gaps.</p></details>
+    <details class="faq-d"><summary>Is CPA the same as CAC?</summary><p>Only if the conversion you track in the ad platform is a new paying customer. Often CPA is based on a lead or sign-up, which makes it closer to cost per lead. CAC always means the cost of an actual new customer.</p></details>
+  </section>
+  <aside class="related" aria-label="Related pages"><h2>Keep reading</h2><ul><li><a href="/how-much-should-i-spend-on-ads">How much should I spend on ads?</a></li><li><a href="/learn/conversion-tracking-basics">Conversion tracking basics</a></li><li><a href="/learn/meta-ads-for-beginners">Meta ads for beginners</a></li><li><a href="/signs-your-ads-are-wasting-money">Signs your ads are wasting money</a></li></ul></aside>
+</main>
+
+<footer>
+  <div class="footer-logo">The Marketing School<small>Done-for-you ads. AI built in.</small></div>
+  <ul class="footer-links">
+    <li><a href="/contact">Free account review</a></li>
+    <li><a href="/#pricing">Services</a></li>
+    <li><a href="/learn">Learn</a></li>
+    <li><a href="/guides">Guides</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 The Marketing School</span>
+  <!-- footer-groups:start -->
+  <div class="footer-groups">
+    <div class="footer-group"><h4>Done-for-you ads</h4><ul><li><a href="/ai-ads-management">AI-powered ads management</a></li><li><a href="/google-ads-management">Google Ads management</a></li><li><a href="/meta-ads-management">Meta ads management</a></li><li><a href="/tiktok-ads-management">TikTok ads management</a></li><li><a href="/linkedin-ads-management">LinkedIn ads management</a></li></ul></div>
+    <div class="footer-group"><h4>Guides</h4><ul><li><a href="/should-i-hire-an-ad-agency-or-learn-ads-myself">Hire an agency or run ads myself?</a></li><li><a href="/how-much-does-an-ad-agency-cost">How much does an ad agency cost?</a></li><li><a href="/questions-to-ask-before-hiring-an-ad-agency">Questions to ask an ad agency</a></li><li><a href="/signs-your-ads-are-wasting-money">Signs your ads are wasting money</a></li><li><a href="/google-ads-vs-meta-ads">Google Ads vs Meta ads</a></li><li><a href="/how-much-should-i-spend-on-ads">How much to spend on ads</a></li><li><a href="/guides">All guides →</a></li></ul></div>
+    <div class="footer-group"><h4>Learn ads</h4><ul><li><a href="/learn/how-to-set-up-google-ads">How to set up Google Ads</a></li><li><a href="/learn/google-ads-negative-keywords">Negative keywords</a></li><li><a href="/learn/google-ads-search-terms-report">Search terms report</a></li><li><a href="/learn/meta-ads-for-beginners">Meta ads for beginners</a></li><li><a href="/learn/meta-ads-creative-testing">Meta ads creative testing</a></li><li><a href="/learn/conversion-tracking-basics">Conversion tracking basics</a></li><li><a href="/learn">All tutorials →</a></li></ul></div>
+  </div>
+  <!-- footer-groups:end -->
+</footer>
+<script>
+document.querySelectorAll('[data-cta-plan]').forEach(function(a){
+  a.addEventListener('click',function(){ try{ window.va&&window.va('event',{name:'package_cta_click',data:{plan:a.getAttribute('data-cta-plan'),location:location.pathname}}); }catch(e){} });
+});
+</script>
+<script src="/site.js"></script>
+</body>
+</html>

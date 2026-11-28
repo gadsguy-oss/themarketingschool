@@ -164,3 +164,34 @@ footer{padding:40px;background:var(--night);border-top:1px solid rgba(255,255,25
 .offer-guarantee span{display:block;margin-top:4px;font-size:13px;opacity:.8}
 
 .platform-pick{flex-wrap:wrap}.platform-pick label{flex:1 1 calc(33% - 8px);min-width:90px}
+
+/* LEARN + GUIDES (articles, hub, email signup) */
+.article h3{font-size:1.25rem;line-height:1.2;margin:28px 0 8px}
+.article ul,.article ol{margin:0 0 16px 22px}
+.article li{margin-bottom:8px}
+.article li::marker{color:var(--ink);font-weight:700}
+.article strong{color:var(--ink)}
+.article .tldr{background:var(--mist);border-left:4px solid var(--gold);border-radius:6px;padding:16px 20px;margin:0 0 32px}
+.article .tldr p:last-child{margin-bottom:0}
+.article .table-wrap{overflow-x:auto;margin:0 0 18px}
+.article table{border-collapse:collapse;width:100%;font-size:15.5px}
+.article th,.article td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.article th{color:var(--ink);font-weight:700;background:var(--mist)}
+.article .byline{font-size:14.5px;color:var(--muted);margin:-8px 0 28px}
+.learn-signup{background:var(--night);color:#C9D3E0;border-radius:10px;padding:28px;margin:48px 0}
+.learn-signup h2{color:#fff;margin:0 0 8px}
+.learn-signup p{margin-bottom:14px}
+.learn-signup form{display:flex;gap:10px;flex-wrap:wrap}
+.learn-signup input{flex:1 1 180px;font:inherit;font-size:16px;padding:12px 13px;border:1px solid #34465E;border-radius:6px;background:#0F2238;color:#fff}
+.learn-signup input::placeholder{color:#8796AA}
+.learn-signup input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(242,182,48,.25)}
+.learn-signup .btn{flex:0 0 auto}
+.learn-signup .ls-done{color:#fff;font-weight:600;margin:0}
+.learn-signup .ls-fine{font-size:13.5px;color:#8796AA;margin:12px 0 0}
+.article .hub-grid,.hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:16px 0 8px;list-style:none;padding:0}
+.hub-grid li{margin:0}
+.hub-grid a{display:block;height:100%;border:1px solid var(--line);border-radius:10px;padding:18px 20px;text-decoration:none;background:#fff}
+.hub-grid a:hover{border-color:var(--gold)}
+.hub-grid .k{display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.hub-grid .t{display:block;font-weight:800;font-stretch:88%;font-size:1.15rem;line-height:1.2;color:var(--ink);letter-spacing:-.02em}
+.hub-grid .d{display:block;font-size:15px;font-weight:400;color:var(--slate);margin-top:6px}

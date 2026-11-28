@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversion Tracking Basics for Google Ads and Meta Ads | The Marketing School</title>
+<meta name="description" content="Conversion tracking explained: Google Ads conversions, GA4, Meta Pixel, Conversions API, enhanced conversions and consent mode, plus a setup checklist.">
+<link rel="canonical" href="https://www.themarketingschool.com/learn/conversion-tracking-basics">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Marketing School">
+<meta property="og:title" content="Conversion Tracking Basics for Google Ads and Meta Ads | The Marketing School">
+<meta property="og:description" content="Conversion tracking explained: Google Ads conversions, GA4, Meta Pixel, Conversions API, enhanced conversions and consent mode, plus a setup checklist.">
+<meta property="og:url" content="https://www.themarketingschool.com/learn/conversion-tracking-basics">
+<meta property="og:image" content="https://www.themarketingschool.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A2342">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/lead-config.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.themarketingschool.com/learn/conversion-tracking-basics#article",
+      "headline": "Conversion tracking basics: set it up right before you spend",
+      "description": "Conversion tracking explained: Google Ads conversions, GA4, Meta Pixel, Conversions API, enhanced conversions and consent mode, plus a setup checklist.",
+      "url": "https://www.themarketingschool.com/learn/conversion-tracking-basics",
+      "datePublished": "2026-11-28",
+      "dateModified": "2026-11-28",
+      "author": {
+        "@type": "Person",
+        "name": "Evan Baker",
+        "url": "https://www.linkedin.com/in/evanabaker/"
+      },
+      "publisher": {
+        "@id": "https://www.themarketingschool.com/#org"
+      },
+      "image": "https://www.themarketingschool.com/og-image.png",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.themarketingschool.com/#website",
+        "name": "The Marketing School",
+        "url": "https://www.themarketingschool.com/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.themarketingschool.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Learn",
+          "item": "https://www.themarketingschool.com/learn"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Conversion tracking basics",
+          "item": "https://www.themarketingschool.com/learn/conversion-tracking-basics"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need both the Meta Pixel and the Conversions API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meta recommends using both. The Pixel tracks events in the browser, and the Conversions API sends them from your server or platform, which catches events the browser misses. Use matching event names and event IDs so Meta can deduplicate them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I import GA4 conversions into Google Ads or use the Google Ads tag?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Either can work. The Google Ads tag is the more direct option and supports enhanced conversions closely. Importing GA4 key events is simpler if GA4 is already set up well. The important part is not to have both counting the same action as a primary conversion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why don't my Google Ads and GA4 numbers match?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They use different attribution models, count conversions on different dates, and treat cross-device and consent differently. Small differences are normal. Big ones usually point to duplicate tags, a misfiring event, or one side missing an event entirely."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is consent mode required in the US?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google's consent mode requirements are aimed at traffic from the EEA and UK. US privacy laws are a separate question and vary by state. Many advertisers run a consent banner and consent mode for all traffic for simplicity. Check with someone who handles privacy for your business."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I count as a conversion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Count the actions that are closest to revenue: purchases, qualified leads, booked calls. Track softer actions like add to cart or video views as secondary, so you can watch them without letting them steer bidding."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.themarketingschool.com/#org",
+      "name": "The Marketing School",
+      "url": "https://www.themarketingschool.com/",
+      "logo": "https://www.themarketingschool.com/apple-touch-icon.png"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+<meta name="tms:card" content="How Google and Meta tracking works, a setup checklist, and how to test it.">
+<meta name="tms:date" content="2026-11-28">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">The Marketing School</a>
+  <ul class="nav-links">
+    <li><a href="/#process">How it works</a></li>
+    <li><a href="/#pricing">Services</a></li>
+    <li><a href="/learn">Learn</a></li>
+    <li><a href="/guides">Guides</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-cta-wrap"><a href="/contact" class="nav-cta"><span class="lg">Free Account Review</span><span class="sm">Book a Review</span></a></li>
+    <li class="nav-cta-wrap nav-toggle-wrap"><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></li>
+  </ul>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#process">How it works</a>
+  <a href="/#pricing">Services</a>
+  <a href="/done-for-you-ads">Done-for-you ads</a>
+  <a href="/learn">Learn ads (free)</a>
+  <a href="/guides">Guides</a>
+  <a href="/#about">About</a>
+  <a href="/contact">Contact</a>
+</div>
+<div class="menu-backdrop"></div>
+
+<header class="page-hero"><div class="page-hero-inner">
+  <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/learn">Learn</a> <span aria-hidden="true">/</span> <span>Conversion tracking basics</span></div>
+  <div class="eyebrow">Learn · Tracking</div>
+  <h1>Conversion tracking basics: set it up right before you spend</h1>
+  <p class="lede">Google and Meta can only optimize for what they can see. Here's how conversion tracking works on both platforms, what each tool does, and how to check it's actually working.</p>
+  <div class="hero-ctas"><a class="btn" href="#signup">Get free guides by email</a></div>
+</div></header>
+<main class="wrap article">
+<p class="byline">By Evan Baker · Updated Nov 28, 2026</p>
+<div class="tldr"><p><strong>Short answer:</strong> Conversion tracking tells Google and Meta which clicks turned into leads or sales. Their bidding systems use that signal to decide who to show your ads to and how much to pay, so if tracking is missing or wrong, the platforms optimize for the wrong thing. Set up the Google tag with Google Ads conversions and GA4, the Meta Pixel plus Conversions API, add enhanced conversions and consent mode, then test every event before you spend.</p></div>
+
+<section>
+<h2>What is conversion tracking and why does it decide everything?</h2>
+<p>A conversion is the action you want someone to take after seeing your ad: a purchase, a lead form, a booked call, a sign-up. Conversion tracking is the code and data connections that report those actions back to the ad platforms.</p>
+<p>It matters for two reasons.</p>
+<ol>
+<li><strong>Measurement.</strong> Without it, you know what you spent but not what you got. You can't calculate cost per lead or <a href="/learn/how-to-calculate-customer-acquisition-cost">customer acquisition cost</a>, so you can't tell good campaigns from bad ones.</li>
+<li><strong>Optimization.</strong> This is the bigger one. Smart bidding on Google and conversion-optimized delivery on Meta learn from your conversion data. They look at who converted and go find more people like them. Feed them bad data, like a "conversion" that fires on every page view, and they'll happily find you more page viewers.</li>
+</ol>
+<p>A rule of thumb we use: fix tracking before you touch anything else. A well-built campaign with broken tracking will lose to an average campaign with clean tracking.</p>
+</section>
+
+<section>
+<h2>How does Google Ads conversion tracking work?</h2>
+<p>In Google Ads you create <strong>conversion actions</strong>, one per thing you care about (purchase, lead form, phone call). Each one is recorded either by the Google tag on your site, by importing from GA4, or by uploading offline data from your CRM.</p>
+<p>Key settings to understand:</p>
+<ul>
+<li><strong>Primary vs secondary:</strong> primary conversion actions are used for bidding and show in the Conversions column. Secondary ones are for observation only. Only mark the actions that represent real business value as primary.</li>
+<li><strong>Value:</strong> give purchases their real revenue. Give leads an estimated value if some leads are worth more than others.</li>
+<li><strong>Count:</strong> "Every" for purchases (each sale counts), "One" for leads (one person filling out three forms is still one lead).</li>
+</ul>
+<p>The Google tag can be installed directly in your site's code, through Google Tag Manager, or through your website platform's built-in integration. If you're building a new account, our guide on <a href="/learn/how-to-set-up-google-ads">how to set up Google Ads</a> covers where this fits.</p>
+</section>
+
+<section>
+<h2>What's the difference between GA4 and Google Ads conversions?</h2>
+<p>Google Analytics 4 measures everything that happens on your site from every channel: organic search, email, social, ads. Google Ads conversions measure what happened after someone clicked a Google ad.</p>
+<p>In GA4, the events you mark as most important are called <strong>key events</strong> (GA4 used to call them conversions). You can import GA4 key events into Google Ads as conversion actions, or use the Google Ads conversion tag directly. Either works. What matters:</p>
+<ul>
+<li>Don't count the same action twice as primary. If you import a GA4 purchase <em>and</em> use a Google Ads purchase tag, make only one of them primary.</li>
+<li>Expect the numbers to differ. GA4 and Google Ads use different attribution rules and timing, so they rarely match exactly. A big gap is worth investigating; a small one is normal.</li>
+<li>Link GA4 and Google Ads so you can see ad traffic quality in GA4 and share audiences.</li>
+</ul>
+</section>
+
+<section>
+<h2>What are the Meta Pixel and the Conversions API?</h2>
+<p>The <strong>Meta Pixel</strong> is a piece of code on your website that reports events like PageView, Lead and Purchase to Meta from the visitor's browser. Browser tracking misses some events because of ad blockers, browser privacy features and people leaving the page before the code fires.</p>
+<p>The <strong>Conversions API</strong> (often called CAPI) sends the same events from your server or platform directly to Meta. It fills gaps the Pixel misses and lets you send events that happen offline, like a lead becoming a customer in your CRM.</p>
+<p>Meta recommends running both. When you do, you need <strong>deduplication</strong> so one purchase isn't counted twice. The standard method is to send the same event name and a matching event ID from the Pixel and from the server. Meta then keeps one copy of events that match within its deduplication window.</p>
+<p>You don't need a developer for most setups. Shopify, WordPress and many funnel and CRM tools have built-in Meta integrations that set up CAPI for you, and Meta offers a Conversions API Gateway option for people who don't want to code it. In Events Manager, check the <strong>Event Match Quality</strong> score for each event. Higher is better, and it improves when you pass more customer details like hashed email and phone number.</p>
+</section>
+
+<section>
+<h2>What are enhanced conversions and consent mode?</h2>
+<h3>Enhanced conversions (Google)</h3>
+<p>Enhanced conversions send hashed first-party data, like the email address someone typed into your checkout or lead form, alongside your conversion tag. The data is hashed with SHA256 before it's sent, and Google matches it to signed-in Google accounts that interacted with your ads. This recovers conversions that cookies alone would miss.</p>
+<ul>
+<li><strong>Enhanced conversions for web:</strong> for sales and actions completed on your website.</li>
+<li><strong>Enhanced conversions for leads:</strong> for businesses that close sales offline. You capture hashed lead data on the form, then upload outcomes from your CRM so Google learns which leads became customers.</li>
+</ul>
+<h3>Consent mode (Google)</h3>
+<p>Consent mode tells Google tags what a visitor agreed to on your cookie banner. Version 2 uses four signals: <strong>ad_storage, analytics_storage, ad_user_data and ad_personalization</strong>. If you have visitors from the European Economic Area or the UK, you need a consent banner that passes these signals, or you lose access to features like remarketing and personalized ads for that traffic.</p>
+<ul>
+<li><strong>Basic</strong> consent mode blocks Google tags until the visitor makes a choice. If they decline, nothing is sent.</li>
+<li><strong>Advanced</strong> consent mode loads tags with consent set to denied by default and sends cookieless pings, which gives Google more to work with when it models missing conversions.</li>
+</ul>
+<p>Which one to use and how your banner is configured is a legal and privacy decision for your business, not just a marketing one. Most consent management platforms support consent mode out of the box.</p>
+</section>
+
+<section>
+<h2>Conversion tracking setup checklist</h2>
+<ol>
+<li>Write down your real conversions: the one or two actions that make you money, plus any useful micro-steps.</li>
+<li>Install the Google tag on every page (directly, via Google Tag Manager, or through your platform).</li>
+<li>Create Google Ads conversion actions. Set primary vs secondary, value and count correctly.</li>
+<li>Set up GA4, mark key events, and link GA4 to Google Ads.</li>
+<li>Turn on enhanced conversions for web (and for leads if you sell offline).</li>
+<li>Install the Meta Pixel and set up standard events (Lead, Purchase, etc.) with values.</li>
+<li>Set up the Conversions API through your platform's integration or Meta's tools. Confirm deduplication with matching event IDs.</li>
+<li>Verify your domain in Meta Business settings and choose which events are most important to you.</li>
+<li>Set up a consent banner with consent mode if you get EEA or UK traffic.</li>
+<li>Add UTM parameters to ad URLs so GA4 can separate each platform and campaign.</li>
+<li>Make sure the thank-you or confirmation page only loads after a real conversion, so people can't trigger it by landing on it.</li>
+</ol>
+</section>
+
+<section>
+<h2>How do you test that conversion tracking works?</h2>
+<p>Never assume. Test every event yourself before you spend money, and again after any website change.</p>
+<ol>
+<li><strong>Do a real test conversion.</strong> Fill out your own form or buy a cheap test product (refund it after).</li>
+<li><strong>Google:</strong> use Google Tag Assistant to load your site and confirm the Google tag and conversion events fire on the right pages, with the right value. In GA4, check Realtime or DebugView to see the event arrive.</li>
+<li><strong>Meta:</strong> open Events Manager, use the Test Events tool, and run through the conversion. You should see the event from the browser and, if CAPI is set up, from the server, with deduplication noted.</li>
+<li><strong>Check the platform status.</strong> Within a day or so, Google Ads shows whether each conversion action is recording, and Meta Events Manager shows recent activity and any warnings.</li>
+<li><strong>Compare to reality.</strong> After a week, compare platform conversions to your CRM or store orders. They won't match perfectly, but if Google says 40 leads and your inbox has 12, something is double counting.</li>
+</ol>
+<p>Common problems to look for: a conversion that fires on page load instead of on submit, the same event counted by two primary actions, a missing purchase value, and tracking that broke when someone changed the site. If your numbers suddenly jump or drop overnight, check tracking before you blame the campaigns. Broken tracking is one of the most common <a href="/signs-your-ads-are-wasting-money">signs your ads are wasting money</a>.</p>
+</section>
+<div class="learn-signup" id="signup">
+  <h2>Get the next guide by email</h2>
+  <p>New ads tutorials every week, written by Evan Baker (20+ years running paid media). Free. Unsubscribe any time.</p>
+  <form class="ls-form" novalidate>
+    <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Send me guides</button>
+  </form>
+  <p class="ls-fine">See our <a href="/privacy" style="color:#C9D3E0">privacy policy</a>.</p>
+</div>
+<p class="offer-small">Running ads for a business and want a second set of eyes? <a href="/contact" data-cta-plan="review">Book a free account review</a>.</p>
+  <section class="faq-block" id="faq">
+    <h2>Questions, answered</h2>
+    <details class="faq-d"><summary>Do I need both the Meta Pixel and the Conversions API?</summary><p>Meta recommends using both. The Pixel tracks events in the browser, and the Conversions API sends them from your server or platform, which catches events the browser misses. Use matching event names and event IDs so Meta can deduplicate them.</p></details>
+    <details class="faq-d"><summary>Should I import GA4 conversions into Google Ads or use the Google Ads tag?</summary><p>Either can work. The Google Ads tag is the more direct option and supports enhanced conversions closely. Importing GA4 key events is simpler if GA4 is already set up well. The important part is not to have both counting the same action as a primary conversion.</p></details>
+    <details class="faq-d"><summary>Why don&#x27;t my Google Ads and GA4 numbers match?</summary><p>They use different attribution models, count conversions on different dates, and treat cross-device and consent differently. Small differences are normal. Big ones usually point to duplicate tags, a misfiring event, or one side missing an event entirely.</p></details>
+    <details class="faq-d"><summary>Is consent mode required in the US?</summary><p>Google's consent mode requirements are aimed at traffic from the EEA and UK. US privacy laws are a separate question and vary by state. Many advertisers run a consent banner and consent mode for all traffic for simplicity. Check with someone who handles privacy for your business.</p></details>
+    <details class="faq-d"><summary>What should I count as a conversion?</summary><p>Count the actions that are closest to revenue: purchases, qualified leads, booked calls. Track softer actions like add to cart or video views as secondary, so you can watch them without letting them steer bidding.</p></details>
+  </section>
+  <aside class="related" aria-label="Related pages"><h2>Keep reading</h2><ul><li><a href="/learn/how-to-set-up-google-ads">How to set up Google Ads</a></li><li><a href="/learn/meta-ads-for-beginners">Meta ads for beginners</a></li><li><a href="/learn/how-to-calculate-customer-acquisition-cost">How to calculate customer acquisition cost</a></li><li><a href="/signs-your-ads-are-wasting-money">Signs your ads are wasting money</a></li></ul></aside>
+</main>
+
+<footer>
+  <div class="footer-logo">The Marketing School<small>Done-for-you ads. AI built in.</small></div>
+  <ul class="footer-links">
+    <li><a href="/contact">Free account review</a></li>
+    <li><a href="/#pricing">Services</a></li>
+    <li><a href="/learn">Learn</a></li>
+    <li><a href="/guides">Guides</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 The Marketing School</span>
+  <!-- footer-groups:start -->
+  <div class="footer-groups">
+    <div class="footer-group"><h4>Done-for-you ads</h4><ul><li><a href="/ai-ads-management">AI-powered ads management</a></li><li><a href="/google-ads-management">Google Ads management</a></li><li><a href="/meta-ads-management">Meta ads management</a></li><li><a href="/tiktok-ads-management">TikTok ads management</a></li><li><a href="/linkedin-ads-management">LinkedIn ads management</a></li></ul></div>
+    <div class="footer-group"><h4>Guides</h4><ul><li><a href="/should-i-hire-an-ad-agency-or-learn-ads-myself">Hire an agency or run ads myself?</a></li><li><a href="/how-much-does-an-ad-agency-cost">How much does an ad agency cost?</a></li><li><a href="/questions-to-ask-before-hiring-an-ad-agency">Questions to ask an ad agency</a></li><li><a href="/signs-your-ads-are-wasting-money">Signs your ads are wasting money</a></li><li><a href="/google-ads-vs-meta-ads">Google Ads vs Meta ads</a></li><li><a href="/how-much-should-i-spend-on-ads">How much to spend on ads</a></li><li><a href="/guides">All guides →</a></li></ul></div>
+    <div class="footer-group"><h4>Learn ads</h4><ul><li><a href="/learn/how-to-set-up-google-ads">How to set up Google Ads</a></li><li><a href="/learn/google-ads-negative-keywords">Negative keywords</a></li><li><a href="/learn/google-ads-search-terms-report">Search terms report</a></li><li><a href="/learn/meta-ads-for-beginners">Meta ads for beginners</a></li><li><a href="/learn/meta-ads-creative-testing">Meta ads creative testing</a></li><li><a href="/learn/conversion-tracking-basics">Conversion tracking basics</a></li><li><a href="/learn">All tutorials →</a></li></ul></div>
+  </div>
+  <!-- footer-groups:end -->
+</footer>
+<script>
+document.querySelectorAll('[data-cta-plan]').forEach(function(a){
+  a.addEventListener('click',function(){ try{ window.va&&window.va('event',{name:'package_cta_click',data:{plan:a.getAttribute('data-cta-plan'),location:location.pathname}}); }catch(e){} });
+});
+</script>
+<script src="/site.js"></script>
+</body>
+</html>
