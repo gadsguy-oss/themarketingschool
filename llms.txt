@@ -51,6 +51,30 @@
 - Privacy: https://www.themarketingschool.com/privacy
 - Terms: https://www.themarketingschool.com/terms
 
+<!-- content:start -->
+## Learn (free tutorials)
+- Hub: https://www.themarketingschool.com/learn
+- How to Set Up Google Ads: Your First Search Campaign: https://www.themarketingschool.com/learn/how-to-set-up-google-ads
+- Google Ads Negative Keywords: Build Your Starter List: https://www.themarketingschool.com/learn/google-ads-negative-keywords
+- Google Ads Search Terms Report: How to Read and Use It: https://www.themarketingschool.com/learn/google-ads-search-terms-report
+- Meta Ads for Beginners: How to Run Your First Campaign: https://www.themarketingschool.com/learn/meta-ads-for-beginners
+- Meta Ads Creative Testing: What to Test and When to Scale: https://www.themarketingschool.com/learn/meta-ads-creative-testing
+- Conversion Tracking Basics for Google Ads and Meta Ads: https://www.themarketingschool.com/learn/conversion-tracking-basics
+- How to Calculate Customer Acquisition Cost (CAC Formula): https://www.themarketingschool.com/learn/how-to-calculate-customer-acquisition-cost
+- How to Write Ad Copy That Converts: Frameworks and Examples: https://www.themarketingschool.com/learn/how-to-write-ad-copy
+
+## Guides
+- Hub: https://www.themarketingschool.com/guides
+- Should I Hire an Ad Agency or Run Ads Myself?: https://www.themarketingschool.com/should-i-hire-an-ad-agency-or-learn-ads-myself
+- How Much Does an Ad Agency Cost?: https://www.themarketingschool.com/how-much-does-an-ad-agency-cost
+- Questions to Ask Before Hiring an Ad Agency (+ Red Flags): https://www.themarketingschool.com/questions-to-ask-before-hiring-an-ad-agency
+- Signs Your Ads Are Wasting Money (Google and Meta Checks): https://www.themarketingschool.com/signs-your-ads-are-wasting-money
+- Google Ads vs Meta Ads: Which Is Right for Your Business?: https://www.themarketingschool.com/google-ads-vs-meta-ads
+- How Much Should I Spend on Ads? Budget From Your Numbers: https://www.themarketingschool.com/how-much-should-i-spend-on-ads
+- Can AI Run My Google Ads?: https://www.themarketingschool.com/can-ai-run-my-google-ads
+- Done-For-You Ads: We Run Your Ads for You: https://www.themarketingschool.com/done-for-you-ads
+<!-- content:end -->
+
 ## Contact
 - evan@themarketingschool.com
 - https://www.themarketingschool.com/contact

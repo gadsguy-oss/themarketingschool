@@ -46,10 +46,10 @@ window.TMS_TRACKING = {
 })();
 
 /* One place every conversion fires from.
-   kind: "contact" (account review form, primary goal) or "lead" (homepage form). */
+   kind: "contact" (account review form, primary goal), "lead" (homepage form) or "learn" (Learn email signup). */
 window.tmsConversion = function (kind, data) {
   var t = window.TMS_TRACKING || {}, d = data || {};
-  var NAMES = { quiz: "quiz_signup", lead: "lead_form_submit", contact: "contact_form_submit" };
+  var NAMES = { quiz: "quiz_signup", lead: "lead_form_submit", contact: "contact_form_submit", learn: "learn_signup" };
   var name = NAMES[kind] || kind;
   /* Vercel custom event: flat strings/numbers/booleans only */
   try {
@@ -69,6 +69,7 @@ window.tmsConversion = function (kind, data) {
     if (typeof fbq === "function") {
       if (kind === "quiz") fbq("track", "Lead", { content_name: "Ad Account Score quiz" });
       else if (kind === "lead") fbq("track", "Lead", { content_name: "Package form" });
+      else if (kind === "learn") fbq("track", "CompleteRegistration", { content_name: "Learn signup" });
       else fbq("track", "Lead", { content_name: "Account review form" });
     }
   } catch (e) {}

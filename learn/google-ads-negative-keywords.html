@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Ads Negative Keywords: Build Your Starter List | The Marketing School</title>
+<meta name="description" content="What Google Ads negative keywords are, how negative match types work, how to build a starter list, and when to use campaign vs account-level negatives.">
+<link rel="canonical" href="https://www.themarketingschool.com/learn/google-ads-negative-keywords">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Marketing School">
+<meta property="og:title" content="Google Ads Negative Keywords: Build Your Starter List | The Marketing School">
+<meta property="og:description" content="What Google Ads negative keywords are, how negative match types work, how to build a starter list, and when to use campaign vs account-level negatives.">
+<meta property="og:url" content="https://www.themarketingschool.com/learn/google-ads-negative-keywords">
+<meta property="og:image" content="https://www.themarketingschool.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0A2342">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/lead-config.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.themarketingschool.com/learn/google-ads-negative-keywords#article",
+      "headline": "Google Ads negative keywords: how they work and how to build your list",
+      "description": "What Google Ads negative keywords are, how negative match types work, how to build a starter list, and when to use campaign vs account-level negatives.",
+      "url": "https://www.themarketingschool.com/learn/google-ads-negative-keywords",
+      "datePublished": "2026-11-28",
+      "dateModified": "2026-11-28",
+      "author": {
+        "@type": "Person",
+        "name": "Evan Baker",
+        "url": "https://www.linkedin.com/in/evanabaker/"
+      },
+      "publisher": {
+        "@id": "https://www.themarketingschool.com/#org"
+      },
+      "image": "https://www.themarketingschool.com/og-image.png",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.themarketingschool.com/#website",
+        "name": "The Marketing School",
+        "url": "https://www.themarketingschool.com/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.themarketingschool.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Learn",
+          "item": "https://www.themarketingschool.com/learn"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Negative keywords",
+          "item": "https://www.themarketingschool.com/learn/google-ads-negative-keywords"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do negative keywords block plurals and misspellings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Negative keywords don't expand to close variants, so a negative for \"running shoes\" won't block \"running shoe.\" Google does account for capitalization and some misspellings, but you should add plurals and common variations yourself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many negative keyword lists can I have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google currently allows up to 20 shared negative keyword lists per account, with up to 5,000 keywords in each list. Account-level negatives are a separate list of up to 1,000 keywords. Limits change occasionally, so check Google's account limits page if you get close."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between a negative keyword list and account-level negatives?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A negative keyword list is applied only to the campaigns you attach it to. Account-level negatives apply automatically to Search and Shopping inventory across eligible campaign types, including Performance Max. Use lists for themes you reuse and account-level negatives for terms you never want anywhere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I add the full search term as a negative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually not. Pull out the word that makes the search wrong and add that. If \"plumber salary texas\" shows up, add salary as a negative. It blocks every salary search, not just that one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can negative keywords hurt my campaign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if they block searches you want. The most common cases are a negative that conflicts with one of your own keywords, or a single broad word like \"repair\" that removes good traffic. Before adding a negative, check it against your keyword list, and if a keyword stops getting impressions, look at its diagnostics."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.themarketingschool.com/#org",
+      "name": "The Marketing School",
+      "url": "https://www.themarketingschool.com/",
+      "logo": "https://www.themarketingschool.com/apple-touch-icon.png"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+<meta name="tms:card" content="Stop paying for bad searches with a starter list and the right match types.">
+<meta name="tms:date" content="2026-11-28">
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">The Marketing School</a>
+  <ul class="nav-links">
+    <li><a href="/#process">How it works</a></li>
+    <li><a href="/#pricing">Services</a></li>
+    <li><a href="/learn">Learn</a></li>
+    <li><a href="/guides">Guides</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-cta-wrap"><a href="/contact" class="nav-cta"><span class="lg">Free Account Review</span><span class="sm">Book a Review</span></a></li>
+    <li class="nav-cta-wrap nav-toggle-wrap"><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></li>
+  </ul>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#process">How it works</a>
+  <a href="/#pricing">Services</a>
+  <a href="/done-for-you-ads">Done-for-you ads</a>
+  <a href="/learn">Learn ads (free)</a>
+  <a href="/guides">Guides</a>
+  <a href="/#about">About</a>
+  <a href="/contact">Contact</a>
+</div>
+<div class="menu-backdrop"></div>
+
+<header class="page-hero"><div class="page-hero-inner">
+  <div class="crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/learn">Learn</a> <span aria-hidden="true">/</span> <span>Negative keywords</span></div>
+  <div class="eyebrow">Learn · Google Ads</div>
+  <h1>Google Ads negative keywords: how they work and how to build your list</h1>
+  <p class="lede">Negative keywords are the cheapest way to stop paying for searches that will never become customers. Here's how match types work for negatives, what to put in your starter list, and where each negative should live.</p>
+  <div class="hero-ctas"><a class="btn" href="#signup">Get free guides by email</a></div>
+</div></header>
+<main class="wrap article">
+<p class="byline">By Evan Baker · Updated Nov 28, 2026</p>
+<div class="tldr"><p><strong>Short answer:</strong> Negative keywords tell Google which searches should never show your ad. Build a starter list of obviously wrong searches (jobs, free, DIY, wrong products, places you don't serve) before launch, put account-wide exclusions in a shared list or at the account level, and keep adding to it from your search terms report every week. Remember that negatives don't match close variants, so add plurals and misspellings yourself.</p></div>
+
+<section>
+<h2>What are negative keywords in Google Ads?</h2>
+<p>A negative keyword is a word or phrase that stops your ad from showing when it appears in a search. If you sell plumbing repair, you don't want to pay for "plumber jobs" or "plumbing course." Adding "jobs" and "course" as negatives blocks those searches.</p>
+<p>Negatives matter more than ever because positive keywords now match loosely. Broad match, and to a lesser degree phrase and exact match, can show your ad for searches Google decides are related to your keyword. Negatives are how you put limits on that.</p>
+<p>They do two jobs:</p>
+<ul>
+<li><strong>Cut waste:</strong> block searches that will never become customers.</li>
+<li><strong>Route traffic:</strong> push a search to the ad group with the best ad and landing page for it, instead of letting several ad groups compete.</li>
+</ul>
+</section>
+
+<section>
+<h2>How do negative keyword match types work?</h2>
+<p>Negative keywords have the same three match types as regular keywords, but they behave differently. Google's own example uses the negative <em>running shoes</em>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Negative match type</th><th>How you write it</th><th>Blocks</th><th>Doesn't block</th></tr></thead>
+<tbody>
+<tr><td>Negative broad (default)</td><td>running shoes</td><td>Any search with all the words, in any order: "blue running shoes," "shoes running"</td><td>"running shoe," "blue tennis shoes"</td></tr>
+<tr><td>Negative phrase</td><td>"running shoes"</td><td>Searches with the words in that order, plus other words: "blue running shoes"</td><td>"shoes running"</td></tr>
+<tr><td>Negative exact</td><td>[running shoes]</td><td>Only the exact search "running shoes"</td><td>"blue running shoes"</td></tr>
+</tbody></table></div>
+<p>Three rules that trip people up:</p>
+<ul>
+<li><strong>No close variants.</strong> A negative for "running shoes" won't block "running shoe." Google does account for capitalization and some misspellings, but add plurals and common variations yourself.</li>
+<li><strong>Negative broad needs every word.</strong> A negative broad keyword with two words only blocks searches that contain both. If you want to block any search containing "free," add the single word <em>free</em>.</li>
+<li><strong>Long searches.</strong> Google says a negative that appears after the 16th word of a very long search may not block the ad. This rarely matters, but it explains the odd stray query.</li>
+</ul>
+</section>
+
+<section>
+<h2>How do you build a starter negative keyword list?</h2>
+<p>Build your first list before you launch. You won't catch everything, but you'll avoid paying to learn the obvious. Go through these categories and keep only what doesn't fit your business:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Category</th><th>Example negatives</th><th>Skip it if</th></tr></thead>
+<tbody>
+<tr><td>Jobs and careers</td><td>jobs, job, hiring, salary, careers, resume, internship</td><td>You're recruiting</td></tr>
+<tr><td>Free and bargain hunting</td><td>free, freebie, torrent</td><td>You offer a free plan or free trial people search for</td></tr>
+<tr><td>Do it yourself</td><td>diy, "how to," tutorial, yourself</td><td>You sell DIY kits or courses</td></tr>
+<tr><td>Learning and research</td><td>course, class, certification, degree, pdf, definition, meaning</td><td>You're a school or sell training</td></tr>
+<tr><td>Wrong product or service</td><td>services you don't offer, brands you don't carry</td><td>Never skip this one</td></tr>
+<tr><td>Wrong places</td><td>cities or regions you don't serve</td><td>You serve everywhere</td></tr>
+<tr><td>Used and secondhand</td><td>used, secondhand, refurbished</td><td>You sell used items</td></tr>
+</tbody></table></div>
+<p>To fill in the gaps, type your main keywords into Google and read the autocomplete suggestions. Run them through Keyword Planner and scan the ideas for searches you'd never want. Every phrase that makes you think "not us" is a candidate.</p>
+<p>Two rules of thumb we use:</p>
+<ul>
+<li><strong>Use single words in negative broad</strong> for terms that are bad in any context (jobs, salary, free for most businesses).</li>
+<li><strong>Use negative phrase or exact</strong> for anything that could be fine in another context. "Cheap" might be a bad sign for a luxury brand but fine for a discount store.</li>
+</ul>
+</section>
+
+<section>
+<h2>Campaign-level vs account-level negative keyword lists: which should you use?</h2>
+<p>You can add negatives in four places. Each has a different reach.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>Applies to</th><th>Limit</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>Ad group</td><td>One ad group</td><td>Counts toward account targeting limits</td><td>Routing searches between ad groups</td></tr>
+<tr><td>Campaign</td><td>One campaign</td><td>Up to 10,000 negatives per campaign</td><td>Exclusions that only make sense for that campaign</td></tr>
+<tr><td>Negative keyword list (shared)</td><td>Every campaign you apply it to</td><td>Up to 20 lists per account, 5,000 keywords each</td><td>Themes you reuse: jobs, free, competitors, locations</td></tr>
+<tr><td>Account-level negatives</td><td>Search and Shopping inventory across Search, Performance Max, Shopping, App, Smart and Local campaigns</td><td>Up to 1,000 per account</td><td>Searches you never want anywhere, like brand-safety terms</td></tr>
+</tbody></table></div>
+<p>Our default setup for a small account:</p>
+<ol>
+<li><strong>A shared list called "Universal negatives"</strong> with jobs, free, DIY and education terms. Apply it to every Search campaign.</li>
+<li><strong>Separate shared lists for themes</strong> you may want to turn on or off, like competitor names or out-of-area locations.</li>
+<li><strong>Account-level negatives</strong> only for terms you'd never want in any campaign type, including Performance Max.</li>
+<li><strong>Campaign and ad group negatives</strong> for anything specific.</li>
+</ol>
+<p>Shared lists are easier to manage than copying the same negatives into every campaign. Change the list once and every campaign using it updates. Check Google's current limits if you're near them, since they're revised from time to time.</p>
+</section>
+
+<section>
+<h2>How do you use negative keywords to route traffic between ad groups?</h2>
+<p>When two ad groups have similar keywords, the same search can enter either one. That can send someone looking for "emergency plumber" to your general plumbing ad.</p>
+<p>Fix it with negatives. If you have an "Emergency plumber" ad group and a general "Plumber" ad group, add <em>emergency</em> and <em>24 hour</em> as negatives in the general ad group. Now those searches can only go to the emergency ad group, with its emergency headline and landing page.</p>
+<p>Keep this simple. Route only the few themes where the ad and landing page really differ.</p>
+</section>
+
+<section>
+<h2>How do you find new negative keywords after launch?</h2>
+<p>Your starter list is a guess. The real list comes from the <a href="/learn/google-ads-search-terms-report">search terms report</a>, which shows what people actually typed before clicking your ad.</p>
+<ul>
+<li>In the first two weeks, review search terms every day or two.</li>
+<li>After that, weekly is enough for most small accounts.</li>
+<li>Select irrelevant terms in the report and add them as negatives at the ad group, campaign or list level.</li>
+<li>When you add a negative, pull out the bad word rather than blocking the full query. If "plumber salary texas" shows up, the negative is <em>salary</em>, not the whole phrase.</li>
+</ul>
+<p>Not every search appears in the report, because Google hides low-volume terms for privacy. That's another reason to build a solid starter list up front.</p>
+</section>
+
+<section>
+<h2>What negative keyword mistakes should you avoid?</h2>
+<ol>
+<li><strong>Blocking your own keywords.</strong> A negative that matches one of your keywords stops it from serving. Google's keyword diagnostics can show when a negative is blocking a keyword, but check your keyword list yourself before adding any broad negative.</li>
+<li><strong>Single-word negatives that are too broad.</strong> Adding <em>repair</em> as a negative because of one bad search can shut off half a repair business. Ask whether the word is bad in every context before adding it as broad.</li>
+<li><strong>Assuming close variants are covered.</strong> Add "job" and "jobs," "course" and "courses."</li>
+<li><strong>Forgetting new campaigns.</strong> Shared lists only work on campaigns you apply them to. Make attaching your universal list part of every launch.</li>
+<li><strong>Cutting too early.</strong> A relevant search with one click and no conversion isn't a bad search yet. Negate on relevance, not on a tiny amount of data.</li>
+<li><strong>Never reviewing the list.</strong> Your business changes. If you add a new service, check that an old negative isn't blocking it.</li>
+</ol>
+<p>If you keep finding wasted spend you can't explain, our guide to <a href="/signs-your-ads-are-wasting-money">signs your ads are wasting money</a> covers other places to look.</p>
+</section>
+<div class="learn-signup" id="signup">
+  <h2>Get the next guide by email</h2>
+  <p>New ads tutorials every week, written by Evan Baker (20+ years running paid media). Free. Unsubscribe any time.</p>
+  <form class="ls-form" novalidate>
+    <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" required>
+    <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Send me guides</button>
+  </form>
+  <p class="ls-fine">See our <a href="/privacy" style="color:#C9D3E0">privacy policy</a>.</p>
+</div>
+<p class="offer-small">Running ads for a business and want a second set of eyes? <a href="/contact" data-cta-plan="review">Book a free account review</a>.</p>
+  <section class="faq-block" id="faq">
+    <h2>Questions, answered</h2>
+    <details class="faq-d"><summary>Do negative keywords block plurals and misspellings?</summary><p>No. Negative keywords don't expand to close variants, so a negative for "running shoes" won't block "running shoe." Google does account for capitalization and some misspellings, but you should add plurals and common variations yourself.</p></details>
+    <details class="faq-d"><summary>How many negative keyword lists can I have?</summary><p>Google currently allows up to 20 shared negative keyword lists per account, with up to 5,000 keywords in each list. Account-level negatives are a separate list of up to 1,000 keywords. Limits change occasionally, so check Google's account limits page if you get close.</p></details>
+    <details class="faq-d"><summary>What&#x27;s the difference between a negative keyword list and account-level negatives?</summary><p>A negative keyword list is applied only to the campaigns you attach it to. Account-level negatives apply automatically to Search and Shopping inventory across eligible campaign types, including Performance Max. Use lists for themes you reuse and account-level negatives for terms you never want anywhere.</p></details>
+    <details class="faq-d"><summary>Should I add the full search term as a negative?</summary><p>Usually not. Pull out the word that makes the search wrong and add that. If "plumber salary texas" shows up, add salary as a negative. It blocks every salary search, not just that one.</p></details>
+    <details class="faq-d"><summary>Can negative keywords hurt my campaign?</summary><p>Yes, if they block searches you want. The most common cases are a negative that conflicts with one of your own keywords, or a single broad word like "repair" that removes good traffic. Before adding a negative, check it against your keyword list, and if a keyword stops getting impressions, look at its diagnostics.</p></details>
+  </section>
+  <aside class="related" aria-label="Related pages"><h2>Keep reading</h2><ul><li><a href="/learn/google-ads-search-terms-report">How to read the Google Ads search terms report</a></li><li><a href="/learn/how-to-set-up-google-ads">How to set up your first Google Ads Search campaign</a></li><li><a href="/signs-your-ads-are-wasting-money">Signs your ads are wasting money</a></li><li><a href="/learn">All free ads tutorials</a></li></ul></aside>
+</main>
+
+<footer>
+  <div class="footer-logo">The Marketing School<small>Done-for-you ads. AI built in.</small></div>
+  <ul class="footer-links">
+    <li><a href="/contact">Free account review</a></li>
+    <li><a href="/#pricing">Services</a></li>
+    <li><a href="/learn">Learn</a></li>
+    <li><a href="/guides">Guides</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 The Marketing School</span>
+  <!-- footer-groups:start -->
+  <div class="footer-groups">
+    <div class="footer-group"><h4>Done-for-you ads</h4><ul><li><a href="/ai-ads-management">AI-powered ads management</a></li><li><a href="/google-ads-management">Google Ads management</a></li><li><a href="/meta-ads-management">Meta ads management</a></li><li><a href="/tiktok-ads-management">TikTok ads management</a></li><li><a href="/linkedin-ads-management">LinkedIn ads management</a></li></ul></div>
+    <div class="footer-group"><h4>Guides</h4><ul><li><a href="/should-i-hire-an-ad-agency-or-learn-ads-myself">Hire an agency or run ads myself?</a></li><li><a href="/how-much-does-an-ad-agency-cost">How much does an ad agency cost?</a></li><li><a href="/questions-to-ask-before-hiring-an-ad-agency">Questions to ask an ad agency</a></li><li><a href="/signs-your-ads-are-wasting-money">Signs your ads are wasting money</a></li><li><a href="/google-ads-vs-meta-ads">Google Ads vs Meta ads</a></li><li><a href="/how-much-should-i-spend-on-ads">How much to spend on ads</a></li><li><a href="/guides">All guides →</a></li></ul></div>
+    <div class="footer-group"><h4>Learn ads</h4><ul><li><a href="/learn/how-to-set-up-google-ads">How to set up Google Ads</a></li><li><a href="/learn/google-ads-negative-keywords">Negative keywords</a></li><li><a href="/learn/google-ads-search-terms-report">Search terms report</a></li><li><a href="/learn/meta-ads-for-beginners">Meta ads for beginners</a></li><li><a href="/learn/meta-ads-creative-testing">Meta ads creative testing</a></li><li><a href="/learn/conversion-tracking-basics">Conversion tracking basics</a></li><li><a href="/learn">All tutorials →</a></li></ul></div>
+  </div>
+  <!-- footer-groups:end -->
+</footer>
+<script>
+document.querySelectorAll('[data-cta-plan]').forEach(function(a){
+  a.addEventListener('click',function(){ try{ window.va&&window.va('event',{name:'package_cta_click',data:{plan:a.getAttribute('data-cta-plan'),location:location.pathname}}); }catch(e){} });
+});
+</script>
+<script src="/site.js"></script>
+</body>
+</html>
